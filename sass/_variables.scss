@@ -1,19 +1,9 @@
-$font-family-sans-serif: "Montserrat", sans-serif;
+//colors
+$background:#131313;
+$fontColorDark: rgb(179, 179, 179);
+$fontColor: rgb(246, 246, 246);
+$containerBg: #1f1f1f;
+$itemBg: #3b3b3b;
+$loadBg: rgb(39, 39, 39);
 
-$border-radius: 0;
-$border-radius-lg: 0;
-$border-radius-sm: 0;
 
-$primary: #c76538;
-$theme-colors: (
-        "primary": $primary
-);
-
-$jumbotron-bg: rgba(#000, 0.5);
-
-$navbar-light-toggler-border-color: transparent;
-$navbar-toggler-padding-y: 0;
-$navbar-toggler-padding-x: 0;
-
-$breadcrumb-bg: transparent;
-$breadcrumb-padding-x: 0;
