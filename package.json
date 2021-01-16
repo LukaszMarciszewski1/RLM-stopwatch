@@ -1,0 +1,43 @@
+{
+  "name": "racing-stopwatch",
+  "version": "1.0.0",
+  "author": "Łukasz Marciszewski",
+  "description": "Minimal webpack boilerplate with HMR and sass",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LukaszMarciszewski1/racing-stopwatch.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --progress --colors --host 0.0.0.0",
+    "build": "webpack"
+  },
+  "keywords": [
+    "webpack",
+    "boilerplate",
+    "hmr",
+    "sass"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.6.1",
+    "css-hot-loader": "^1.4.4",
+    "css-loader": "^2.1.1",
+    "file-loader": "^4.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.18.1",
+    "webpack": "^4.32.1",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
