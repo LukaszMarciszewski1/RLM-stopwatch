@@ -1,13 +1,30 @@
-@mixin shadowContainerList {
+@mixin container{
     -webkit-box-shadow: 5px 5px 12px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 5px 5px 12px 2px rgba(0, 0, 0, 0.3);
+    background-color: $containerBg;
+    border-radius: 10px;
+    padding: 20px;
 }
-@mixin shadowItemList {
-    background-color: rgb(59, 59, 59);
+@mixin shadowItem{
+    // background-color: rgb(59, 59, 59);
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.42);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.42);
 }
 @mixin shadowLoad{
     -webkit-box-shadow: inset 0px 0px 15px -4px #000000; 
     box-shadow: inset 0px 0px 15px -4px #000000;
+}
+@mixin shadowLamp{
+    -webkit-box-shadow: -6px 0px 15px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: -6px 0px 15px 0px rgba(0, 0, 0, 0.42);
+}
+@mixin players-info{
+    padding: 10px 20px 10px 0;
+    border-right: 1px solid $itemBg;
+    margin-right: 20px;
+}
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

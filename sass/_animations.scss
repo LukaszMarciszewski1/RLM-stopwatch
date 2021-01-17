@@ -1,0 +1,25 @@
+@keyframes loadAnim {
+    0% {
+      width: 150px;
+    }
+    100% {
+      width: 0;
+    }
+  }
+
+  @keyframes lampAnim {
+    0% {
+      background-color: red;
+    }
+    100% {
+      background-color: green;
+    }
+  }  
+@keyframes preparationLamp{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
