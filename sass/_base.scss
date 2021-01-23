@@ -55,7 +55,7 @@ button:active {
     border-bottom: 1px solid $itemBg;
   }
   .name{
-      margin: 0 40px 0 20px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       h4{
@@ -73,7 +73,7 @@ button:active {
     height: 30px;
     border: 2px solid red;
     border-radius: 50%;
-    transform: translateX(-20px);
+    margin-left: 10px;
     position: relative;
     &::before{
       content:'';
@@ -87,9 +87,9 @@ button:active {
       border-radius: 50%;
       }
   }
-  .lamp--preparation{
+  .lamp--prepare{
     border: 2px solid orange;
-    animation: preparationLamp .5s infinite both;
+    animation: preparationLamp 1.5s infinite both;
     &::before{
       background-color: orange;
       }

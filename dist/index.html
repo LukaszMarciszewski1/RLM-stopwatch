@@ -1,67 +1,81 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Zagnieżdżamy font z google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-<div class="wrapp">
-    <div class="list-container">
-        <div class="list-item">
-            <h2>Name</h2>
-            <div class="control">
-                <div class="load"></div>
+    <div class="wrapp">
+        <div class="list">
+            <div class="list__item status">
+                <h4 class="name-player">Imię</h4>
+                <h4 class="number-player">Nr</h4>
+                <h4 class="status-player">status</h4>
+            </div>
+            <div class="list__item">
+                <div class="name">
+                    <h4>Jan Kraska</h4>
+                    <p>14</p>
+                </div>
+                <div class="lamp"></div>
+            </div>
+            <div class="list__item">
+                <div class="name">
+                    <h4>Marian Wyrwidąb</h4>
+                    <p>14</p>
+                </div>
+                <div class="lamp"></div>
+            </div>
+            <div class="list__item">
+                <div class="name">
+                    <h4>Joanna Jastrzębska</h4>
+                    <p>14</p>
+                </div>
+                <div class="lamp"></div>
+            </div>
+            <div class="list__item">
+                <div class="name">
+                    <h4>Adanm Matejko</h4>
+                    <p>14</p>
+                </div>
+                <div class="lamp"></div>
+            </div>
+            <div class="list__item">
+                <div class="name">
+                    <h4>Henryk Sienkiewicz</h4>
+                    <p>14</p>
+                </div>
+                <div class="lamp"></div>
+            </div>
+            <div class="list__item">
+                <div class="name">
+                    <h4>Jacek Sasin</h4>
+                    <p>14</p>
+                </div>
                 <div class="lamp"></div>
             </div>
         </div>
-        <div class="list-item">
-            <h2>Name</h2>
-            <div class="control">
-                <div class="load"></div>
-                <div class="lamp"></div>
+
+        <div class="time-container">
+            <div class="time-now"><h3></h3></div>
+            <div class="stoper">
+                <div class="circular">
+                    <span></span>
+                    <div class="progress" id="progress"></div>
+                </div>
             </div>
+            <button class="start">Start</button>
         </div>
-        <div class="list-item">
-            <h2>Name</h2>
-            <div class="control">
-                <div class="load"></div>
-                <div class="lamp"></div>
-            </div>
-        </div>
-        <div class="list-item">
-            <h2>Name</h2>
-            <div class="control">
-                <div class="load"></div>
-                <div class="lamp"></div>
-            </div>
-        </div>
-        <div class="list-item">
-            <h2>Name</h2>
-            <div class="control">
-                <div class="load"></div>
-                <div class="lamp"></div>
-            </div>
-        </div>
-        <div class="list-item">
-            <h2>Name</h2>
-            <div class="control">
-                <div class="load"></div>
-                <div class="lamp"></div>
-            </div>
-        </div>
+
     </div>
-    <div class="clock-container">
-        <h2 class="time-now"><span></span></h2>
-        <button class="start">Start</button>
-        <div class="stoper">
-            <span>5</span>
-        </div>
-    </div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
 <script type="text/javascript" src="/main.bundle.js"></script></body>
+
 </html>
