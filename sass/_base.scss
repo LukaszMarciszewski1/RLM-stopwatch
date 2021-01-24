@@ -11,7 +11,9 @@
        color: $fontColor;
        letter-spacing: .08rem;
    }
-
+button{
+  cursor: pointer;
+}
 button:hover{
   opacity: 1;
 }
@@ -100,6 +102,51 @@ button:active {
       border-radius: 3px;
     }
   }
+  //to do
+  #form-player{
+    width: 100%;
+    display:flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    label{
+      font-size: 14px;
+      font-weight: lighter;
+      color: gray
+    }
+    input{
+      @include  shadowLoad;
+      border-radius: 5px;
+      padding: 10px ;
+      background-color: rgb(20, 20, 20);
+      border:1px solid rgb(47, 47, 47);
+      margin-top: 8px;
+      box-shadow: none;
+      margin-right: 10px;
+      color: $fontColor;
+      input:active{
+        border:1px solid grey;
+      }
+    }
+    #name-player{
+     
+    }
+    #nr-player{
+     max-width: 60px;
+    }
+    .add{
+      height: 40px;
+      width: 100px;
+      background: none;
+      border: 1px solid rgb(66, 66, 66);
+      color: $fontColor;
+      border-radius: 10px;
+      opacity: .8;
+      margin-left: 10px;
+    }
+    .add:hover{
+opacity: 1;
+    }
+  }
   //player list content
 .list__item {
     width: 100%;
@@ -161,12 +208,12 @@ button:active {
     width: 100%;
     border-top: none;
     color:gray;
-    .name-player{
+    .name-player-desc{
       @include players-info;
       min-width: 250px;
       margin-left: 20px
     }
-    .number-player{
+    .number-player-desc{
       @include players-info;
     }
   }

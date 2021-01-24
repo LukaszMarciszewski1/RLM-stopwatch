@@ -10,7 +10,7 @@ export class ActivePlayer {
       prepareElement.classList.add('lamp--prepare')
       this.activeList.push(prepareElement)
     } else return
-    console.log(prepareElement)
+    console.log(this.playerList[active])
   }
   getPlayerActive() {
     const element = this.activeList.find(el => el.classList.contains('lamp--prepare'))
