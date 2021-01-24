@@ -1,7 +1,6 @@
 export class ActivePlayer {
-  constructor(playerList, timeInterval) {
+  constructor(playerList) {
     this.playerList = playerList;
-    this.timeInterval = timeInterval
     this.activeList = []
   }
 
@@ -11,7 +10,6 @@ export class ActivePlayer {
       prepareElement.classList.add('lamp--prepare')
       this.activeList.push(prepareElement)
     } else return
-
     console.log(prepareElement)
   }
   getPlayerActive() {

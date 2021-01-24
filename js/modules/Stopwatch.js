@@ -1,18 +1,16 @@
 export class Stopwatch {
-    constructor(timerSpan, timeInterval, timeSet) {
+    constructor(timerSpan) {
         this.timerSpan = document.querySelector(timerSpan)
-        this.timeSet = timeSet;
-        this.timeInterval = timeInterval
-        this.timerSpan.textContent = timeSet
         this.circleAnimation
         this.stopwatchCounter
-        // this.startTimer = this.startTimer.bind(this);
     }
-    startTimer(time) {
+    startTimer(timeSet, timeInterval) {
+        let time = timeSet
+
         const progressBar = new ProgressBar.Circle('#progress', {
             color: '#00d9f6',
             strokeWidth: 6,
-            duration: this.timeInterval,
+            duration: timeInterval,
             easing: 'linear'
         });
         progressBar.animate(1);
@@ -20,13 +18,14 @@ export class Stopwatch {
         this.circleAnimation = setInterval(function () {
             progressBar.set(0);
             progressBar.animate(1);
-        }, this.timeInterval);
+        }, timeInterval);
 
         this.stopwatchCounter = setInterval(() => {
-            this.timeSet--
-            this.timerSpan.textContent = this.timeSet
-            if (this.timeSet === 1) this.timeSet += time
+            timeSet--
+            this.timerSpan.textContent = timeSet
+            if (timeSet === 1) timeSet += time
         }, 1000)
+        console.log(timeSet)
     }
     stopTimer(active, list){
         if(active === list.length){
@@ -36,5 +35,8 @@ export class Stopwatch {
         if(active === list.length - 1){
             clearInterval(this.circleAnimation)
         }
+    }
+    changeTimerValue(){
+
     }
 }

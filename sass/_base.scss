@@ -34,18 +34,73 @@ button:active {
     @include container;
     height: 100%;
     width: auto;
-    // overflow-y: scroll;
-    // ::-webkit-scrollbar {
-    //     width: 30px;
-    //   }
-    // ::-webkit-scrollbar-track {
-    //     background: #f55858;
-    //   }
-    // ::-webkit-scrollbar-thumb {
-    //     background: rgb(43, 17, 189);
-    //   }
   }
-  
+  .configuration-panel{
+    @include container;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 10px
+  }
+  .add-player{
+    @include container;
+    cursor: pointer;
+    border: none;
+    color: $fontColorDark;   
+    padding: 10px 20px; 
+    border-radius: 7px;
+    border: 1px solid $fontColorDark;
+  }
+  .settings{
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    ion-icon{
+      font-size: 30px;
+    }
+  }
+  .settings-container{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    @include container;
+    width: 300px;
+    height: 400px;
+    right: 0;
+    top: 10px;
+    z-index: 999;
+    border: 1px solid rgba(109, 109, 109, 0.4);
+    padding: 20px;
+    ion-icon{
+      align-self: flex-end;
+      padding: 5px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+  }
+  .settings-container--active{
+    display: flex;
+  }
+  .settings-element{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+    border-top: 1px solid $itemBg;
+    border-bottom: 1px solid $itemBg;
+    input{
+      background-color: $fontColor;
+      border: none;
+      font-size: 14px;
+      padding: 5px;
+      width: 90px;
+      border-radius: 3px;
+    }
+  }
+  //player list content
 .list__item {
     width: 100%;
     height: 60px;
@@ -100,7 +155,6 @@ button:active {
       background-color: green;
       }
   }
-
   .status{
     display: flex;
     padding: 10px 0;
@@ -117,6 +171,7 @@ button:active {
     }
   }
 
+  //panel timer
   .time-container{
     @include container;
     display: flex;
@@ -125,6 +180,13 @@ button:active {
     align-items: center;
     margin-left: 20px;
     min-width: 150px;
+
+  }
+  .time-now{
+    @include shadowLoad;
+    padding: 20px;
+    border: 1px solid $itemBg;
+    border-radius: 7px;
   }
   .start{
     margin: 20px 0;

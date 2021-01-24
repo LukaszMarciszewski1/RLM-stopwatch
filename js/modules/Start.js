@@ -1,42 +1,59 @@
-// import { Players } from "./Players";
 
-import {ActivePlayer} from './ActivePlayer.js';
-import {Time} from './Time.js';
-import {Stopwatch} from './Stopwatch.js';
-import {Active} from './Active.js';
+import {
+    ActivePlayer
+} from './ActivePlayer.js';
+import {
+    Time
+} from './Time.js';
+import {
+    Stopwatch
+} from './Stopwatch.js';
+import {
+    Active
+} from './Active.js';
+import {
+    Settings
+} from './Settings.js';
+import {
+    PanelSettings
+} from './PanelSettings.js';
 
-export class Start{
-    constructor(){
-    this.timeInterval = 5000;
-    this.timeSet = this.timeInterval / 1000
-    this.active = 0
-    this.playerList = [...document.querySelectorAll('.lamp')]
-    let active = 0
-    // this.active = new Active(this.playerList, this.timeInterval)
-    this.activePlayer = new ActivePlayer(this.playerList, this.timeInterval);
-    this.time = new Time('.time-now h3')
-    this.stopwatch = new Stopwatch('.circular span', this.timeInterval, this.timeSet)
-    this.active = new Active()
+export class Start {
+    constructor() {
+        this.playerList = [...document.querySelectorAll('.lamp')]
+        this.settings = new Settings("interval-time")
+        this.activePlayer = new ActivePlayer(this.playerList);
+        this.time = new Time('.time-now h3')
+        this.stopwatch = new Stopwatch('.circular span')
+        this.active = new Active()
+        this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container')
 
-    this.clock()
-    document.querySelector('.start').addEventListener('click', this.startRace.bind(this))
+        this.render()
+        document.getElementById('interval-time').addEventListener('change', this.render.bind(this))
+        document.querySelector('.start').addEventListener('click', this.startRace.bind(this))
     }
+    //metods----------------->
 
-    clock(){
+    render() {
+        this.stopwatch.timerSpan.textContent = this.settings.count()
         setInterval(this.time.getTime, 1000)
     }
 
-    startRace(){
+    startRace() {
+        let timeSet = this.settings.count()
+        let timeInterval = this.settings.count() * 1000
         let active = this.active.getActive()
-        this.stopwatch.startTimer(this.timeSet)
+
+        this.stopwatch.timerSpan.textContent = timeSet
+        this.stopwatch.startTimer(timeSet, timeInterval)
         this.activePlayer.getPlayerPrepare(active)
-        setInterval(()=>{
+        setInterval(() => {
             active++
             this.activePlayer.getPlayerPrepare(active)
             this.activePlayer.getPlayerActive(active)
             this.stopwatch.stopTimer(active, this.playerList)
-            
-        },this.timeInterval)
+
+        }, timeInterval)
     }
 
 }
