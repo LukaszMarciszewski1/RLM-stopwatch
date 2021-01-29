@@ -36,6 +36,8 @@ button:active {
     @include container;
     height: 100%;
     width: auto;
+    overflow: hidden;
+    padding-bottom: 20px;
   }
   .configuration-panel{
     @include container;
@@ -45,7 +47,8 @@ button:active {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-    padding: 10px
+    padding: 10px;
+    border: 1px solid rgb(65, 65, 65);
   }
   .add-player{
     @include container;
@@ -148,18 +151,54 @@ opacity: 1;
     }
   }
   //player list content
-.list__item {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    border-top: 1px solid $itemBg;
-    border-bottom: 1px solid $itemBg;
+  .list-container{
+    overflow-y: scroll;
+    padding: 20px;
+    max-height: 470px;
+    -webkit-box-shadow: inset 0px 0px 8px -4px #111; 
+    box-shadow: inset 0px 0px 8px -4px  #111;
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: rgb(211, 211, 211);
+      border-radius: 10px;
   }
+    &::-webkit-scrollbar-thumb {
+      background-color:gray;
+      border-radius: 10px;
+  }
+  }
+
+//   .list-container::-webkit-scrollbar-track
+// {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//   border-radius: 10px;
+//   background-color: #F5F5F5;
+// }
+
+// .list-container::-webkit-scrollbar
+// {
+//   width: 12px;
+//   background-color: #F5F5F5;
+// }
+
+// .list-container::-webkit-scrollbar-thumb
+// {
+//   border-radius: 10px;
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+//   background-color: #D62929;
+// }
+// .list__item-status{
+
+// }
+
   .name{
       padding: 0 20px;
+      width: 100%;
+      height: 60px;
       display: flex;
       align-items: center;
+      border-top: 1px solid $itemBg;
+      border-bottom: 1px solid $itemBg;
       h4{
         font-weight: lighter;
         font-weight: 1rem;
@@ -168,14 +207,21 @@ opacity: 1;
       }
       p{
         @include players-info;
+        min-width: 50px;
+      }
+      ion-icon{
+        border-left: 1px solid $itemBg;
+        padding: 10px 15px;
+        color: gray;
+        cursor: pointer;
       }
   }
   .lamp {
     width: 30px;
     height: 30px;
     border: 2px solid red;
-    border-radius: 50%;
-    margin-left: 10px;
+    border-radius: 30px;
+    margin: 10px ;
     position: relative;
     &::before{
       content:'';
@@ -186,7 +232,7 @@ opacity: 1;
       top: 50%;
       transform: translate(-50%, -50%);
       background-color: red;
-      border-radius: 50%;
+      border-radius: 30px;
       }
   }
   .lamp--prepare{
@@ -202,19 +248,26 @@ opacity: 1;
       background-color: green;
       }
   }
-  .status{
+
+  .list__item-status{
     display: flex;
-    padding: 10px 0;
+    padding: 20px;
     width: 100%;
     border-top: none;
+    border-bottom: none;
     color:gray;
     .name-player-desc{
       @include players-info;
       min-width: 250px;
-      margin-left: 20px
+      margin-left: 20px;
     }
-    .number-player-desc{
+    .number-player-desc, .status-player-desc{
       @include players-info;
+    }
+    .status-player-desc{
+      margin: 0%;
+      border: none;
+      padding: 10px 0
     }
   }
 
@@ -226,7 +279,8 @@ opacity: 1;
     justify-content: flex-start;
     align-items: center;
     margin-left: 20px;
-    min-width: 150px;
+    min-width: 300px;
+    max-width: 600px;
 
   }
   .time-now{
@@ -234,10 +288,12 @@ opacity: 1;
     padding: 20px;
     border: 1px solid $itemBg;
     border-radius: 7px;
+    margin-bottom: 30px;
+    // width: 100%;
   }
   .start{
     margin: 20px 0;
-    width: 100%;
+    width: 150px;
     cursor: pointer;
     background-color: transparent;
     border: 2px solid green;
@@ -253,8 +309,8 @@ opacity: 1;
     margin: 20px 0;
   }
   .circular{
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     border: 9px solid gray;
     border-radius: 50%;
     position: relative;
@@ -268,8 +324,8 @@ opacity: 1;
     }
   }
   .progress{
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -279,4 +335,40 @@ opacity: 1;
       height: 100%;
       display: block;
     }
+  }
+
+  .player-info{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 50px;
+    .player-info-status{
+      color: rgb(105, 105, 105);
+      margin: 40px 10px 10px 10px;
+      align-self: flex-start;
+      font-weight: lighter
+    }
+  }
+  .active-player{
+    -webkit-box-shadow: inset 0px 0px 8px -4px #000; 
+    box-shadow: inset 0px 0px 8px -4px  #000;
+    padding: 20px;
+    width: 100%;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    color: green;
+    font-size: 20px;
+  }
+  .next-player{
+    -webkit-box-shadow: inset 0px 0px 8px -4px #000; 
+    box-shadow: inset 0px 0px 8px -4px  #000;
+    padding: 20px;
+    width: 100%;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    color: grey;
   }

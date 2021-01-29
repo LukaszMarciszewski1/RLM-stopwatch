@@ -28,7 +28,7 @@
                         </div>
                         <div class="settings-element">
                             <label for="interval-time">odstęp czasowy</label>
-                            <input type="number" min="1" max="999999" id="interval-time" value="5"
+                            <input type="number" min="1" max="999999" id="interval-time" value="4"
                                 class="settings-input">
                         </div>
                     </div>
@@ -43,63 +43,44 @@
                     <label for="nr-player">Numer</label><br>
                     <input type="text" id="nr-player">
                 </div>
-                <button class="add" type="button">Dodaj</button>
+                <input type="submit" class="add" value="Dodaj"></input>
             </form>
-            <div class="list__item status">
+            <div class="list__item-status">
                 <h4 class="name-player-desc">Imię</h4>
                 <h4 class="number-player-desc">Nr</h4>
                 <h4 class="status-player-desc">status</h4>
             </div>
             <div class="list-container">
-            <div class="list__item">
-                <div class="name">
+                <!-- <div class="name">
                     <h4>Marian Wyrwidąb</h4>
                     <p>14</p>
                     <div class="lamp"></div>
+                    <ion-icon name="close-outline" class="delete"></ion-icon>
                 </div>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Joanna Jastrzębska</h4>
-                    <p>14</p>
-                    <div class="lamp"></div>
-                </div>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Adanm Matejko</h4>
-                    <p>14</p>
-                    <div class="lamp"></div>
-                </div>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Krystyna Pawłowicz</h4>
-                    <p>14</p>
-                    <div class="lamp"></div>
-                </div>
-            </div>
-            <div class="list__item">
                 <div class="name">
                     <h4>Henryk Sienkiewicz</h4>
-                    <p>14</p>
+                    <p>16</p>
                     <div class="lamp"></div>
+                    <ion-icon name="close-outline" class="delete"></ion-icon>
                 </div>
-            </div>
-            <div class="list__item">
                 <div class="name">
-                    <h4>Jacek Sasin</h4>
-                    <p>14</p>
+                    <h4>Marek Grotołaz</h4>
+                    <p>16</p>
                     <div class="lamp"></div>
+                    <ion-icon name="close-outline" class="delete"></ion-icon>
                 </div>
+                <div class="name">
+                    <h4>MIchał Kalinowski</h4>
+                    <p>16</p>
+                    <div class="lamp"></div>
+                    <ion-icon name="close-outline" class="delete"></ion-icon>
+                </div> -->
             </div>
-        </div>
-            
         </div>
 
         <div class="time-container">
             <div class="time-now">
-                <h3></h3>
+                <h2></h2>
             </div>
             <div class="stoper">
                 <div class="circular">
@@ -108,6 +89,18 @@
                 </div>
             </div>
             <button class="start">Start</button>
+
+            <div class="player-info">
+                <h3 class="player-info-status">Startuje</h3>
+                <div class="active-player">
+                    <h4 class="active-player-name"></h4>
+                </div>
+                <h3 class="player-info-status">Następny</h3>
+                <div class="next-player">
+                    <h4 class="next-player-name"></h4>
+                </div>
+            </div>
+
         </div>
 
     </div>

@@ -25,7 +25,6 @@ export class Stopwatch {
             this.timerSpan.textContent = timeSet
             if (timeSet === 1) timeSet += time
         }, 1000)
-        console.log(timeSet)
     }
     stopTimer(active, list){
         if(active === list.length){
@@ -37,6 +36,6 @@ export class Stopwatch {
         }
     }
     changeTimerValue(){
-
+console.log(this.timerSpan)
     }
 }
