@@ -35,7 +35,4 @@ export class Stopwatch {
             clearInterval(this.circleAnimation)
         }
     }
-    changeTimerValue(){
-console.log(this.timerSpan)
-    }
 }

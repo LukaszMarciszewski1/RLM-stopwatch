@@ -1,14 +1,9 @@
 export class ActivePlayer {
-  constructor(playerList, playerName) {
-    this.playerList = playerList;
-    this.playerName = playerName;
+  constructor(playersList) {
+    this.playersList = playersList;
     this.activeList = []
     this.activeContainer = document.querySelector('.active-player-name')
     this.nextContainer = document.querySelector('.next-player-name')
-  }
-  //lastElementChild
-  showList(){
-    console.log(this.playerName)
   }
   getPlayerPrepare(active) {
     //index of array in this.playerList
@@ -17,21 +12,21 @@ export class ActivePlayer {
     const status = 2;
     const deleteEl = 3
 
-    if (active < this.playerList.length) {
-      const deletePlayer = this.playerList[active].children[deleteEl]
-      const namePlayer = this.playerList[active].children[name]
+    if (active < this.playersList.length) {
+      const deletePlayer = this.playersList[active].children[deleteEl]
+      const namePlayer = this.playersList[active].children[name]
       // const numberPlayer = this.playerList[active].children[number]
-      const statusPlayer = this.playerList[active].children[status]
+      const statusPlayer = this.playersList[active].children[status]
 
       this.activeList.push(statusPlayer)
       statusPlayer.classList.add('lamp--prepare')
       this.activeContainer.textContent = namePlayer.textContent
 
-      if(active < this.playerList.length - 1){
-        const nextNamePlayer = this.playerList[active].nextElementSibling.children[name]
+      if(active < this.playersList.length - 1){
+        const nextNamePlayer = this.playersList[active].nextElementSibling.children[name]
         this.nextContainer.textContent = nextNamePlayer.textContent
       }
-      if(active === this.playerList.length - 1){
+      if(active === this.playersList.length - 1){
         console.log('ostatni')
         this.nextContainer.textContent = ''
       }
