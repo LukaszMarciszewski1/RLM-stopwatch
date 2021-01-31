@@ -23,8 +23,8 @@
                         <ion-icon name="close-outline" class="close-settings"></ion-icon>
                         <div class="settings-element">
                             <label for="start-time">godzina startu</label>
-                            <input type="time" min="50" max="999999" id="start-time" value="12:50:00"
-                                class="settings-input">
+                            <input type="time" min="1" max="999999" id="start-time" value="12:50:52"
+                                class="settings-input" step="3600000">
                         </div>
                         <div class="settings-element">
                             <label for="interval-time">odstęp czasowy</label>
@@ -85,8 +85,13 @@
                 </div>
             </div>
             <button class="start">Start</button>
+            <button class="restart">Restart</button>
 
             <div class="player-info">
+                <h3 class="player-info-status">Godzina startu</h3>
+                <div class="active-time">
+                    <h4 class="start-time-content"></h4>
+                </div>
                 <h3 class="player-info-status">Startuje</h3>
                 <div class="active-player">
                     <h4 class="active-player-name"></h4>

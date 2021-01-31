@@ -23,30 +23,39 @@ import {
 import {
     PlayerData
 } from './PlayerData.js';
+import { Restart } from './Restart.js';
 
 export class Start {
     constructor() {
         this.access = true
         this.btnStart = document.querySelector('.start')
+        this.btnRestart = document.querySelector('.restart')
         this.playersList = [...document.querySelectorAll('.name')]
         this.containerList = document.querySelector('.list-container')
+        this.settingTime = document.getElementById("start-time")
 
         this.active = new Active()
-        this.settings = new Settings("interval-time")
+        this.settings = new Settings("interval-time", this.settingTime)
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time('.time-now h2')
         this.stopwatch = new Stopwatch('.circular span')
         this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container')
         this.players = new Players(this.playersList, this.containerList)
-
+        this.restart = new Restart(this.btnStart, this.btnRestart)
+        
+        this.restart.displayBtn(this.access)
         //upgrade players
         this.players.displayPlayer()
 
-        //render time
+        //render time now time
         this.render()
+        //changing the starting time interval of players
         document.getElementById('interval-time').addEventListener('change', this.render.bind(this))
 
-        // Add player
+        //changing the starting time of players
+  
+
+        // Add player to list
         document.querySelector('#form-player').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name-player').value
@@ -59,12 +68,9 @@ export class Start {
                 this.players.addPlayerToList(player)
                 this.players.storeAddPlayer(player)
             } else return alert('Wyścig został zakończony nie możesz dodawać graczy')
-            console.log(this.playersList.length)
-            console.log(localStorage)
-            console.log(this.playersList)
         })
 
-        // // Remove player
+        // remove player from list
         this.containerList.addEventListener('click', (e) => {
             if (this.access) {
                 this.players.deletePlayer(e.target)
@@ -74,32 +80,40 @@ export class Start {
                 alert('nie mozna')
             }
         })
-        //clear localstorage
+        //clear list player
         document.querySelector('#form-player').addEventListener('reset', () => {
-            if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
                 if (this.access && this.playersList.length > 0) {
+                    if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
                     localStorage.clear()
                     this.playersList.splice(0);
                     this.containerList.textContent = ''
                 }
-            }
-            console.log(this.playersList.length)
-            console.log(localStorage)
-            console.log(this.playersList)
+            } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
         })
 
         //Start race
         this.btnStart.addEventListener('click', this.startRace.bind(this))
+
+        //Restart race
+        this.btnRestart.addEventListener('click', ()=>{
+            setTimeout(this.restart.changeBtn, 1000);
+            location.reload()
+        })
     }
 
     //metods----------------->
-    render() {
+    render() {      
+        const contentStartTime = document.querySelector('.start-time-content')  
         setInterval(this.time.getTime, 1000)
         this.stopwatch.timerSpan.textContent = this.settings.count()
+        document.getElementById('start-time').addEventListener('change', ()=>{
+            contentStartTime.textContent = this.settingTime.value
+        })
+        setInterval(this.settings.time, 1000)
+        contentStartTime.textContent = this.settingTime.value
     }
 
     race() {
-        this.access = false
         let timeSet = this.settings.count()
         let timeInterval = this.settings.count() * 1000
         let active = this.active.getActive()
@@ -117,8 +131,10 @@ export class Start {
     }
 
     startRace() {
+        this.access = false
         if (this.playersList.length >= 2) {
             this.race()
         } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
+        this.restart.displayBtn(this.access)
     }
 }

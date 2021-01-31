@@ -28,3 +28,17 @@
     justify-content: center;
     align-items: center;
 }
+@mixin btnRacing{
+    margin: 20px 0;
+    width: 150px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid green;
+    color: $fontColor;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50px;
+    opacity: .8;
+    transition: .2s;
+    letter-spacing: 0.07rem;
+}
