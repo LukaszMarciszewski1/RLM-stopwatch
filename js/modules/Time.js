@@ -1,7 +1,8 @@
 export class Time{
     constructor(nowTime){
-     this.nowTime = document.querySelector(nowTime);
+     this.nowTime = nowTime;
      this.getTime = this.getTime.bind(this)
+     
     }
     getTime(){
         const time = new Date();

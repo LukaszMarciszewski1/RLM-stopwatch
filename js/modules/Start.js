@@ -33,11 +33,12 @@ export class Start {
         this.playersList = [...document.querySelectorAll('.name')]
         this.containerList = document.querySelector('.list-container')
         this.settingTime = document.getElementById("start-time")
+        this.clock = document.querySelector('.time-now h2');
 
         this.active = new Active()
         this.settings = new Settings("interval-time", this.settingTime)
         this.activePlayer = new ActivePlayer(this.playersList);
-        this.time = new Time('.time-now h2')
+        this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch('.circular span')
         this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container')
         this.players = new Players(this.playersList, this.containerList)
@@ -92,7 +93,21 @@ export class Start {
         })
 
         //Start race
-        this.btnStart.addEventListener('click', this.startRace.bind(this))
+        this.btnStart.addEventListener('click', ()=>{
+            this.access = false
+            const int = setInterval(()=>{
+                const setTime = this.settingTime.value
+                const nowTime = this.clock.textContent
+              if(setTime === nowTime){
+                 this.access = true
+                 if(this.access === true){
+                    clearInterval(int)
+                    this.startRace()
+                }
+              }
+            },1000)
+  
+        })
 
         //Restart race
         this.btnRestart.addEventListener('click', ()=>{
@@ -109,7 +124,7 @@ export class Start {
         document.getElementById('start-time').addEventListener('change', ()=>{
             contentStartTime.textContent = this.settingTime.value
         })
-        setInterval(this.settings.time, 1000)
+        // setInterval(this.settings.time, 1000)
         contentStartTime.textContent = this.settingTime.value
     }
 
@@ -138,3 +153,4 @@ export class Start {
         this.restart.displayBtn(this.access)
     }
 }
+//jesli set interval zwruci true wyscig wystartuje
