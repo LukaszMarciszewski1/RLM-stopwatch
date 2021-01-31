@@ -30,7 +30,11 @@ export class ActivePlayer {
         console.log('ostatni')
         this.nextContainer.textContent = ''
       }
+
       else return
+      }
+      else if(active === this.playersList.length){
+        this.activeContainer.textContent = ''
       }
       else return
 
