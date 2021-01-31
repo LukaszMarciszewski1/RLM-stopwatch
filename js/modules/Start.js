@@ -54,11 +54,14 @@ export class Start {
 
             if (name === "" || number === "") return alert('uzupełnij pole');
             if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
-            if(this.access){
+            if (this.access) {
                 const player = new PlayerData(name, number)
                 this.players.addPlayerToList(player)
                 this.players.storeAddPlayer(player)
             } else return alert('Wyścig został zakończony nie możesz dodawać graczy')
+            console.log(this.playersList.length)
+            console.log(localStorage)
+            console.log(this.playersList)
         })
 
         // // Remove player
@@ -72,14 +75,17 @@ export class Start {
             }
         })
         //clear localstorage
-        document.querySelector('.reset-list').addEventListener('click', ()=>{
-            this.access = true
-            if(this.access && this.playersList.length > 0){
-                // this.players.clearList(this.containerList)
-                localStorage.clear()
-                this.playersList = []
-                this.containerList.textContent = ''
+        document.querySelector('#form-player').addEventListener('reset', () => {
+            if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
+                if (this.access && this.playersList.length > 0) {
+                    localStorage.clear()
+                    this.playersList.splice(0);
+                    this.containerList.textContent = ''
+                }
             }
+            console.log(this.playersList.length)
+            console.log(localStorage)
+            console.log(this.playersList)
         })
 
         //Start race
@@ -111,9 +117,8 @@ export class Start {
     }
 
     startRace() {
-           this.access = false
-                if (this.playersList.length >= 2 && !this.playersList === []) {
-                    this.race()
-                } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
-            }
+        if (this.playersList.length >= 2) {
+            this.race()
+        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
+    }
 }

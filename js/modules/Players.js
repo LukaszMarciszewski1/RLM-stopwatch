@@ -79,7 +79,6 @@ export class Players {
             const index = el.parentElement.dataset.key;
             if (el.classList.contains('delete')) {
                 players.splice(index, 1)
-                console.log(index)
             }
          localStorage.setItem('players', JSON.stringify(players));
         }
