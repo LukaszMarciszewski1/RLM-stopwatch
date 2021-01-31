@@ -103,6 +103,7 @@ export class Start {
                  if(this.access === true){
                     clearInterval(int)
                     this.startRace()
+                    console.log(nowTime)
                 }
               }
             },1000)
