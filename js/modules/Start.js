@@ -38,7 +38,7 @@ export class Start {
         this.settingTime = document.getElementById("start-time")
         this.clock = document.querySelector('.time-now h2');
         this.countdownTime = document.querySelector('.countdown-time')
-        this.countdownEnd = '0-1:0-1:00'
+        this.contentStartTime = document.querySelector('.start-time-content')
 
         this.active = new Active()
         this.settings = new Settings("interval-time", this.countdownTime)
@@ -113,7 +113,6 @@ export class Start {
     //metods----------------->
 
     render() {
-        const contentStartTime = document.querySelector('.start-time-content')
         setInterval(() => {
             this.time.getTime()
             this.settings.countdownTime(this.settingTime)
@@ -124,50 +123,53 @@ export class Start {
 
         //start time text content
         document.getElementById('start-time').addEventListener('change', () => {
-            contentStartTime.textContent = this.settingTime.value.slice(11)
+            this.contentStartTime.textContent = this.settingTime.value.slice(11)
         })
-        contentStartTime.textContent = 'Ustaw godzinę startu'
+        this.contentStartTime.textContent = 'Ustaw godzinę startu'
     }
 
     race() {
-        this.access = false
-        if (this.playersList.length >= 2) {
-            let timeSet = this.settings.count()
-            let timeInterval = this.settings.count() * 1000
-            let active = 0
-
-            this.stopwatch.timerSpan.textContent = timeSet
-            this.stopwatch.startTimer(timeSet, timeInterval)
-            active++
-            this.activePlayer.getPlayerPrepare(active)
-
-            setInterval(() => {
-                active++
-                this.activePlayer.getPlayerPrepare(active)
-                this.activePlayer.getPlayerActive()
-                this.stopwatch.stopTimer(active, this.playersList)
-            }, timeInterval)
-
-        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
-        this.restart.displayBtn(this.access)
-    }
-
-    startRace() {
+        // this.access = false
+        let timeSet = this.settings.count()
+        let timeInterval = this.settings.count() * 1000
         let active = 0
+        
+        this.stopwatch.timerSpan.textContent = timeSet
+        this.stopwatch.startTimer(timeSet, timeInterval)
+        active++
         this.activePlayer.getPlayerPrepare(active)
 
         setInterval(() => {
-            this.time.getTime()
-            this.settings.countdownTime(this.settingTime)
-        }, 1000);
+            active++
+            this.activePlayer.getPlayerPrepare(active)
+            this.activePlayer.getPlayerActive()
+            this.stopwatch.stopTimer(active, this.playersList)
+        }, timeInterval)
+    }
 
-        const int = setInterval(() => {
-            if (this.settings.canStart() === 0) {
-                clearInterval(int)
-                this.activePlayer.getPlayerActive()
-                this.race()
-            }
-        }, 1000);
+    startRace() {
+        this.access = false
+        let active = 0
+        if (this.settingTime.value === '') {
+            return alert('Wybierz godzinę startu')
+        }
+        if (this.playersList.length >= 2) {
+            this.activePlayer.getPlayerPrepare(active)
+            this.restart.displayBtn(this.access)
+            
+            setInterval(() => {
+                this.time.getTime()
+                this.settings.countdownTime(this.settingTime)
+            }, 1000);
+
+            const int = setInterval(() => {
+                if (this.settings.canStart() === 0) {
+                    clearInterval(int)
+                    this.activePlayer.getPlayerActive()
+                    this.race()
+                }
+            }, 1000);
+        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
     }
 
 }
