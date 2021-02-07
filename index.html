@@ -22,14 +22,17 @@
                     <div class="settings-container">
                         <ion-icon name="close-outline" class="close-settings"></ion-icon>
                         <div class="settings-element">
-                            <label for="start-time">godzina startu</label>
-                            <input type="time" min="1" max="999999" id="start-time" value="12:50:52"
-                                class="settings-input" step="3600000">
+                            <!-- <label for="start-time">godzina startu</label> -->
+                            <!-- <input type="time" min="1" max="999999" id="start-time" value="12:50:52"
+                                class="settings-input" step="3600000"> -->
+                                <label for="start-time">godzina startu</label>
+                                <input type="datetime-local" name="datetimelocalValue" id="start-time">
+                                <!-- <input type="submit" name="submit" value="Wyślij" > -->
                         </div>
                         <div class="settings-element">
-                            <label for="interval-time">odstęp czasowy</label>
-                            <input type="number" min="1" max="999999" id="interval-time" value="4"
-                                class="settings-input">
+                            <label for="start-time">odstęp czasowy sek.</label>
+                            <input type="number" min="1" max="999999" id="interval-time" value="10"
+                            id="start-time"  >
                         </div>
                     </div>
                 </div>
@@ -91,6 +94,7 @@
                 <h3 class="player-info-status">Godzina startu</h3>
                 <div class="active-time">
                     <h4 class="start-time-content"></h4>
+                    <p class="countdown-time"></p>
                 </div>
                 <h3 class="player-info-status">Startuje</h3>
                 <div class="active-player">

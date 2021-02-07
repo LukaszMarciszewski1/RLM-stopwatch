@@ -23,38 +23,40 @@ import {
 import {
     PlayerData
 } from './PlayerData.js';
-import { Restart } from './Restart.js';
+import {
+    Restart
+} from './Restart.js';
 
 export class Start {
     constructor() {
         this.access = true
+        this.startRaceAccess = false
         this.btnStart = document.querySelector('.start')
         this.btnRestart = document.querySelector('.restart')
         this.playersList = [...document.querySelectorAll('.name')]
         this.containerList = document.querySelector('.list-container')
         this.settingTime = document.getElementById("start-time")
         this.clock = document.querySelector('.time-now h2');
+        this.countdownTime = document.querySelector('.countdown-time')
+        this.countdownEnd = '0-1:0-1:00'
 
         this.active = new Active()
-        this.settings = new Settings("interval-time", this.settingTime)
+        this.settings = new Settings("interval-time", this.countdownTime)
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch('.circular span')
         this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container')
         this.players = new Players(this.playersList, this.containerList)
         this.restart = new Restart(this.btnStart, this.btnRestart)
-        
+
         this.restart.displayBtn(this.access)
+
         //upgrade players
         this.players.displayPlayer()
 
-        //render time now time
-        this.render()
         //changing the starting time interval of players
         document.getElementById('interval-time').addEventListener('change', this.render.bind(this))
 
-        //changing the starting time of players
-  
 
         // Add player to list
         document.querySelector('#form-player').addEventListener('submit', (e) => {
@@ -81,10 +83,11 @@ export class Start {
                 alert('nie mozna')
             }
         })
+
         //clear list player
         document.querySelector('#form-player').addEventListener('reset', () => {
-                if (this.access && this.playersList.length > 0) {
-                    if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
+            if (this.access && this.playersList.length > 0) {
+                if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
                     localStorage.clear()
                     this.playersList.splice(0);
                     this.containerList.textContent = ''
@@ -92,66 +95,79 @@ export class Start {
             } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
         })
 
+        //render
+        this.render()
+
         //Start race
-        this.btnStart.addEventListener('click', ()=>{
-            this.access = false
-            const int = setInterval(()=>{
-                const setTime = this.settingTime.value
-                const nowTime = this.clock.textContent
-              if(setTime === nowTime){
-                 this.access = true
-                 if(this.access === true){
-                    clearInterval(int)
-                    this.startRace()
-                    console.log(nowTime)
-                }
-              }
-            },1000)
-  
-        })
+        this.btnStart.addEventListener('click', this.startRace.bind(this))
 
         //Restart race
-        this.btnRestart.addEventListener('click', ()=>{
+        this.btnRestart.addEventListener('click', () => {
             setTimeout(this.restart.changeBtn, 1000);
             location.reload()
         })
+
+        // this.timeRender()
     }
 
     //metods----------------->
-    render() {      
-        const contentStartTime = document.querySelector('.start-time-content')  
-        setInterval(this.time.getTime, 1000)
+
+    render() {
+        const contentStartTime = document.querySelector('.start-time-content')
+        setInterval(() => {
+            this.time.getTime()
+            this.settings.countdownTime(this.settingTime)
+        }, 1000);
+
+        //circle timer interval
         this.stopwatch.timerSpan.textContent = this.settings.count()
-        document.getElementById('start-time').addEventListener('change', ()=>{
-            contentStartTime.textContent = this.settingTime.value
+
+        //start time text content
+        document.getElementById('start-time').addEventListener('change', () => {
+            contentStartTime.textContent = this.settingTime.value.slice(11)
         })
-        // setInterval(this.settings.time, 1000)
-        contentStartTime.textContent = this.settingTime.value
+        contentStartTime.textContent = 'Ustaw godzinę startu'
     }
 
     race() {
-        let timeSet = this.settings.count()
-        let timeInterval = this.settings.count() * 1000
-        let active = this.active.getActive()
-
-        this.stopwatch.timerSpan.textContent = timeSet
-        this.stopwatch.startTimer(timeSet, timeInterval)
-        this.activePlayer.getPlayerPrepare(active)
-        setInterval(() => {
-            active++
-            this.activePlayer.getPlayerPrepare(active)
-            this.activePlayer.getPlayerActive()
-            this.stopwatch.stopTimer(active, this.playersList)
-
-        }, timeInterval)
-    }
-
-    startRace() {
         this.access = false
         if (this.playersList.length >= 2) {
-            this.race()
+            let timeSet = this.settings.count()
+            let timeInterval = this.settings.count() * 1000
+            let active = 0
+
+            this.stopwatch.timerSpan.textContent = timeSet
+            this.stopwatch.startTimer(timeSet, timeInterval)
+            active++
+            this.activePlayer.getPlayerPrepare(active)
+
+            setInterval(() => {
+                active++
+                this.activePlayer.getPlayerPrepare(active)
+                this.activePlayer.getPlayerActive()
+                this.stopwatch.stopTimer(active, this.playersList)
+            }, timeInterval)
+
         } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
         this.restart.displayBtn(this.access)
     }
+
+    startRace() {
+        let active = 0
+        this.activePlayer.getPlayerPrepare(active)
+
+        setInterval(() => {
+            this.time.getTime()
+            this.settings.countdownTime(this.settingTime)
+        }, 1000);
+
+        const int = setInterval(() => {
+            if (this.settings.canStart() === 0) {
+                clearInterval(int)
+                this.activePlayer.getPlayerActive()
+                this.race()
+            }
+        }, 1000);
+    }
+
 }
-//jesli set interval zwruci true wyscig wystartuje

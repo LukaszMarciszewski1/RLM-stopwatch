@@ -84,7 +84,7 @@ button:active {
   display: none;
   flex-direction: column;
   @include container;
-  width: 300px;
+  width: 360px;
   height: 400px;
   right: 0;
   top: 10px;
@@ -390,6 +390,13 @@ button:active {
   justify-content: center;
   color: grey;
   min-height: 40px;
+  .start-time-content{
+    color: green;
+  }
+  p{
+    color: rgb(224, 204, 139);
+    margin-left: 30px;
+  }
 }
 .active-player {
   -webkit-box-shadow: inset 0px 0px 8px -4px #000;
