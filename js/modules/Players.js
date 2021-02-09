@@ -13,9 +13,9 @@ export class Players {
     addPlayerToList(player) {
         const list = this.list
         const row = document.createElement('div')
-        row.className = 'name'
+        row.className = 'player-item'
         row.innerHTML = `
-                   <h4>${player.name}</h4>
+                   <h5>${player.name}</h5>
                    <p>${player.number}</p>
                    <div class="lamp"></div>
                    <ion-icon name="close-outline" class="delete"></ion-icon>

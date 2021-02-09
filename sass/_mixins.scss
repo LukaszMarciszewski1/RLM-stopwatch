@@ -1,14 +1,17 @@
+@import "_variables";
 @mixin container{
-    -webkit-box-shadow: 5px 5px 12px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 5px 5px 12px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.43);
+    box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.43);
     background-color: $containerBg;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 20px;
 }
 @mixin shadowItem{
     // background-color: rgb(59, 59, 59);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.42);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.42);
+    border-radius: 12px;
+    // background-color: rgb(39, 39, 39);
+    // background-color: rgb(251, 251, 251);
+    -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.6);
 }
 @mixin shadowLoad{
     -webkit-box-shadow: inset 0px 0px 15px -4px #000000; 
@@ -18,10 +21,9 @@
     -webkit-box-shadow: -6px 0px 15px 0px rgba(0, 0, 0, 0.42);
     box-shadow: -6px 0px 15px 0px rgba(0, 0, 0, 0.42);
 }
-@mixin players-info{
-    padding: 10px 20px 10px 0;
+@mixin players-desc{
+    padding: 10px 0;
     border-right: 1px solid $itemBg;
-    margin-right: 20px;
 }
 @mixin flexCenter{
     display: flex;
@@ -29,16 +31,38 @@
     align-items: center;
 }
 @mixin btnRacing{
-    margin: 20px 0;
-    width: 150px;
+    width: 160px;
     cursor: pointer;
     background-color: transparent;
     border: 2px solid green;
     color: $fontColor;
-    font-size: 20px;
-    padding: 10px;
+    font-size: 24px;
+    padding:12px 20px;
     border-radius: 50px;
     opacity: .8;
     transition: .2s;
     letter-spacing: 0.07rem;
+}
+@mixin flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin btn-list{
+    background: transparent;
+    border: none;
+    border: 1px solid $fontColorDark;
+    border-radius: 7px;
+    padding: 10px 20px;
+    opacity: .8;
+}
+@mixin txt-place{
+    -webkit-box-shadow: inset 0px 3px 6px -4px #000;
+    box-shadow: inset 0px 3px 6px -4px #000;
+    border: 1px solid $itemBg;
+    padding:10px 20px;
+    width: 100%;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
 }

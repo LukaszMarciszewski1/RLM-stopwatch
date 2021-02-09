@@ -33,12 +33,12 @@ export class Start {
         this.startRaceAccess = false
         this.btnStart = document.querySelector('.start')
         this.btnRestart = document.querySelector('.restart')
-        this.playersList = [...document.querySelectorAll('.name')]
+        this.playersList = [...document.querySelectorAll('.player-item')]
         this.containerList = document.querySelector('.list-container')
         this.settingTime = document.getElementById("start-time")
-        this.clock = document.querySelector('.time-now h2');
+        this.clock = document.querySelector('.clock h2');
         this.countdownTime = document.querySelector('.countdown-time')
-        this.contentStartTime = document.querySelector('.start-time-content')
+        this.containerStartTime = document.querySelector('.select-time')
 
         this.active = new Active()
         this.settings = new Settings("interval-time", this.countdownTime)
@@ -59,7 +59,7 @@ export class Start {
 
 
         // Add player to list
-        document.querySelector('#form-player').addEventListener('submit', (e) => {
+        document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name-player').value
             const number = document.getElementById('nr-player').value
@@ -85,7 +85,7 @@ export class Start {
         })
 
         //clear list player
-        document.querySelector('#form-player').addEventListener('reset', () => {
+        document.querySelector('#to-do-player-list').addEventListener('reset', () => {
             if (this.access && this.playersList.length > 0) {
                 if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
                     localStorage.clear()
@@ -123,13 +123,12 @@ export class Start {
 
         //start time text content
         document.getElementById('start-time').addEventListener('change', () => {
-            this.contentStartTime.textContent = this.settingTime.value.slice(11)
+            this.containerStartTime.textContent = this.settingTime.value.slice(11)
         })
-        this.contentStartTime.textContent = 'Ustaw godzinę startu'
+        this.containerStartTime.textContent = 'Ustaw godzinę startu'
     }
 
     race() {
-        // this.access = false
         let timeSet = this.settings.count()
         let timeInterval = this.settings.count() * 1000
         let active = 0
@@ -156,7 +155,6 @@ export class Start {
         if (this.playersList.length >= 2) {
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
-            
             setInterval(() => {
                 this.time.getTime()
                 this.settings.countdownTime(this.settingTime)

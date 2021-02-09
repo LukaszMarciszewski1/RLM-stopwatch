@@ -9,7 +9,7 @@ export class Stopwatch {
 
         const progressBar = new ProgressBar.Circle('#progress', {
             color: '#00d9f6',
-            strokeWidth: 6,
+            strokeWidth: 5,
             duration: timeInterval,
             easing: 'linear'
         });
