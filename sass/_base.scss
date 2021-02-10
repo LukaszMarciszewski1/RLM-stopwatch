@@ -270,13 +270,18 @@ width: 110px
   border-radius: 50%;
   position: relative;
   display: inline-block;
-  span {
+  .span-start {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 60px;
-    color: $fontColor;
+    font-size: 70px;
+    color: $blue;
+    user-select: none;
+  }
+  .span-start--active{
+    font-size: 50px;
+
   }
 }
 .progress {
@@ -328,17 +333,76 @@ width: 110px
   margin-top: 15px;
   @include flex-center;
 }
+.load{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .active-player-name,
 .next-player-name{
   font-size: 26px;
 }
 .active-player-name{
   color: orange;
+  opacity: 0;
   animation: preparationLamp 2s infinite both;
 }
-.next-player-name{
-  // color: orange;
+.active-player-name--start{
+  color: green;
 }
+.info-about-start{
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ font-size: 24px;
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ color: $fontColor;
+ opacity: 0;
+}
+.info-about-start--active{
+  animation: activeName 0s linear both;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 30px;
+  display: none;
+}
+.lds-ellipsis--active{
+  display: inline-block;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: $fontColorDark;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
 //control panel
 
 .control-panel{
@@ -365,6 +429,7 @@ width: 110px
   text-align: center;
   h2{
 font-size: 30px;
+user-select: none;
   }
 }
 
@@ -394,10 +459,6 @@ font-size: 30px;
     @include flex-center;
   }
 }
-.status-settings{
-  // padding: 10px;
-  // border: 1px solid;
-}
 
 .settings-container {
   position: absolute;
@@ -405,7 +466,7 @@ font-size: 30px;
   flex-direction: column;
   @include container;
   width: 400px;
-  height: 400px;
+  height: 250px;
   top: 10px;
   right: 0;
   z-index: 999;
@@ -454,6 +515,7 @@ font-size: 30px;
   @include shadowItem;
   border: 1px solid $itemBg;
   margin-top: 20px;
+  border-radius: 7px;
   .title-status-timer{
     font-size: 14px;
     color: $fontColorDarkest;

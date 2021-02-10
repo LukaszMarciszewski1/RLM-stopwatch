@@ -31,21 +31,22 @@ export class Settings {
       } else {
          this.selectTime.style.display = 'inline'
       }
-
+      //access can start
       this.access = Math.sign(seconds)
-      this.beforeBeginning = seconds // (-1 bag) one second is faster
+      //sum of seconds 
+      this.beforeBeginning = ((hours * 60) * 60) + (minutes * 60) + seconds
       if (this.access > 0) {
          this.selectTime.textContent = `${hours}:${minutes}:${seconds}`
       } else {
          this.selectTime.textContent = '00:00:00'
       }
-
    }
+ 
    canStart() {
       return this.access
    }
    secondsToStart() {
-      return this.beforeBeginning
+      return parseInt(this.beforeBeginning)
    }
 
 }

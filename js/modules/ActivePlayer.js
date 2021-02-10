@@ -8,33 +8,36 @@ export class ActivePlayer {
   getPlayerPrepare(active) {
     //index of array in this.playerList
     const name = 0; 
-    // const number = 1;
     const status = 2;
     const deleteEl = 3
 
     if (active < this.playersList.length) {
       const deletePlayer = this.playersList[active].children[deleteEl]
       const namePlayer = this.playersList[active].children[name]
-      // const numberPlayer = this.playerList[active].children[number]
       const statusPlayer = this.playersList[active].children[status]
 
       this.activeList.push(statusPlayer)
       statusPlayer.classList.add('lamp--prepare')
-      this.activeContainer.textContent = namePlayer.textContent
+      setTimeout(() => {
+        this.activeContainer.textContent = namePlayer.textContent
+      }, 1000);
 
       if(active < this.playersList.length - 1){
         const nextNamePlayer = this.playersList[active].nextElementSibling.children[name]
-        this.nextContainer.textContent = nextNamePlayer.textContent
+        setTimeout(() => {
+          this.nextContainer.textContent = nextNamePlayer.textContent
+        }, 1000);
       }
       if(active === this.playersList.length - 1){
-        console.log('ostatni')
         this.nextContainer.textContent = ''
       }
 
       else return
       }
       else if(active === this.playersList.length){
-        this.activeContainer.textContent = ''
+        setTimeout(() => {
+          this.activeContainer.textContent = ''
+        }, 1000);
       }
       else return
 
