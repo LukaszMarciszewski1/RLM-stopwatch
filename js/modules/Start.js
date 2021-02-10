@@ -128,45 +128,52 @@ export class Start {
         this.containerStartTime.textContent = 'Ustaw godzinę startu'
     }
 
-    race() {
-        let timeSet = this.settings.count()
-        let timeInterval = this.settings.count() * 1000
+    race(interval) {
         let active = 0
-        
-        this.stopwatch.timerSpan.textContent = timeSet
-        this.stopwatch.startTimer(timeSet, timeInterval)
         active++
         this.activePlayer.getPlayerPrepare(active)
-
         setInterval(() => {
             active++
             this.activePlayer.getPlayerPrepare(active)
             this.activePlayer.getPlayerActive()
             this.stopwatch.stopTimer(active, this.playersList)
-        }, timeInterval)
+        }, interval)
     }
 
     startRace() {
         this.access = false
         let active = 0
+        let timeSet = this.settings.count()
+        let timeInterval = this.settings.count() * 1000
+
+        console.log(timeSet)
         if (this.settingTime.value === '') {
             return alert('Wybierz godzinę startu')
         }
         if (this.playersList.length >= 2) {
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
-            setInterval(() => {
+
+            const intTime = setInterval(() => {
                 this.time.getTime()
                 this.settings.countdownTime(this.settingTime)
+            }, 1000);
+
+            const intBefore = setInterval(() => {
+                if(this.settings.secondsToStart() === timeSet){
+                    this.stopwatch.timerSpan.textContent = timeSet
+                    this.stopwatch.startTimer(timeSet, timeInterval)
+                 }
             }, 1000);
 
             const int = setInterval(() => {
                 if (this.settings.canStart() === 0) {
                     clearInterval(int)
                     this.activePlayer.getPlayerActive()
-                    this.race()
+                    this.race(timeInterval)
                 }
             }, 1000);
+
         } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
     }
 

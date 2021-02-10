@@ -146,8 +146,8 @@ width: 110px
   padding: 20px;
   border-radius: 7px;
   max-height: 470px;
-  -webkit-box-shadow: inset 0px 0px 7px -2px rgb(0, 0, 0);
-  box-shadow: inset 0px 0px 7px -2px rgb(0, 0, 0);
+  -webkit-box-shadow: inset 0px 0px 6px -1px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0px 0px 6px -1px rgba(0, 0, 0, 0.7);
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -262,9 +262,6 @@ width: 110px
   @include flex-center;
   @include shadowItem;
   padding: 40px;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
 }
 .circular {
   width: 250px;
@@ -313,7 +310,7 @@ width: 110px
   position: relative;
   ion-icon {
     color: gray;
-    font-size: 25px;
+    font-size: 28px;
     margin-right: 10px;
   }
 }
@@ -321,8 +318,6 @@ width: 110px
   font-size: 18px;
   font-weight: lighter;
   color: $fontColorDarkest;
-  // text-align: center;
-  // text-align: right;
 }
 .player-status{
   @include txt-place;
@@ -339,7 +334,7 @@ width: 110px
 }
 .active-player-name{
   color: orange;
-  animation: preparationLamp 1.5s infinite both;
+  animation: preparationLamp 2s infinite both;
 }
 .next-player-name{
   // color: orange;

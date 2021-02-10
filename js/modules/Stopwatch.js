@@ -31,7 +31,7 @@ export class Stopwatch {
             clearInterval(this.stopwatchCounter)
             this.timerSpan.textContent = 0
         }
-        if(active === list.length - 1){
+        if(active === list.length){
             clearInterval(this.circleAnimation)
         }
     }
