@@ -29,15 +29,26 @@ button:focus {
 button:active {
   border: none;
 }
+input:active{
+  border: none;
+  
+}
+input:focus{
+  border: none;
+}
+input::selection{
+  border: none;
+}
 
 .app {
   width: 100%;
   height: 100vh;
   background-color: $background;
-  padding:4rem 2em;
+  padding: 4rem 2em;
   @include flex-center;
 }
-.app__container{
+
+.app__container {
   @include container;
   // width: 100%;
   // max-width: 1600px;
@@ -47,9 +58,10 @@ button:active {
   display: flex;
   align-items: center
 }
-.players-container{
+
+.players-container {
   @include container;
-  width:auto;
+  width: auto;
   max-width: 580px;
   min-width: 300px;
   height: 100%;
@@ -57,10 +69,17 @@ button:active {
   flex-direction: column;
   padding: 30px 20px
 }
-.add-player-list{
-@include btn-list;
-color: $fontColorDark;
-width: 110px
+
+.add-player-list {
+  color: $fontColorDark;
+  width: 190px;
+  height: 40px;
+  background: none;
+  border: 1px solid $itemBg;
+  color: $fontColor;
+  opacity: .8;
+  @include shadowItem;
+  border-radius: 7px;
 }
 
 //to do form
@@ -75,65 +94,77 @@ width: 110px
     font-weight: lighter;
     color: gray
   }
+
   input {
     @include shadowLoad;
     border-radius: 5px;
     padding: 10px;
-    background-color: rgb(20, 20, 20);
-    border: 1px solid rgb(47, 47, 47);
+    background-color: $containerBg;
+    border: 1px solid $itemBg;
     margin-top: 8px;
     box-shadow: none;
     margin-right: 10px;
     color: $fontColor;
+   @include shadowLoad;
     input:active {
       border: 1px solid grey;
     }
   }
+
   #nr-player {
     max-width: 60px;
   }
+
   .add-to-list,
   .reset-list {
     height: 40px;
     min-width: 90px;
     background: none;
-    border: 1px solid rgb(66, 66, 66);
+    border: 1px solid $itemBg;
     color: $fontColor;
-    border-radius: 10px;
     opacity: .8;
     margin-left: 10px;
+    @include shadowItem;
+    border-radius: 7px;
     cursor: pointer;
   }
+
   .add-to-list:hover,
   .reset-list:hover {
     opacity: 1;
   }
-  .reset-list{
+
+  .reset-list {
     padding: 10px 20px;
   }
 }
+
 //description list player
-.list__item-desc{
+.list__item-desc {
   display: flex;
-  padding:15px 20px;
+  padding: 15px 20px;
   width: 100%;
   color: gray;
+
   .name-player-desc {
     @include players-desc;
     width: 260px;
     margin-left: 10px;
   }
+
   .name-player-desc,
   .number-player-desc,
-  .status-player-desc{
+  .status-player-desc {
     line-height: 30px;
   }
+
   .number-player-desc,
   .status-player-desc {
     @include players-desc;
     min-width: 60px;
     text-align: center;
   }
+
   .status-player-desc {
     border-right: none;
     padding-left: 20px;
@@ -162,7 +193,7 @@ width: 110px
 }
 
 .player-item {
-  padding:10px;
+  padding: 10px;
   width: 100%;
   height: 60px;
   display: flex;
@@ -177,29 +208,35 @@ width: 110px
     width: 260px;
     overflow-x: scroll;
     color: $fontColorDark;
+
     &::-webkit-scrollbar {
-    opacity: 0;
-    height: 0
+      opacity: 0;
+      height: 0
     }
   }
+
   p {
     @include players-desc;
     min-width: 60px;
     text-align: center;
   }
+
   ion-icon {
     border-left: 1px solid $itemBg;
-    padding: 10px 15px;
-    color: gray;
+    padding: 10px 5px 10px 20px;
+    color: $fontColorDark;
+    font-size: 1.1rem;
     cursor: pointer;
   }
 }
+
 .lamp {
   width: 60px;
   height: 40px;
   box-sizing: content-box;
   padding: 10px;
   position: relative;
+
   &::before {
     content: '';
     position: absolute;
@@ -211,6 +248,7 @@ width: 110px
     background-color: red;
     border-radius: 50%;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -226,16 +264,18 @@ width: 110px
 
 .lamp--prepare {
   animation: preparationLamp 1.5s infinite both;
-  &::after{
+
+  &::after {
     border: 2px solid orange;
   }
+
   &::before {
     background-color: orange;
   }
 }
 
 .lamp--active {
-  &::after{
+  &::after {
     border: 2px solid green;
   }
 
@@ -246,7 +286,7 @@ width: 110px
 
 //counting-down-container
 
-.counting-down-container{
+.counting-down-container {
   @include container;
   @include flex-center;
   flex-direction: column;
@@ -257,12 +297,14 @@ width: 110px
   margin-left: 20px;
   padding: 40px 30px;
 }
-.circular-container{
+
+.circular-container {
   width: 100%;
   @include flex-center;
   @include shadowItem;
   padding: 40px;
 }
+
 .circular {
   width: 250px;
   height: 250px;
@@ -270,20 +312,23 @@ width: 110px
   border-radius: 50%;
   position: relative;
   display: inline-block;
+
   .span-start {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     font-size: 70px;
-    color: $blue;
+    color: $fontColor;
     user-select: none;
   }
-  .span-start--active{
+
+  .span-start--active {
     font-size: 50px;
 
   }
 }
+
 .progress {
   width: 250px;
   height: 250px;
@@ -298,73 +343,86 @@ width: 110px
     display: block;
   }
 }
-.player-status-container{
+
+.player-status-container {
   width: 100%;
 }
-.status-container{
+
+.status-container {
   padding: 20px;
   @include shadowItem;
   margin-top: 30px;
   width: 100%;
   border: 1px solid $itemBg;
 }
-.title-name-container{
+
+.title-name-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+
   ion-icon {
     color: gray;
     font-size: 28px;
     margin-right: 10px;
   }
 }
-.title-name{
+
+.title-name {
   font-size: 18px;
   font-weight: lighter;
   color: $fontColorDarkest;
 }
-.player-status{
+
+.player-status {
   @include txt-place;
-  -webkit-box-shadow: inset 0px 0px 15px -4px #000000; 
+  -webkit-box-shadow: inset 0px 0px 15px -4px #000000;
   box-shadow: inset 0px 0px 15px -4px #000000;
   color: grey;
   min-height: 60px;
   margin-top: 15px;
   @include flex-center;
 }
-.load{
+
+.load {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .active-player-name,
-.next-player-name{
+.next-player-name {
   font-size: 26px;
 }
-.active-player-name{
+
+.active-player-name {
   color: orange;
   opacity: 0;
   animation: preparationLamp 2s infinite both;
 }
-.active-player-name--start{
+
+.active-player-name--start {
   color: green;
 }
-.info-about-start{
- position: absolute;
- left: 50%;
- top: 50%;
- transform: translate(-50%, -50%);
- font-size: 24px;
- letter-spacing: 2px;
- text-transform: uppercase;
- color: $fontColor;
- opacity: 0;
+
+.info-about-start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $fontColor;
+  opacity: 0;
 }
-.info-about-start--active{
+
+.info-about-start--active {
   animation: activeName 0s linear both;
 }
+
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -372,9 +430,11 @@ width: 110px
   height: 30px;
   display: none;
 }
-.lds-ellipsis--active{
+
+.lds-ellipsis--active {
   display: inline-block;
 }
+
 .lds-ellipsis div {
   position: absolute;
   top: 30%;
@@ -386,26 +446,29 @@ width: 110px
   background: $fontColorDark;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
 .lds-ellipsis div:nth-child(1) {
   left: 8px;
   animation: lds-ellipsis1 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(2) {
   left: 8px;
   animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(3) {
   left: 32px;
   animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(4) {
   left: 56px;
   animation: lds-ellipsis3 0.6s infinite;
 }
 
 //control panel
-
-.control-panel{
+.control-panel {
   padding: 30px 0;
   height: 100%;
   width: 250px;
@@ -413,12 +476,15 @@ width: 110px
   flex-direction: column;
   position: relative;
 }
-.logo{
+
+.logo {
   width: 150px;
-  img{
+
+  img {
     width: 100%;
   }
 }
+
 .clock {
   @include shadowLoad;
   width: 100%;
@@ -427,33 +493,37 @@ width: 110px
   border-radius: 7px;
   margin-bottom: 20px;
   text-align: center;
-  h2{
-font-size: 30px;
-user-select: none;
+
+  h2 {
+    font-size: 30px;
+    user-select: none;
   }
 }
 
-.settings-panel{
+.settings-panel {
   width: 100%;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
-  p{
+
+  p {
     color: gray;
     margin-left: 20px
   }
 }
+
 .settings {
   @include container;
-  border-radius: 15px;
+  border-radius: 12px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding:15px;
+  padding: 15px;
   border: 1px solid rgb(65, 65, 65);
   cursor: pointer;
+
   ion-icon {
     font-size: 30px;
     @include flex-center;
@@ -493,6 +563,7 @@ user-select: none;
   border-top: 1px solid $itemBg;
   border-bottom: 1px solid $itemBg;
   color: $fontColorDark;
+
   input {
     background-color: $fontColor;
     border: none;
@@ -502,47 +573,85 @@ user-select: none;
     border-radius: 3px;
   }
 }
-.status-timer{
+
+.status-timer {
   width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  // margin-top: 30px;
 }
-.status-timer-container{
+
+.status-timer-container {
   padding: 10px;
   width: 100%;
   @include shadowItem;
   border: 1px solid $itemBg;
   margin-top: 20px;
   border-radius: 7px;
-  .title-status-timer{
+
+  .title-status-timer {
     font-size: 14px;
     color: $fontColorDarkest;
-    line-height: 1.2rem;;
+    line-height: 1.2rem;
+    ;
   }
 }
-.item-status-timer{
+
+.item-status-timer {
   @include shadowLoad;
   @include flex-center;
-  width:100%;
+  width: 100%;
   border: 1px solid $itemBg;
   min-height: 40px;
   margin-top: 10px;
   margin-right: 15px;
 }
-.select-time{
+
+.select-time {
   color: green;
 }
+
 .start,
 .restart {
   @include btnRacing;
   display: block;
   margin: 50px auto;
 }
-.start-disable{
+
+.start-disable {
   display: none;
 }
-.restart-disable{
-  display:  none;
+
+.restart-disable {
+  display: none;
+}
+
+.info-popup {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  text-align: center;
+  color: white;
+  padding: 35px 50px;
+  border-radius: 10px;
+  border: 1px solid $fontColorDark;
+  background-color: $containerBg;
+  @include shadowLoad;
+  @include shadowItem;
+  line-height: 1.6rem;
+  display: none;
+}
+
+.info-popup--active {
+  display: block;
+}
+
+.accept {
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid $fontColorDarkest;
+  margin-top: 20px;
+  background-color: $itemBg;
+  color: white;
+  opacity: .8;
 }

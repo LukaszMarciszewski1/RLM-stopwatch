@@ -1,12 +1,10 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Zagnieżdżamy font z google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
     <title>Document</title>
@@ -17,7 +15,7 @@
         <div class="app__container">
             <!-- //player list-->
             <div class="players-container">
-                <button class="add-player-list">Dodaj listę</button>
+                <button class="add-player-list">Dodaj listę zawodników</button>
                 <form id="to-do-player-list">
                     <div class="form-group">
                         <label for="name-player">Imię</label><br>
@@ -42,6 +40,10 @@
                         <div class="lamp"></div>
                         <ion-icon name="close-outline" class="delete"></ion-icon>
                     </div> -->
+                </div>
+                <div class="info-popup">
+                   <p> Nie można uswać zawodników <br> w trakcie wyścigu</p>
+                   <button class="accept">OK</button>
                 </div>
             </div>
             <!-- //counting down-->
@@ -82,7 +84,6 @@
                 
                 <div class="settings-panel">
                     <div class="settings">
-                        <!-- <ion-icon name="settings-outline" class="open-settings"></ion-icon> -->
                         <ion-icon name="options-outline" class="open-settings"></ion-icon>
                         <div class="settings-container">
                             <ion-icon name="close-outline" class="close-settings"></ion-icon>
@@ -97,7 +98,6 @@
                         </div>
                     </div>
                     <div class="logo"><img src="assets/logo.png" alt=""></div>
-                     <!-- <p class="settings-title">Ustawienia</p> -->
                 </div>
 
                 <div class="clock">

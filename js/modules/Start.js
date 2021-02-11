@@ -48,7 +48,7 @@ export class Start {
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle)
-        this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container')
+        this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container', '.info-popup', '.accept')
         this.players = new Players(this.playersList, this.containerList)
         this.restart = new Restart(this.btnStart, this.btnRestart)
 
@@ -57,9 +57,6 @@ export class Start {
 
         //upgrade players
         this.players.displayPlayer()
-
-        //changing the starting time interval of players
-        // document.getElementById('interval-time').addEventListener('change', this.render.bind(this))
 
         // Add player to list
         document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
@@ -73,19 +70,11 @@ export class Start {
                 const player = new PlayerData(name, number)
                 this.players.addPlayerToList(player)
                 this.players.storeAddPlayer(player)
-            } else return alert('Wyścig został zakończony nie możesz dodawać graczy')
+            } else return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
         })
 
         // remove player from list
-        this.containerList.addEventListener('click', (e) => {
-            if (this.access) {
-                this.players.deletePlayer(e.target)
-                this.players.storeRremovePlayer(e.target)
-            } else {
-                e.target.classList.add('.active-race')
-                confirm('nie mozna')
-            }
-        })
+        this.removePlayer()
 
         //clear list player
         document.querySelector('#to-do-player-list').addEventListener('reset', () => {
@@ -97,6 +86,7 @@ export class Start {
                 }
             } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
         })
+        //close info popup
 
         //render setup
         this.render()
@@ -130,6 +120,19 @@ export class Start {
         this.containerStartTime.textContent = 'Ustaw godzinę startu'
         document.getElementById('start-time').addEventListener('change', () => {
             this.containerStartTime.textContent = this.settingTime.value.slice(11)
+        })
+    }
+    removePlayer(){
+        this.containerList.addEventListener('click', (e) => {
+            console.log('okk')
+            if (this.access) {
+                this.players.deletePlayer(e.target)
+                this.players.storeRremovePlayer(e.target)
+                console.log(this.access)
+            } else {
+                e.target.classList.add('.active-race')
+                this.panelSettings.openPopup()
+            }
         })
     }
 

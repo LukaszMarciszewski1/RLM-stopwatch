@@ -1,68 +1,75 @@
 @keyframes loadAnim {
-    0% {
-      width: 150px;
-    }
-    100% {
-      width: 0;
-    }
+  0% {
+    width: 150px;
   }
 
-  @keyframes lampAnim {
-    0% {
-      background-color: red;
-    }
-    100% {
-      background-color: green;
-    }
-  }  
-@keyframes preparationLamp{
-  0%{
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes lampAnim {
+  0% {
+    background-color: red;
+  }
+
+  100% {
+    background-color: green;
+  }
+}
+
+@keyframes preparationLamp {
+  0% {
     opacity: 1;
   }
-  50%{
+
+  50% {
     opacity: 0.7;
   }
-  100%{
+
+  100% {
     opacity: 1;
   }
 }
 
-@keyframes activeName{
-  0%{
+@keyframes activeName {
+  0% {
     opacity: 0;
   }
-  100%{
+
+  100% {
     opacity: 1;
   }
 
 }
-// loading active player
 
+// loading active player
 @keyframes lds-ellipsis1 {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 @keyframes lds-ellipsis3 {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(0);
   }
 }
+
 @keyframes lds-ellipsis2 {
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(24px, 0);
   }
 }
-
-//loader 2
-
-
