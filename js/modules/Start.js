@@ -13,9 +13,9 @@ import {
 import {
     Settings
 } from './Settings.js';
-import {
-    PanelSettings
-} from './PanelSettings.js';
+// import {
+//     PanelSettings
+// } from './PanelSettings.js';
 
 import {
     Players
@@ -54,7 +54,7 @@ export class Start {
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle)
-        this.panelSettings = new PanelSettings(this.settingsContainer, this.infoPopup)
+        // this.panelSettings = new PanelSettings(this.settingsContainer, this.infoPopup)
         this.players = new Players(this.playersList, this.containerList)
         this.restart = new Restart(this.btnStart, this.btnRestart)
         this.loadList = new LoadList()
@@ -87,9 +87,12 @@ export class Start {
         this.removePlayer()
 
         //panelSettings methods
-        this.openSettings.addEventListener('click', this.panelSettings.openPanel.bind(this))
-        this.closeSettings.addEventListener('click', this.panelSettings.closePanel.bind(this))
-        this.acceptPopup.addEventListener('click', this.panelSettings.popupClose.bind(this))
+        // this.openSettings.addEventListener('click', this.panelSettings.openPanel.bind(this))
+        // this.closeSettings.addEventListener('click', this.panelSettings.closePanel.bind(this))
+        // this.acceptPopup.addEventListener('click', this.panelSettings.popupClose.bind(this))
+        this.openSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
+        this.closeSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
+        this.acceptPopup.addEventListener('click', () =>  this.infoPopup.classList.remove('info-popup--active'))
 
         //clear list player
         document.querySelector('#to-do-player-list').addEventListener('reset', () => {
@@ -145,7 +148,8 @@ export class Start {
                 this.players.storeRremovePlayer(e.target)
             } else {
                 e.target.classList.add('.active-race')
-                this.panelSettings.openPopup()
+                // this.panelSettings.openPopup()
+                this.infoPopup.classList.add('info-popup--active')
             }
         })
     }
