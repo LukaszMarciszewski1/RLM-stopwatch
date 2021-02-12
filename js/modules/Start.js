@@ -41,6 +41,11 @@ export class Start {
         this.countdownTime = document.querySelector('.countdown-time')
         this.containerStartTime = document.querySelector('.select-time')
         this.spanCircle = document.querySelector('.span-start')
+        this.openSettings = document.querySelector('.open-settings')
+        this.closeSettings = document.querySelector('.close-settings')
+        this.settingsContainer = document.querySelector('.settings-container')
+        this.infoPopup = document.querySelector('.info-popup')
+        this.acceptPopup = document.querySelector('.accept')
         this.intervalTime = null
         this.end = 'GO!'
 
@@ -49,12 +54,13 @@ export class Start {
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle)
-        this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container', '.info-popup', '.accept')
+        this.panelSettings = new PanelSettings(this.openSettings, this.closeSettings, this.settingsContainer, this.infoPopup, this.acceptPopup)
         this.players = new Players(this.playersList, this.containerList)
         this.restart = new Restart(this.btnStart, this.btnRestart)
         this.loadList = new LoadList()
-        // console.log(this.playersList)
-        // this.loadList.loadPlayerList()
+
+        // load players list
+        this.loadList.loadPlayerList()
         
         //display btn start
         this.restart.displayBtn(this.access)

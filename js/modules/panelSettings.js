@@ -1,10 +1,10 @@
 export class PanelSettings{
     constructor(open, close, container, popup, accept){
-        this.openBtn = document.querySelector(open);
-        this.closeBtn = document.querySelector(close);
-        this.container = document.querySelector(container)
-        this.infoPopup = document.querySelector(popup)
-        this.acceptPopup = document.querySelector(accept)
+        this.openBtn = open
+        this.closeBtn = close
+        this.container = container
+        this.infoPopup = popup
+        this.acceptPopup = accept
         this.openPanel()
         this.closePanel()
         this.popupClose()
