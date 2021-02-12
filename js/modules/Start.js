@@ -86,6 +86,11 @@ export class Start {
         // remove player from list
         this.removePlayer()
 
+        //panelSettings methods
+        this.panelSettings.openPanel()
+        this.panelSettings.closePanel()
+        this.panelSettings.popupClose()
+
         //clear list player
         document.querySelector('#to-do-player-list').addEventListener('reset', () => {
             if (this.access && this.playersList.length > 0) {

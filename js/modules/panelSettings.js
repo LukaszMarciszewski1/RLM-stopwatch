@@ -5,9 +5,6 @@ export class PanelSettings{
         this.container = container
         this.infoPopup = popup
         this.acceptPopup = accept
-        this.openPanel()
-        this.closePanel()
-        this.popupClose()
     }
     openPanel(){
         this.openBtn.addEventListener('click', ()=>{
