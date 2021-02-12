@@ -1,81 +1,136 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Zagnieżdżamy font z google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="wrapp">
-        <div class="list">
-            <div class="list__item status">
-                <h4 class="name-player">Imię</h4>
-                <h4 class="number-player">Nr</h4>
-                <h4 class="status-player">status</h4>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Jan Kraska</h4>
-                    <p>14</p>
+    <div class="app">
+        <div class="app__container">
+            <!-- //player list-->
+            <div class="players-container">
+                <button class="add-player-list">Dodaj listę zawodników</button>
+                <form id="to-do-player-list">
+                    <div class="form-group">
+                        <label for="name-player">Imię</label><br>
+                        <input type="text" id="name-player">
+                    </div>
+                    <div class="form-group">
+                        <label for="nr-player">Numer</label><br>
+                        <input type="text" id="nr-player" pattern="[0-9]*">
+                    </div>
+                    <input type="submit" class="add-to-list" value="Dodaj"></input>
+                    <input type="reset" class="reset-list" value="Wyczyść listę"></input>
+                </form>
+                <div class="list__item-desc">
+                    <h4 class="name-player-desc">Imię</h4>
+                    <h4 class="number-player-desc">Nr</h4>
+                    <h4 class="status-player-desc">Status</h4>
                 </div>
-                <div class="lamp"></div>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Marian Wyrwidąb</h4>
-                    <p>14</p>
+                <div class="list-container">
+                    <!-- <div class="player-item">
+                        <h5>Henryk Sienkiewicz</h5>
+                        <p>16</p>
+                        <div class="lamp"></div>
+                        <ion-icon name="close-outline" class="delete"></ion-icon>
+                    </div> -->
                 </div>
-                <div class="lamp"></div>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Joanna Jastrzębska</h4>
-                    <p>14</p>
+                <div class="info-popup">
+                    <p> Nie można uswać zawodników <br> w trakcie wyścigu</p>
+                    <button class="accept">OK</button>
                 </div>
-                <div class="lamp"></div>
             </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Adanm Matejko</h4>
-                    <p>14</p>
+            <!-- //counting down-->
+            <div class="counting-down-container">
+                <div class="circular-container">
+                    <div class="circular">
+                        <span class="span-start"></span>
+                        <div class="progress" id="progress"></div>
+                    </div>
                 </div>
-                <div class="lamp"></div>
+                <div class="player-status-container">
+                    <div class="status-container">
+                        <div class="title-name-container">
+                            <h3 class="title-name">Startuje</h3>
+                            <div class="load">
+                                <h2 class="info-about-start">Start</h2>
+                                <div class="lds-ellipsis">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <div class="player-status active-player">
+                            <h4 class="active-player-name"></h4>
+                        </div>
+                    </div>
+                    <div class="status-container">
+                        <div class="title-name-container">
+                            <h3 class="title-name">Następny</h3>
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <div class="player-status next-player">
+                            <h4 class="next-player-name"></h4>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Henryk Sienkiewicz</h4>
-                    <p>14</p>
+            <!-- //control panel -->
+            <div class="control-panel">
+
+                <div class="settings-panel">
+                    <div class="settings">
+                        <ion-icon name="options-outline" class="open-settings"></ion-icon>
+                        <div class="settings-container">
+                            <ion-icon name="close-outline" class="close-settings"></ion-icon>
+                            <div class="settings-element">
+                                <label for="start-time">godzina startu</label>
+                                <input type="datetime-local" name="datetimelocalValue" id="start-time">
+                            </div>
+                            <div class="settings-element">
+                                <label for="interval-time">odstęp czasowy sek.</label>
+                                <input type="number" min="1" max="999999" id="interval-time" value="10">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="logo"><img src="assets/logo.png" alt=""></div> -->
                 </div>
-                <div class="lamp"></div>
-            </div>
-            <div class="list__item">
-                <div class="name">
-                    <h4>Jacek Sasin</h4>
-                    <p>14</p>
+
+                <div class="clock">
+                    <h2></h2>
                 </div>
-                <div class="lamp"></div>
+                <div class="status-timer">
+                    <div class="status-timer-container">
+                        <p class="title-status-timer">Godzina startu</p>
+                        <div class="item-status-timer">
+                            <h4 class="select-time"></h4>
+                        </div>
+
+                    </div>
+                    <div class="status-timer-container">
+                        <p class="title-status-timer">Odliczanie do&nbspstartu</p>
+                        <div class="item-status-timer">
+                            <h4 class="countdown-time"></h4>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="start">Start</button>
+                <button class="restart">Restart</button>
             </div>
         </div>
-
-        <div class="time-container">
-            <div class="time-now"><h3></h3></div>
-            <div class="stoper">
-                <div class="circular">
-                    <span></span>
-                    <div class="progress" id="progress"></div>
-                </div>
-            </div>
-            <button class="start">Start</button>
-        </div>
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
-<script type="text/javascript" src="/main.bundle.js"></script></body>
+<script type="text/javascript" src="main.bundle.js"></script></body>
 
 </html>

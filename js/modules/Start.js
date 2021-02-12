@@ -26,6 +26,7 @@ import {
 import {
     Restart
 } from './Restart.js';
+import { LoadList } from './loadList.js';
 
 export class Start {
     constructor() {
@@ -51,7 +52,10 @@ export class Start {
         this.panelSettings = new PanelSettings('.open-settings', '.close-settings', '.settings-container', '.info-popup', '.accept')
         this.players = new Players(this.playersList, this.containerList)
         this.restart = new Restart(this.btnStart, this.btnRestart)
-
+        this.loadList = new LoadList()
+        // console.log(this.playersList)
+        // this.loadList.loadPlayerList()
+        
         //display btn start
         this.restart.displayBtn(this.access)
 
