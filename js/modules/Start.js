@@ -13,9 +13,9 @@ import {
 import {
     Settings
 } from './Settings.js';
-import {
-    PanelSettings
-} from './PanelSettings.js';
+// import {
+//     PanelSettings
+// } from './PanelSettings.js';
 
 import {
     Players
@@ -54,7 +54,7 @@ export class Start {
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle)
-        this.panelSettings = new PanelSettings(this.openSettings, this.closeSettings, this.settingsContainer, this.infoPopup, this.acceptPopup)
+        // this.panelSettings = new PanelSettings(this.openSettings, this.closeSettings, this.settingsContainer, this.infoPopup, this.acceptPopup)
         this.players = new Players(this.playersList, this.containerList)
         this.restart = new Restart(this.btnStart, this.btnRestart)
         this.loadList = new LoadList()
@@ -87,9 +87,9 @@ export class Start {
         this.removePlayer()
 
         //panelSettings methods
-        this.panelSettings.openPanel()
-        this.panelSettings.closePanel()
-        this.panelSettings.popupClose()
+        // this.panelSettings.openPanel()
+        // this.panelSettings.closePanel()
+        // this.panelSettings.popupClose()
 
         //clear list player
         document.querySelector('#to-do-player-list').addEventListener('reset', () => {
@@ -146,7 +146,7 @@ export class Start {
                 console.log(this.access)
             } else {
                 e.target.classList.add('.active-race')
-                this.panelSettings.openPopup()
+                // this.panelSettings.openPopup()
             }
         })
     }
