@@ -74,7 +74,6 @@ export class Start {
             this.players.loadPlayerList()
         })
 
-        console.log(localStorage)
         // Add player to list
         document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
             e.preventDefault();

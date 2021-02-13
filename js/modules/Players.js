@@ -9,45 +9,72 @@ export class Players {
         this.test = null
     }
 
-   displayPlayer(){
+    displayPlayer() {
         const players = this.storeGetPlayer()
         players.forEach((player) => this.addPlayerToList(player))
-        players.forEach((player) => this.loadPlayerList(player))
+        // players.forEach((player) => this.loadPlayerList(player))
+        console.log(players)
+        console.log(localStorage)
     }
 
     //load player list xlsx file
-    loadPlayerList(player) {
-            readXlsxFile(this.inputLoad.files[0]).then((data) => {
+    loadPlayerList() {
+        //     readXlsxFile(this.inputLoad.files[0]).then((data) => {
+        //     const containerList = this.containerList
+        //     const playersList = this.playersList
+
+        //     data.map((row, index) => {
+        //      const rows = document.createElement('div')
+        //        rows.className = 'player-item'
+        //        rows.innerHTML = `
+        //        <h5>${row[0]}</h5>
+        //        <p>${row[1]}</p>
+        //        <div class="lamp"></div>
+        //        <ion-icon name="close-outline" class="delete"></ion-icon>
+        //        `;
+        //     const name = row[0]
+        //     const number = row[1].toString()
+        //     this.test = new Test(name, number)
+
+        //     playersList.push(rows)
+        //     this.renderList()
+        //     containerList.appendChild(rows)
+        //     this.storeAddPlayer(this.test)
+        //     console.log(this.test)
+        //     })
+        // })
+        let file = this.inputLoad.files[0]
+        readXlsxFile(file).then((data) => {
             const containerList = this.containerList
             const playersList = this.playersList
 
             data.map((row, index) => {
-             const rows = document.createElement('div')
-               rows.className = 'player-item'
-               rows.innerHTML = `
-               <h5>${row[0]}</h5>
-               <p>${row[1]}</p>
-               <div class="lamp"></div>
-               <ion-icon name="close-outline" class="delete"></ion-icon>
-               `;
-            const name = row[0]
-            const number = row[1]
-            this.test = new Test(name, number)
-            
-            playersList.push(rows)
-            this.renderList()
-            containerList.appendChild(rows)
-            this.storeAddPlayer(this.test)
-           
-            console.log(rows)
+                if(file){
+                    const rows = document.createElement('div')
+                    rows.className = 'player-item'
+                    rows.innerHTML = `
+                   <h5>${row[0]}</h5>
+                   <p>${row[1]}</p>
+                   <div class="lamp"></div>
+                   <ion-icon name="close-outline" class="delete"></ion-icon>
+                   `;
+                    const name = row[0]
+                    const number = row[1].toString()  
+                    this.test = new Test(name, number)
+    
+                    playersList.push(rows)
+                    this.renderList()
+                    containerList.appendChild(rows)
+                    this.storeAddPlayer(this.test)
+                    // console.log(this.test)
+                }
+                 else{
+                     return alert('dołącz plik')
+                 }
             })
         })
-        
+        .catch( error =>  console.log(error) )
     }
-
-    // display(){
-    //     this.storeAddPlayer(this.test)
-    //   }
 
     addPlayerToList(player) {
         const containerList = this.containerList
@@ -66,7 +93,7 @@ export class Players {
         this.clearFields()
     }
 
-    clearFields(){
+    clearFields() {
         document.getElementById('name-player').value = ''
         document.getElementById('nr-player').value = ''
     }
@@ -87,38 +114,37 @@ export class Players {
         }
     }
 
-    clearList(containerList){
-        if(this.playersList.length > 0){
+    clearList(containerList) {
+        if (this.playersList.length > 0) {
             localStorage.clear()
             this.playersList = []
             containerList.textContent = ''
-        }
-        else return 
+        } else return
     }
 
-//localStorage
-    storeGetPlayer(){
+    //localStorage
+    storeGetPlayer() {
         let players;
-        if(localStorage.getItem('players') === null) {
-            players =[];
+        if (localStorage.getItem('players') === null) {
+            players = [];
         } else {
             players = JSON.parse(localStorage.getItem('players'))
         }
         return players
-        }
+    }
 
-        storeAddPlayer(player){
-         const players = this.storeGetPlayer()
-         players.push(player)
-         localStorage.setItem('players', JSON.stringify(players))
-        }
+    storeAddPlayer(player) {
+        const players = this.storeGetPlayer()
+        players.push(player)
+        localStorage.setItem('players', JSON.stringify(players))
+    }
 
-        storeRremovePlayer(el){
-         const players = this.storeGetPlayer()
-            const index = el.parentElement.dataset.key;
-            if (el.classList.contains('delete')) {
-                players.splice(index, 1)
-            }
-         localStorage.setItem('players', JSON.stringify(players));
+    storeRremovePlayer(el) {
+        const players = this.storeGetPlayer()
+        const index = el.parentElement.dataset.key;
+        if (el.classList.contains('delete')) {
+            players.splice(index, 1)
         }
+        localStorage.setItem('players', JSON.stringify(players));
+    }
 }
