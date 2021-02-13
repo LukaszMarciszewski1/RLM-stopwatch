@@ -1,17 +1,56 @@
-
+import {
+    Test
+} from './test.js';
 export class Players {
-    constructor(playersList, list) {
+    constructor(playersList, containerList, inputLoad) {
         this.playersList = playersList
-        this.list = list
+        this.containerList = containerList
+        this.inputLoad = inputLoad
+        this.test = null
     }
 
    displayPlayer(){
         const players = this.storeGetPlayer()
         players.forEach((player) => this.addPlayerToList(player))
+        players.forEach((player) => this.loadPlayerList(player))
     }
 
+    //load player list xlsx file
+    loadPlayerList(player) {
+            readXlsxFile(this.inputLoad.files[0]).then((data) => {
+            const containerList = this.containerList
+            const playersList = this.playersList
+
+            data.map((row, index) => {
+             const rows = document.createElement('div')
+               rows.className = 'player-item'
+               rows.innerHTML = `
+               <h5>${row[0]}</h5>
+               <p>${row[1]}</p>
+               <div class="lamp"></div>
+               <ion-icon name="close-outline" class="delete"></ion-icon>
+               `;
+            const name = row[0]
+            const number = row[1]
+            this.test = new Test(name, number)
+            
+            playersList.push(rows)
+            this.renderList()
+            containerList.appendChild(rows)
+            this.storeAddPlayer(this.test)
+           
+            console.log(rows)
+            })
+        })
+        
+    }
+
+    // display(){
+    //     this.storeAddPlayer(this.test)
+    //   }
+
     addPlayerToList(player) {
-        const list = this.list
+        const containerList = this.containerList
         const row = document.createElement('div')
         row.className = 'player-item'
         row.innerHTML = `
@@ -23,7 +62,7 @@ export class Players {
 
         this.playersList.push(row)
         this.renderList()
-        list.appendChild(row)
+        containerList.appendChild(row)
         this.clearFields()
     }
 
@@ -35,7 +74,7 @@ export class Players {
     renderList() {
         this.playersList.forEach((player, key) => {
             player.dataset.key = key;
-            this.list.appendChild(player);
+            this.containerList.appendChild(player);
         })
     }
 
@@ -48,11 +87,11 @@ export class Players {
         }
     }
 
-    clearList(list){
+    clearList(containerList){
         if(this.playersList.length > 0){
             localStorage.clear()
             this.playersList = []
-            list.textContent = ''
+            containerList.textContent = ''
         }
         else return 
     }

@@ -1,50 +1,46 @@
-// import { LoadList } from './playerList.json';
-export class LoadList {
-    constructor(){
-        this.body = document.querySelector('.add-player-list')
-        this.body.addEventListener('click', this.loadPlayerList.bind(this))
-    }
 
-    loadPlayerList(){
-        const myInit = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'aplication/json'
-            },
-            mode: 'cors',
-            catche: 'default'
-        }
-        let myRequest = new Request("./data.json", myInit)
-        function getData() {
-            fetch(myRequest)
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data)
-                })
-        };
-        document.querySelector('.add-player-list').addEventListener('click', getData);
-}
-}
+// export class LoadList {
+//     constructor(input, playerList, containerList) {
+//         this.input = input
+//         this.playerList = playerList
+//         this.containerList = containerList
+//     }
 
+//     loadPlayerList() {
+//         const el = readXlsxFile(this.input.files[0]).then((data) => {
+//             const containerList = this.containerList
+//             const playerList = this.playerList
 
-// var XMLHttpRequestObject = false;
-
-// if (window.XMLHttpRequest) {
-//     XMLHttpRequestObject = new XMLHttpRequest();
-// } else if (window.ActiveXObject) {
-//     XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+//             data.map((row, index) => {
+//              const rows = document.createElement('div')
+//                rows.className = 'player-item'
+//                rows.innerHTML = `
+//                <h5>${row[0]}</h5>
+//                <p>${row[1]}</p>
+//                <div class="lamp"></div>
+//                <ion-icon name="close-outline" class="delete"></ion-icon>
+//                `;
+//             containerList.appendChild(rows)
+//             playerList.push(rows)
+//             console.log(row[1])
+//             })
+//         })
+//     }
 // }
 
-// function pobierzDane() {
-//     if (XMLHttpRequestObject) {
-//         var p = document.getElementById("pt1");
-//         XMLHttpRequestObject.open("GET", "dane.txt");
-//         XMLHttpRequestObject.onreadystatechange = function () {
-//             if (XMLHttpRequestObject.readyState == 4 &&
-//                 XMLHttpRequestObject.status == 200) {
-//                 p.innerHTML = XMLHttpRequestObject.responseText;
-//             }
-//         }
-//         XMLHttpRequestObject.send(null);
-//     }
+// addPlayerToList(player) {
+//     const list = this.list
+//     const row = document.createElement('div')
+//     row.className = 'player-item'
+//     row.innerHTML = `
+//                <h5>${player.name}</h5>
+//                <p>${player.number}</p>
+//                <div class="lamp"></div>
+//                <ion-icon name="close-outline" class="delete"></ion-icon>
+//        `;
+
+//     this.playersList.push(row)
+//     this.renderList()
+//     list.appendChild(row)
+//     this.clearFields()
 // }

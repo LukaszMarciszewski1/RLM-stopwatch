@@ -26,7 +26,9 @@ import {
 import {
     Restart
 } from './Restart.js';
-import { LoadList } from './loadList.js';
+import {
+    LoadList
+} from './loadList.js';
 
 export class Start {
     constructor() {
@@ -48,6 +50,7 @@ export class Start {
         this.acceptPopup = document.querySelector('.accept')
         this.intervalTime = null
         this.end = 'GO!'
+        this.btnFileLoad = document.querySelector('input[type="file"]')
 
         this.active = new Active()
         this.settings = new Settings("interval-time", this.countdownTime)
@@ -55,19 +58,23 @@ export class Start {
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle)
         // this.panelSettings = new PanelSettings(this.settingsContainer, this.infoPopup)
-        this.players = new Players(this.playersList, this.containerList)
+        this.players = new Players(this.playersList, this.containerList, this.btnFileLoad)
         this.restart = new Restart(this.btnStart, this.btnRestart)
-        this.loadList = new LoadList()
+        // this.loadList = new LoadList(this.btnFileLoad, this.playersList, this.containerList)
 
-        // load players list
-        this.loadList.loadPlayerList()
-        
         //display btn start
         this.restart.displayBtn(this.access)
 
         //upgrade players
         this.players.displayPlayer()
+        // this.players.loadPlayerList.display()
 
+        // load players list
+        this.btnFileLoad.addEventListener('change', (e) => {
+            this.players.loadPlayerList()
+        })
+
+        console.log(localStorage)
         // Add player to list
         document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -80,19 +87,15 @@ export class Start {
                 const player = new PlayerData(name, number)
                 this.players.addPlayerToList(player)
                 this.players.storeAddPlayer(player)
-            } else return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
+            }
+            if (!this.access) {
+                console.log(this.access)
+                return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
+            }
         })
 
         // remove player from list
         this.removePlayer()
-
-        //panelSettings methods
-        // this.openSettings.addEventListener('click', this.panelSettings.openPanel.bind(this))
-        // this.closeSettings.addEventListener('click', this.panelSettings.closePanel.bind(this))
-        // this.acceptPopup.addEventListener('click', this.panelSettings.popupClose.bind(this))
-        this.openSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
-        this.closeSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
-        this.acceptPopup.addEventListener('click', () =>  this.infoPopup.classList.remove('info-popup--active'))
 
         //clear list player
         document.querySelector('#to-do-player-list').addEventListener('reset', () => {
@@ -102,9 +105,9 @@ export class Start {
                     this.playersList.splice(0);
                     this.containerList.textContent = ''
                 }
-            } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
+            } 
+            else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
         })
-        //close info popup
 
         //render setup
         this.render()
@@ -118,29 +121,33 @@ export class Start {
             location.reload()
         })
 
+        //panelSettings methods
+        this.openSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
+        this.closeSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
+        this.acceptPopup.addEventListener('click', () => this.infoPopup.classList.remove('info-popup--active'))
     }
 
     //metods----------------->
     render() {
         //clock and countdown to start
-        this.intervalTime= setInterval(() => {
+        this.intervalTime = setInterval(() => {
             this.time.getTime()
             this.settings.countdownTime(this.settingTime)
         }, 1000);
 
         //setup circle interval time
         this.stopwatch.timerSpan.textContent = this.settings.count()
-        document.getElementById('interval-time').addEventListener('change', ()=>{
+        document.getElementById('interval-time').addEventListener('change', () => {
             this.stopwatch.timerSpan.textContent = this.settings.count()
         })
-        
+
         //setup start time
         this.containerStartTime.textContent = 'Ustaw godzinę startu'
         document.getElementById('start-time').addEventListener('change', () => {
             this.containerStartTime.textContent = this.settingTime.value.slice(11)
         })
     }
-    removePlayer(){
+    removePlayer() {
         this.containerList.addEventListener('click', (e) => {
             console.log('okk')
             if (this.access) {
@@ -148,7 +155,6 @@ export class Start {
                 this.players.storeRremovePlayer(e.target)
             } else {
                 e.target.classList.add('.active-race')
-                // this.panelSettings.openPopup()
                 this.infoPopup.classList.add('info-popup--active')
             }
         })
@@ -176,14 +182,14 @@ export class Start {
             return alert('Wybierz godzinę startu')
         }
 
-        if(timeSet>=this.settings.secondsToStart() || isNaN(this.settings.secondsToStart())){
+        if (timeSet >= this.settings.secondsToStart() || isNaN(this.settings.secondsToStart())) {
             return alert('Odstep czasowy nie może być mniejszy niż pozostały czas do startu')
         }
 
-        if (this.playersList.length >= 2) {
+        if (this.playersList.length >= 2 && !this.playersList.length == '') {
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
-            
+
             const intTime = setInterval(() => {
                 this.time.getTime()
                 clearInterval(this.intervalTime)
@@ -198,7 +204,7 @@ export class Start {
                     this.stopwatch.timerSpan.textContent = timeSet
                     this.stopwatch.startTimer(timeSet, timeInterval)
                 }
-                   this.stopwatch.showStartTxt(this.settings.canStart())
+                this.stopwatch.showStartTxt(this.settings.canStart())
             }, 1000);
 
             const int = setInterval(() => {
@@ -210,7 +216,7 @@ export class Start {
             }, 1000);
 
             const clear = setInterval(() => {
-                if(this.spanCircle.textContent === this.end){
+                if (this.spanCircle.textContent === this.end) {
                     clearInterval(intBefore)
                     clearInterval(intCountdown)
                     clearInterval(clear)
