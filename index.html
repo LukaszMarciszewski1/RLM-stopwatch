@@ -18,18 +18,27 @@
         <div class="app__container">
             <!-- //player list-->
             <div class="players-container">
-                <input class="add-player-list" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">Dodaj listę zawodników</input>
+                <form id="file-upload-form">
+                    <div class="file-upload">
+                        <label class="file-upload-info" for="add-player-list">Dodaj listę zawodników w formacie Xmlx</label>
+                        <input class="file-button" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
+                    </div>
+                </form>
                 <form id="to-do-player-list">
-                    <div class="form-group">
-                        <label for="name-player">Imię</label><br>
-                        <input type="text" id="name-player">
+                    <div class="form-inputs">
+                        <div class="form-group">
+                            <label for="name-player">Imię</label><br>
+                            <input type="text" id="name-player">
+                        </div>
+                        <div class="form-group">
+                            <label for="nr-player">Numer</label><br>
+                            <input type="text" id="nr-player" pattern="[0-9]*">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nr-player">Numer</label><br>
-                        <input type="text" id="nr-player" pattern="[0-9]*">
+                    <div class="form-buttons">
+                        <button type="submit" class="add-to-list" value="Dodaj">Dodaj</button>
+                        <button type="reset" class="reset-list" value="Wyczyść listę">Wyczyść&nbsplistę</button>
                     </div>
-                    <input type="submit" class="add-to-list" value="Dodaj"></input>
-                    <input type="reset" class="reset-list" value="Wyczyść listę"></input>
                 </form>
                 <div class="list__item-desc">
                     <h4 class="name-player-desc">Imię</h4>
@@ -37,12 +46,7 @@
                     <h4 class="status-player-desc">Status</h4>
                 </div>
                 <div class="list-container">
-                    <!-- <div class="player-item">
-                        <h5>Henryk Sienkiewicz</h5>
-                        <p>16</p>
-                        <div class="lamp"></div>
-                        <ion-icon name="close-outline" class="delete"></ion-icon>
-                    </div> -->
+                    <!-- //players list ---- -->
                 </div>
                 <div class="info-popup">
                     <p> Nie można uswać zawodników <br> w trakcie wyścigu</p>
@@ -89,10 +93,9 @@
             </div>
             <!-- //control panel -->
             <div class="control-panel">
-
                 <div class="settings-panel">
                     <div class="settings">
-                        <ion-icon name="options-outline" class="open-settings"></ion-icon>
+                       <button class="open-settings"><ion-icon name="options-outline"></ion-icon></button> 
                         <div class="settings-container">
                             <ion-icon name="close-outline" class="close-settings"></ion-icon>
                             <div class="settings-element">
@@ -105,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="logo"><img src="assets/logo.png" alt=""></div> -->
+                    <div class="logo"><img src="assets/logo.png" alt=""></div>
                 </div>
 
                 <div class="clock">
@@ -131,6 +134,7 @@
                 <button class="restart">Restart</button>
             </div>
         </div>
+        <audio src="assets/beep.mp3"></audio>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>

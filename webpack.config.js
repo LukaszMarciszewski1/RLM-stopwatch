@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SRC = path.resolve(__dirname, 'node_modules');
+// const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './js/app.js',
@@ -36,16 +38,25 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpg|png)$/,
-                use: [
-                    'file-loader',
-                ]
-            }
+                test: /\.(jpg|png|svg|gif|jpeg|mp3)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                      name: '[name].[ext]',
+                      outputPath: 'assets',
+                    }
+                  }
+            },
         ]
     },
 
     plugins: [
         new HtmlWebpackPlugin({template: './index.html'}),
         new webpack.HotModuleReplacementPlugin(),
+        // new CopyPlugin({
+        //     patterns: [
+        //       { from: 'public/assets', to: 'assets' },
+        //     ],
+        //   }),
     ]
 };

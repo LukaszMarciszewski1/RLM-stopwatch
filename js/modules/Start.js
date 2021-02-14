@@ -43,14 +43,17 @@ export class Start {
         this.countdownTime = document.querySelector('.countdown-time')
         this.containerStartTime = document.querySelector('.select-time')
         this.spanCircle = document.querySelector('.span-start')
-        this.openSettings = document.querySelector('.open-settings')
-        this.closeSettings = document.querySelector('.close-settings')
         this.settingsContainer = document.querySelector('.settings-container')
         this.infoPopup = document.querySelector('.info-popup')
         this.acceptPopup = document.querySelector('.accept')
         this.intervalTime = null
-        this.end = 'GO!'
+        this.btnOpenSettings = document.querySelector('.open-settings')
+        this.btnCloseSettings = document.querySelector('.close-settings')
         this.btnFileLoad = document.querySelector('input[type="file"]')
+        this.btnAddToList = document.querySelector('.add-to-list')
+        this.btnResetList = document.querySelector('.reset-list')
+        this.end = 'GO!'
+
 
         this.active = new Active()
         this.settings = new Settings("interval-time", this.countdownTime)
@@ -121,8 +124,8 @@ export class Start {
         })
 
         //panelSettings methods
-        this.openSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
-        this.closeSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
+        this.btnOpenSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
+        this.btnCloseSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
         this.acceptPopup.addEventListener('click', () => this.infoPopup.classList.remove('info-popup--active'))
     }
 
@@ -188,10 +191,20 @@ export class Start {
         if (this.playersList.length >= 2 && !this.playersList.length == '') {
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
+            this.btnOpenSettings.classList.add('inactive')
+            this.btnAddToList.classList.add('inactive')
+            this.btnResetList.classList.add('inactive')
+            this.btnFileLoad.setAttribute("disabled", true)
+            document.querySelectorAll('.inactive').forEach(btn => btn.setAttribute("disabled", true))
 
             const intTime = setInterval(() => {
                 this.time.getTime()
                 clearInterval(this.intervalTime)
+                if(this.stopwatch.timerSpan.textContent == 6){
+                    var audio = new Audio('assets/beep.mp3');
+                    audio.play();
+                }
+                console.log(this.stopwatch.timerSpan.textContent)
             }, 1000);
 
             const intCountdown = setInterval(() => {
@@ -222,7 +235,8 @@ export class Start {
                 }
             }, 1000);
 
-        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
+        } 
+        else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
     }
 
 }

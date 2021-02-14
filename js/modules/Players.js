@@ -12,37 +12,10 @@ export class Players {
     displayPlayer() {
         const players = this.storeGetPlayer()
         players.forEach((player) => this.addPlayerToList(player))
-        // players.forEach((player) => this.loadPlayerList(player))
-        console.log(players)
-        console.log(localStorage)
     }
 
     //load player list xlsx file
     loadPlayerList() {
-        //     readXlsxFile(this.inputLoad.files[0]).then((data) => {
-        //     const containerList = this.containerList
-        //     const playersList = this.playersList
-
-        //     data.map((row, index) => {
-        //      const rows = document.createElement('div')
-        //        rows.className = 'player-item'
-        //        rows.innerHTML = `
-        //        <h5>${row[0]}</h5>
-        //        <p>${row[1]}</p>
-        //        <div class="lamp"></div>
-        //        <ion-icon name="close-outline" class="delete"></ion-icon>
-        //        `;
-        //     const name = row[0]
-        //     const number = row[1].toString()
-        //     this.test = new Test(name, number)
-
-        //     playersList.push(rows)
-        //     this.renderList()
-        //     containerList.appendChild(rows)
-        //     this.storeAddPlayer(this.test)
-        //     console.log(this.test)
-        //     })
-        // })
         let file = this.inputLoad.files[0]
         readXlsxFile(file).then((data) => {
             const containerList = this.containerList
@@ -66,7 +39,6 @@ export class Players {
                     this.renderList()
                     containerList.appendChild(rows)
                     this.storeAddPlayer(this.test)
-                    // console.log(this.test)
                 }
                  else{
                      return alert('dołącz plik')
