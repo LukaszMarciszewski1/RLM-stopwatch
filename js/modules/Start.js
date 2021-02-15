@@ -52,6 +52,7 @@ export class Start {
         this.btnFileLoad = document.querySelector('input[type="file"]')
         this.btnAddToList = document.querySelector('.add-to-list')
         this.btnResetList = document.querySelector('.reset-list')
+        this.btnResetSettings = document.getElementById('reset-settings')
         this.end = 'GO!'
 
 
@@ -100,7 +101,7 @@ export class Start {
         this.removePlayer()
 
         //clear list player
-        document.querySelector('#to-do-player-list').addEventListener('reset', () => {
+        document.querySelector('#file-upload-form').addEventListener('reset', () => {
             if (this.access && this.playersList.length > 0) {
                 if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
                     localStorage.clear()
@@ -127,6 +128,7 @@ export class Start {
         this.btnOpenSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
         this.btnCloseSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
         this.acceptPopup.addEventListener('click', () => this.infoPopup.classList.remove('info-popup--active'))
+        this.btnResetSettings.addEventListener('click', () =>{location.reload()})
     }
 
     //metods----------------->
@@ -144,9 +146,11 @@ export class Start {
         })
 
         //setup start time
-        this.containerStartTime.textContent = 'Ustaw godzinę startu'
+        this.containerStartTime.textContent = 'Ustaw godzinę startu';
+        this.containerStartTime.style.fontSize = '20px'
         document.getElementById('start-time').addEventListener('change', () => {
-            this.containerStartTime.textContent = this.settingTime.value.slice(11)
+            this.containerStartTime.textContent = this.settingTime.value.slice(11) + ":00"
+            this.containerStartTime.style.fontSize = '26px'
         })
     }
     removePlayer() {
@@ -200,10 +204,10 @@ export class Start {
             const intTime = setInterval(() => {
                 this.time.getTime()
                 clearInterval(this.intervalTime)
-                if(this.stopwatch.timerSpan.textContent == 6){
-                    var audio = new Audio('assets/beep.mp3');
-                    audio.play();
-                }
+                // if(this.stopwatch.timerSpan.textContent == 6){
+                //     var audio = new Audio('../../assets/beep.mp3');
+                //     audio.play();
+                // }
                 console.log(this.stopwatch.timerSpan.textContent)
             }, 1000);
 
@@ -216,7 +220,20 @@ export class Start {
                     this.stopwatch.timerSpan.textContent = timeSet
                     this.stopwatch.startTimer(timeSet, timeInterval)
                 }
+                if(this.stopwatch.timerSpan.textContent == 6){
+                    var audio = new Audio('assets/beep.mp3');
+                    audio.play();
+                }
+                if(this.stopwatch.timerSpan.textContent <= 6){
+                    this.spanCircle.style.color = '#00d9f6'
+                }
+                else{
+                    this.spanCircle.style.color = 'rgb(230, 230, 230)'
+                }
+                
+                
                 this.stopwatch.showStartTxt(this.settings.canStart())
+                
             }, 1000);
 
             const int = setInterval(() => {

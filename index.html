@@ -7,6 +7,8 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
     <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.mini.min.js"></script>
@@ -16,13 +18,38 @@
 <body>
     <div class="app">
         <div class="app__container">
+
             <!-- //player list-->
             <div class="players-container">
+                <div class="settings-panel">
+                    <div class="settings">
+                        <button class="open-settings">
+                            <!-- <ion-icon name="options-outline"></ion-icon> -->
+                            <ion-icon name="time-outline"></ion-icon>
+                        </button>
+                        <div class="settings-container">
+                            <ion-icon name="close-outline" class="close-settings"></ion-icon>
+                            <div class="settings-element">
+                                <label for="start-time">godzina startu</label>
+                                <input type="datetime-local" name="datetimelocalValue" id="start-time">
+                            </div>
+                            <div class="settings-element">
+                                <label for="interval-time">odstęp czasowy sek.</label>
+                                <input type="number" min="1" max="999999" id="interval-time" value="10">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="reset" id="reset-settings">Resetuj</button>
+                </div>
+                <div class="forms-container">
                 <form id="file-upload-form">
                     <div class="file-upload">
-                        <label class="file-upload-info" for="add-player-list">Dodaj listę zawodników w formacie Xmlx</label>
-                        <input class="file-button" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
+                        <label class="file-upload-info" for="add-player-list">Dodaj plik w formacie
+                            Xlsx</label>
+                        <input class="file-button" type="file"
+                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
                     </div>
+                    <button type="reset" class="reset-list" value="Wyczyść listę">Wyczyść&nbsplistę</button>
                 </form>
                 <form id="to-do-player-list">
                     <div class="form-inputs">
@@ -35,11 +62,10 @@
                             <input type="text" id="nr-player" pattern="[0-9]*">
                         </div>
                     </div>
-                    <div class="form-buttons">
                         <button type="submit" class="add-to-list" value="Dodaj">Dodaj</button>
-                        <button type="reset" class="reset-list" value="Wyczyść listę">Wyczyść&nbsplistę</button>
-                    </div>
                 </form>
+            </div>
+                <!-- <div class="player-list"> -->
                 <div class="list__item-desc">
                     <h4 class="name-player-desc">Imię</h4>
                     <h4 class="number-player-desc">Nr</h4>
@@ -48,6 +74,7 @@
                 <div class="list-container">
                     <!-- //players list ---- -->
                 </div>
+            <!-- </div> -->
                 <div class="info-popup">
                     <p> Nie można uswać zawodników <br> w trakcie wyścigu</p>
                     <button class="accept">OK</button>
@@ -93,30 +120,14 @@
             </div>
             <!-- //control panel -->
             <div class="control-panel">
-                <div class="settings-panel">
-                    <div class="settings">
-                       <button class="open-settings"><ion-icon name="options-outline"></ion-icon></button> 
-                        <div class="settings-container">
-                            <ion-icon name="close-outline" class="close-settings"></ion-icon>
-                            <div class="settings-element">
-                                <label for="start-time">godzina startu</label>
-                                <input type="datetime-local" name="datetimelocalValue" id="start-time">
-                            </div>
-                            <div class="settings-element">
-                                <label for="interval-time">odstęp czasowy sek.</label>
-                                <input type="number" min="1" max="999999" id="interval-time" value="10">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="logo"><img src="assets/logo.png" alt=""></div>
-                </div>
 
+                <div class="logo"><img src="assets/logo.png" alt=""></div>
                 <div class="clock">
                     <h2></h2>
                 </div>
                 <div class="status-timer">
                     <div class="status-timer-container">
-                        <p class="title-status-timer">Godzina startu</p>
+                        <p class="title-status-timer">Start odcinka</p>
                         <div class="item-status-timer">
                             <h4 class="select-time"></h4>
                         </div>
@@ -132,6 +143,7 @@
                 </div>
                 <button class="start">Start</button>
                 <button class="restart">Restart</button>
+                <!-- <ion-icon name="stats-chart-outline" class="stats"></ion-icon> -->
             </div>
         </div>
         <audio src="assets/beep.mp3"></audio>
