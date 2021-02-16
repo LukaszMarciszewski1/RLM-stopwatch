@@ -80,6 +80,7 @@ input::selection {
 
 .app__container {
   @include container;
+  position: relative;
   // min-width: 1000px;
   height: 100%;
   padding: 30px;
@@ -90,7 +91,6 @@ input::selection {
 .players-container {
   @include container;
   position: relative;
-  // overflow: hidden;
   width: auto;
   max-width: 450px;
   min-width: 300px;
@@ -99,9 +99,11 @@ input::selection {
   flex-direction: column;
   padding: 20px 0
 }
+
 //settings
 .settings-panel {
   width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,7 +116,19 @@ input::selection {
     margin-left: 20px
   }
 }
-
+.colose-player-container{
+  font-size: 38px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+ opacity: .8;
+}
+.colose-player-container:hover{
+  opacity: 1;
+}
 .settings {
   position: relative;
 
@@ -135,21 +149,11 @@ input::selection {
   padding: 12px 20px;
   cursor: pointer;
 }
-#reset-settings{
-  height: 40px;
-  width: 125px;
-  padding: 10px 20px;
-  background: none;
-  border: 1px solid $itemBg;
-  color: $fontColor;
-  opacity: .8;
-  @include shadowItem;
+.reset-settings{
+  @include btnToDoList;
   background-color: $loadBg;
-  border-radius: 7px;
-  cursor: pointer;
-  opacity: .8;
 }
-#reset-settings:hover{
+.reset-settings:hover{
   opacity: 1;
 }
 
@@ -160,8 +164,8 @@ input::selection {
   @include container;
   width: 370px;
   height: 250px;
-  top: 30px;
-  left: 20px;
+  top: 80px;
+  left: 60px;
   z-index: 999;
   border: 1px solid rgba(109, 109, 109, 0.4);
   padding: 20px;
@@ -173,34 +177,31 @@ input::selection {
     margin-bottom: 15px;
     opacity: .8;
     cursor: pointer;
+    font-size: 30px;
   }
   ion-icon:hover{
     opacity: 1;
   }
-}
-
-.settings-container--active {
-  display: flex;
-}
-
-.settings-element {
-  display: flex;
-  align-items: center;
-  padding:15px 10px;
-  justify-content: space-between;
-  border-top: 1px solid $itemBg;
-  border-bottom: 1px solid $itemBg;
-  color: $fontColorDark;
-
-  input {
-    background-color: $fontColor;
-    border: none;
-    font-size: 14px;
-    padding: 5px;
-    width: 120px;
-    border-radius: 3px;
+  .settings-element {
+    display: flex;
+    align-items: center;
+    padding:15px 10px;
+    justify-content: space-between;
+    border-top: 1px solid $itemBg;
+    border-bottom: 1px solid $itemBg;
+    color: $fontColorDark;
+  
+    input {
+      background-color: $fontColor;
+      border: none;
+      font-size: 14px;
+      padding: 5px;
+      width: 120px;
+      border-radius: 3px;
+    }
   }
 }
+
 
 //load file
 #file-upload-form{
@@ -453,7 +454,7 @@ input::selection {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
-  width: 570px;
+  width: 600px;
   min-width: 300px;
   margin-left: 40px;
   padding: 20px 30px;
@@ -769,17 +770,151 @@ input::selection {
   font-size: 26px;
 }
 
-// @media screen and (max-width:1500px) {
-//   #to-do-player-list{
-//    flex-direction: column;
-//    align-items: flex-start;
-//    margin: 30px 0 10px;
-//    .add-to-list{
-//      margin-left: 0;
-//      margin-top: 12px;
-//    }
-//   }
-// }
+//mobile
+.mobile-icons{
+  @include container;
+  margin-bottom: 40px;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+  padding:10px 10px 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  display: none;
+}
+
+
+@media screen and (max-width:1550px) {
+  // .app {
+  //   width: 100%;
+  //   height: 100vh;
+  //   background-color: $background;
+  //   padding: 3rem 2em;
+  //   @include flex-center;
+  // }
+  .app__container {
+    @include container;
+    // padding: 20px;
+  }
+  
+  .players-container {
+    max-width: 440px;
+  }
+  ::-webkit-file-upload-button{
+    padding:10px;
+  }
+  .counting-down-container {
+    width: auto;
+    min-width: 550px;
+    margin-left: 20px;
+    padding: 20px;
+  }
+  .control-panel {
+    width: 300px;
+    margin-left: 20px;
+  }
+}
+//flex direction column
+@media screen and (max-width:1360px) {
+    .app {
+      height: 100vh;
+    padding: 30px;
+  }
+  .app__container{
+    display: flex;
+    width: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+  }
+  .settings-panel{
+    padding: 20px 0 30px;
+  }
+  .colose-player-container{
+    display: inline;
+  }
+  .logo{
+    margin-top: 20px;
+  }
+  .counting-down-container {
+    width: 700px;
+    padding: 20px;
+    margin: 0;
+  }
+  .control-panel {
+    max-width: 450px;
+    flex-grow: 1;
+    margin-left: 20px;
+    padding: 0 0 30px;
+  }
+  .players-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 500px;
+    min-width: 500px;
+    width: 600px;
+    max-height: 660px;
+    z-index: 100;
+    display: none;
+    transform: translate(-50%, -50%);
+  }
+  .players-container--active{
+    display: flex;
+  }
+  .settings-container{
+    top: 80px;
+    left: 40%;
+    // right: -40px;
+  }
+  .mobile-icons{
+    display: flex;
+  }
+  .open-settings,
+  .mobile-player-lis,
+  .reset-settings{
+    @include settings-btn;
+    padding: 12px 20px;
+    margin: 0 5px;
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+  .open-settings-desktop,
+  .reset-settings-desktop{
+    display: none;
+  }
+  .reset-settings{
+    width: auto;
+    height: 100%;
+  }
+  .settings-container {
+    // left: -100px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // @media screen and (max-width:1330px){
 //   .app{
 //     height: auto;
@@ -828,3 +963,10 @@ input::selection {
 //      width: 100%;
 //    }
 // }
+
+.display-container{
+  display: flex;
+}
+.remove-display{
+  display: none;
+}

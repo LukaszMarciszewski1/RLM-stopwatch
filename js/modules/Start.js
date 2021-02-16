@@ -47,12 +47,13 @@ export class Start {
         this.infoPopup = document.querySelector('.info-popup')
         this.acceptPopup = document.querySelector('.accept')
         this.intervalTime = null
-        this.btnOpenSettings = document.querySelector('.open-settings')
-        this.btnCloseSettings = document.querySelector('.close-settings')
+        this.btnOpenSettings = [...document.querySelectorAll('.open-settings-st')]
+        this.btnCloseSettings = [...document.querySelectorAll('.close-settings')]
         this.btnFileLoad = document.querySelector('input[type="file"]')
         this.btnAddToList = document.querySelector('.add-to-list')
         this.btnResetList = document.querySelector('.reset-list')
-        this.btnResetSettings = document.getElementById('reset-settings')
+        this.btnResetSettings = [...document.querySelectorAll('.reset-settings')]
+        this.playersPanelMobile = document.querySelector('.players-container')
         this.end = 'GO!'
 
 
@@ -65,6 +66,8 @@ export class Start {
         this.players = new Players(this.playersList, this.containerList, this.btnFileLoad)
         this.restart = new Restart(this.btnStart, this.btnRestart)
         // this.loadList = new LoadList(this.btnFileLoad, this.playersList, this.containerList)
+
+        console.log(this.playersList)
 
         //display btn start
         this.restart.displayBtn(this.access)
@@ -125,10 +128,14 @@ export class Start {
         })
 
         //panelSettings methods
-        this.btnOpenSettings.addEventListener('click', () => this.settingsContainer.classList.add('settings-container--active'))
-        this.btnCloseSettings.addEventListener('click', () => this.settingsContainer.classList.remove('settings-container--active'))
-        this.acceptPopup.addEventListener('click', () => this.infoPopup.classList.remove('info-popup--active'))
-        this.btnResetSettings.addEventListener('click', () =>{location.reload()})
+        // this.btnOpenSettings.addEventListener('click', () => this.settingsContainer.classList.add('display-container'))
+        this.btnOpenSettings.forEach(open => open.addEventListener('click', ()=> this.settingsContainer.classList.add('display-container')))
+        
+        this.btnCloseSettings.forEach(close => close.addEventListener('click', ()=> close.parentNode.classList.remove('display-container')))
+
+        this.btnResetSettings.forEach(btn => btn.addEventListener('click', () =>location.reload()))
+        //panelSettings mobile methods
+        document.querySelector('.mobile-player-lis').addEventListener('click', () => this.playersPanelMobile.classList.add('display-container'))
     }
 
     //metods----------------->
@@ -137,6 +144,15 @@ export class Start {
         this.intervalTime = setInterval(() => {
             this.time.getTime()
             this.settings.countdownTime(this.settingTime)
+            if (this.playersList.length < 2 && this.playersList.length !== ''){
+                this.btnStart.setAttribute('disable', true)
+                console.log('disable')
+                // alert('Dodaj zawodników do listy')
+            }
+            else {
+                this.btnStart.setAttribute('enable', true)
+                console.log('enable')
+            }
         }, 1000);
 
         //setup circle interval time
@@ -195,7 +211,7 @@ export class Start {
         if (this.playersList.length >= 2 && !this.playersList.length == '') {
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
-            this.btnOpenSettings.classList.add('inactive')
+            this.btnOpenSettings.forEach(btn => btn.classList.add('inactive'))
             this.btnAddToList.classList.add('inactive')
             this.btnResetList.classList.add('inactive')
             this.btnFileLoad.setAttribute("disabled", true)
@@ -220,7 +236,7 @@ export class Start {
                     this.stopwatch.timerSpan.textContent = timeSet
                     this.stopwatch.startTimer(timeSet, timeInterval)
                 }
-                if(this.stopwatch.timerSpan.textContent == 6){
+                if(this.stopwatch.timerSpan.textContent == 7){
                     var audio = new Audio('assets/beep.mp3');
                     audio.play();
                 }

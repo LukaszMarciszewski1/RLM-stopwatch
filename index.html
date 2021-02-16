@@ -12,34 +12,34 @@
     <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
     <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.5/xlsx.mini.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <div class="app">
         <div class="app__container">
-
+            <div class="settings-container">
+                <ion-icon name="close-outline" class="close-settings"></ion-icon>
+                <div class="settings-element">
+                    <label for="start-time">godzina startu</label>
+                    <input type="datetime-local" name="datetimelocalValue" id="start-time">
+                </div>
+                <div class="settings-element">
+                    <label for="interval-time">odstęp czasowy sek.</label>
+                    <input type="number" min="1" max="999999" id="interval-time" value="10">
+                </div>
+            </div>
             <!-- //player list-->
             <div class="players-container">
+                <ion-icon name="close-outline" class="close-settings colose-player-container mobile-colose-player-container"></ion-icon>
                 <div class="settings-panel">
                     <div class="settings">
-                        <button class="open-settings">
-                            <!-- <ion-icon name="options-outline"></ion-icon> -->
+                        <button class="open-settings open-settings-st open-settings-desktop">
                             <ion-icon name="time-outline"></ion-icon>
                         </button>
-                        <div class="settings-container">
-                            <ion-icon name="close-outline" class="close-settings"></ion-icon>
-                            <div class="settings-element">
-                                <label for="start-time">godzina startu</label>
-                                <input type="datetime-local" name="datetimelocalValue" id="start-time">
-                            </div>
-                            <div class="settings-element">
-                                <label for="interval-time">odstęp czasowy sek.</label>
-                                <input type="number" min="1" max="999999" id="interval-time" value="10">
-                            </div>
-                        </div>
                     </div>
-                    <button type="reset" id="reset-settings">Resetuj</button>
+                    <button type="reset" class="reset-settings reset-settings-desktop">Resetuj</button>
                 </div>
                 <div class="forms-container">
                 <form id="file-upload-form">
@@ -120,8 +120,23 @@
             </div>
             <!-- //control panel -->
             <div class="control-panel">
-
                 <div class="logo"><img src="assets/logo.png" alt=""></div>
+            <!-- //mobile -->
+            <div class="mobile-icons">
+                <!-- //settings -->
+                <button class="open-settings open-settings-st">
+                    <!-- <ion-icon name="options-outline"></ion-icon> -->
+                    <ion-icon name="time-outline"></ion-icon>
+                </button>
+                <button class="mobile-player-lis">
+                    <ion-icon name="list-outline"></ion-icon>
+                </button>
+                <button type="reset" class="reset-settings mobile-reset-settings">
+                    <ion-icon name="refresh-outline"></ion-icon>
+                </button>
+            </div>
+            <!-- //mobile //////// -->
+
                 <div class="clock">
                     <h2></h2>
                 </div>
@@ -148,8 +163,5 @@
         </div>
         <audio src="assets/beep.mp3"></audio>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
 </body>
-
 </html>
