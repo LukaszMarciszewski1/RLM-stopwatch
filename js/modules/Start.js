@@ -144,15 +144,6 @@ export class Start {
         this.intervalTime = setInterval(() => {
             this.time.getTime()
             this.settings.countdownTime(this.settingTime)
-            if (this.playersList.length < 2 && this.playersList.length !== ''){
-                this.btnStart.setAttribute('disable', true)
-                console.log('disable')
-                // alert('Dodaj zawodników do listy')
-            }
-            else {
-                this.btnStart.setAttribute('enable', true)
-                console.log('enable')
-            }
         }, 1000);
 
         //setup circle interval time
@@ -163,10 +154,10 @@ export class Start {
 
         //setup start time
         this.containerStartTime.textContent = 'Ustaw godzinę startu';
-        this.containerStartTime.style.fontSize = '20px'
+        // this.containerStartTime.style.fontSize = '16px'
         document.getElementById('start-time').addEventListener('change', () => {
             this.containerStartTime.textContent = this.settingTime.value.slice(11) + ":00"
-            this.containerStartTime.style.fontSize = '26px'
+            this.containerStartTime.classList.add('item-status-timer--big')
         })
     }
     removePlayer() {
@@ -195,7 +186,6 @@ export class Start {
     }
 
     startRace() {
-        this.access = false
         let active = 0
         let timeSet = this.settings.count()
         let timeInterval = this.settings.count() * 1000
@@ -208,7 +198,9 @@ export class Start {
             return alert('Odstep czasowy nie może być mniejszy niż pozostały czas do startu')
         }
 
-        if (this.playersList.length >= 2 && !this.playersList.length == '') {
+        if (this.playersList.length >= 2) {
+            this.access = false
+            console.log(this.playersList.length)
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
             this.btnOpenSettings.forEach(btn => btn.classList.add('inactive'))
@@ -220,11 +212,6 @@ export class Start {
             const intTime = setInterval(() => {
                 this.time.getTime()
                 clearInterval(this.intervalTime)
-                // if(this.stopwatch.timerSpan.textContent == 6){
-                //     var audio = new Audio('../../assets/beep.mp3');
-                //     audio.play();
-                // }
-                console.log(this.stopwatch.timerSpan.textContent)
             }, 1000);
 
             const intCountdown = setInterval(() => {
@@ -247,7 +234,6 @@ export class Start {
                     this.spanCircle.style.color = 'rgb(230, 230, 230)'
                 }
                 
-                
                 this.stopwatch.showStartTxt(this.settings.canStart())
                 
             }, 1000);
@@ -267,7 +253,6 @@ export class Start {
                     clearInterval(clear)
                 }
             }, 1000);
-
         } 
         else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
     }

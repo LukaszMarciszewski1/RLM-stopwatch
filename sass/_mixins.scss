@@ -1,8 +1,8 @@
 @import "_variables";
 
 @mixin container {
-    -webkit-box-shadow: 1px 2px 9px 1px rgba(0, 0, 0, 0.45);
-    box-shadow: 1px 2px 9px 1px rgba(0, 0, 0, 0.45);
+    -webkit-box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.45);
+    box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.45);
     background-color: $containerBg;
     border-radius: 20px;
 }

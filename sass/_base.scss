@@ -82,6 +82,7 @@ input::selection {
   @include container;
   position: relative;
   // min-width: 1000px;
+  background-color: #212121;
   height: 100%;
   padding: 30px;
   display: flex;
@@ -97,7 +98,7 @@ input::selection {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20px 0
+  padding: 20px 0;
 }
 
 //settings
@@ -108,15 +109,17 @@ input::selection {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
-  padding:0 20px 20px;
+  padding: 0 20px 20px;
   -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+
   p {
     color: gray;
     margin-left: 20px
   }
 }
-.colose-player-container{
+
+.colose-player-container {
   font-size: 38px;
   position: absolute;
   right: 20px;
@@ -124,11 +127,13 @@ input::selection {
   cursor: pointer;
   z-index: 999;
   display: none;
- opacity: .8;
+  opacity: .8;
 }
-.colose-player-container:hover{
+
+.colose-player-container:hover {
   opacity: 1;
 }
+
 .settings {
   position: relative;
 
@@ -149,11 +154,13 @@ input::selection {
   padding: 12px 20px;
   cursor: pointer;
 }
-.reset-settings{
+
+.reset-settings {
   @include btnToDoList;
   background-color: $loadBg;
 }
-.reset-settings:hover{
+
+.reset-settings:hover {
   opacity: 1;
 }
 
@@ -179,18 +186,20 @@ input::selection {
     cursor: pointer;
     font-size: 30px;
   }
-  ion-icon:hover{
+
+  ion-icon:hover {
     opacity: 1;
   }
+
   .settings-element {
     display: flex;
     align-items: center;
-    padding:15px 10px;
+    padding: 15px 10px;
     justify-content: space-between;
     border-top: 1px solid $itemBg;
     border-bottom: 1px solid $itemBg;
     color: $fontColorDark;
-  
+
     input {
       background-color: $fontColor;
       border: none;
@@ -204,7 +213,7 @@ input::selection {
 
 
 //load file
-#file-upload-form{
+#file-upload-form {
   padding: 0 20px;
   width: 100%;
   display: flex;
@@ -212,15 +221,17 @@ input::selection {
   align-items: flex-end;
 }
 
-.file-upload{
+.file-upload {
   width: 50%;
 }
-.file-upload label{
+
+.file-upload label {
   font-size: 14px;
   font-weight: lighter;
   color: gray
 }
-.file-button{
+
+.file-button {
   margin-top: 10px;
   // @include container;
   background: $loadBg;
@@ -230,22 +241,25 @@ input::selection {
   border-radius: 50px;
   border: 1px solid $background;
 }
-::-webkit-file-upload-button{
+
+::-webkit-file-upload-button {
   color: $fontColor;
   background: #3a3a3a;
-  padding:10px 20px;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
   -webkit-box-shadow: 2px 0px 2px -1px rgba(0, 0, 0, 0.8);
   box-shadow: 2px 0px 2px -1px rgba(0, 0, 0, 0.8);
-  border-radius:0 50px 50px 0;
+  border-radius: 0 50px 50px 0;
   outline: none;
   opacity: 1;
   color: $fontColorDark;
 }
-::-webkit-file-upload-button:hover{
+
+::-webkit-file-upload-button:hover {
   opacity: .8;
 }
+
 .reset-list {
   @include btnToDoList;
 }
@@ -258,9 +272,11 @@ input::selection {
   justify-content: space-between;
   padding: 0 20px;
   margin: 25px 0 10px;
- .form-inputs{
-   display: flex;
- }
+
+  .form-inputs {
+    display: flex;
+  }
+
   label {
     font-size: 14px;
     font-weight: lighter;
@@ -288,11 +304,11 @@ input::selection {
     max-width: 60px;
   }
 
-  .add-to-list{
+  .add-to-list {
     @include btnToDoList;
   }
 
-  .add-to-list:hover{
+  .add-to-list:hover {
     opacity: 1;
   }
 }
@@ -333,7 +349,7 @@ input::selection {
 .list-container {
   overflow-y: scroll;
   margin: 0 20px;
-  padding:5px 20px;
+  padding: 5px 20px;
   border-radius: 7px;
   max-height: 470px;
   min-height: 60px;
@@ -353,13 +369,14 @@ input::selection {
 }
 
 .player-item {
-  padding:10px;
+  padding: 10px;
   width: 100%;
   height: 65px;
   display: flex;
   align-items: center;
   color: $fontColorDark;
   border-bottom: 1px solid $border;
+
   h5 {
     font-weight: lighter;
     font-size: .9rem;
@@ -388,7 +405,8 @@ input::selection {
     cursor: pointer;
   }
 }
-.player-item:last-child{
+
+.player-item:last-child {
   border-bottom: none;
 }
 
@@ -454,7 +472,7 @@ input::selection {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
-  width: 600px;
+  width: 650px;
   min-width: 300px;
   margin-left: 40px;
   padding: 20px 30px;
@@ -465,6 +483,7 @@ input::selection {
   @include flex-center;
   @include shadowItem;
   padding: 40px;
+  background-color: $containerBg;
 }
 
 .circular {
@@ -516,6 +535,7 @@ input::selection {
   margin-top: 20px;
   width: 100%;
   border: 1px solid $itemDark;
+  background-color: $containerBg;
 }
 
 .title-name-container {
@@ -523,6 +543,7 @@ input::selection {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  padding: 0 0 10px;
 
   ion-icon {
     color: gray;
@@ -543,7 +564,7 @@ input::selection {
   box-shadow: inset 0px 0px 15px -4px #000000;
   color: grey;
   min-height: 70px;
-  margin-top: 15px;
+  // margin-top: 15px;
   overflow-x: hidden;
   @include flex-center;
 }
@@ -643,7 +664,7 @@ input::selection {
 }
 
 .logo {
-  width: 200px;
+  width: 180px;
   margin-bottom: 30px;
 
   img {
@@ -681,17 +702,16 @@ input::selection {
   width: 100%;
   @include shadowItem;
   border: 1px solid $itemDark;
+  background-color: $containerBg;
   margin-top: 20px;
   border-radius: 7px;
-
-  .title-status-timer {
-    font-size: 14px;
-    color: $fontColorDarkest;
-    line-height: 1.2rem;
-    ;
-  }
 }
-
+.title-status-timer {
+  font-size: 14px;
+  color: $fontColorDarkest;
+  line-height: 1.2rem;
+  padding: 0 5px 10px;
+}
 .item-status-timer {
   -webkit-box-shadow: inset 0px 0px 8px -2px #000000;
   box-shadow: inset 0px 0px 8px -2px #000000;
@@ -699,11 +719,15 @@ input::selection {
   width: 100%;
   border: 1px solid $itemDark;
   min-height: 65px;
-  margin-top: 10px;
   margin-right: 15px;
+  font-size: 17px;
+}
+.item-status-timer--big{
   font-size: 26px;
 }
-
+.countdown-time{
+  font-size: 26px;
+}
 .select-time {
   color: orange;
   font-weight: 800;
@@ -755,7 +779,7 @@ input::selection {
   opacity: .8;
 }
 
-.stats{
+.stats {
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -771,12 +795,10 @@ input::selection {
 }
 
 //mobile
-.mobile-icons{
-  @include container;
+.mobile-icons {
+  // @include container;
   margin-bottom: 40px;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
-  padding:10px 10px 15px;
+  padding: 10px 0 20px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -786,70 +808,84 @@ input::selection {
 
 
 @media screen and (max-width:1550px) {
-  // .app {
-  //   width: 100%;
-  //   height: 100vh;
-  //   background-color: $background;
-  //   padding: 3rem 2em;
-  //   @include flex-center;
-  // }
-  .app__container {
-    @include container;
-    // padding: 20px;
-  }
-  
   .players-container {
     max-width: 440px;
   }
-  ::-webkit-file-upload-button{
-    padding:10px;
+
+  ::-webkit-file-upload-button {
+    padding: 10px;
   }
+
   .counting-down-container {
-    width: auto;
-    min-width: 550px;
     margin-left: 20px;
     padding: 20px;
   }
+
   .control-panel {
     width: 300px;
     margin-left: 20px;
   }
 }
+
 //flex direction column
-@media screen and (max-width:1360px) {
-    .app {
-      height: 100vh;
-    padding: 30px;
+@media screen and (max-width:1470px) {
+  .app {
+    height: 100vh;
+    padding: 30px 20px;
   }
-  .app__container{
+
+  .app__container {
     display: flex;
     width: auto;
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
-    // justify-content: flex-start;
-    // align-items: flex-start;
+    padding:30px;
   }
-  .settings-panel{
+
+  .circular-container {
+    padding: 40px;
+  }
+
+  .status-container {
+    padding: 10px 20px 15px;
+  }
+
+  .settings-panel {
     padding: 20px 0 30px;
   }
-  .colose-player-container{
+
+  .colose-player-container {
     display: inline;
   }
-  .logo{
-    margin-top: 20px;
+
+  .logo {
+    // margin-top: 20px;
+    margin-bottom: 10px;
   }
+
+  .clock {
+    margin-bottom: 10px;
+  }
+
+  .start,
+  .restart {
+    margin: 30px;
+  }
+
   .counting-down-container {
     width: 700px;
     padding: 20px;
     margin: 0;
   }
+
   .control-panel {
-    max-width: 450px;
-    flex-grow: 1;
-    margin-left: 20px;
-    padding: 0 0 30px;
+    // max-width: 380px;
+    height: 100%;
+    margin-left: 30px;
+    padding: 0;
   }
+
   .players-container {
     position: absolute;
     left: 50%;
@@ -862,111 +898,218 @@ input::selection {
     display: none;
     transform: translate(-50%, -50%);
   }
-  .players-container--active{
+
+  .players-container--active {
     display: flex;
   }
-  .settings-container{
+
+  .settings-container {
     top: 80px;
     left: 40%;
-    // right: -40px;
   }
-  .mobile-icons{
+
+  .mobile-icons {
     display: flex;
+    margin-bottom: 20px
   }
+
   .open-settings,
   .mobile-player-lis,
-  .reset-settings{
+  .reset-settings {
     @include settings-btn;
     padding: 12px 20px;
     margin: 0 5px;
+
     ion-icon {
       font-size: 28px;
     }
   }
+
   .open-settings-desktop,
-  .reset-settings-desktop{
+  .reset-settings-desktop {
     display: none;
   }
-  .reset-settings{
+
+  .reset-settings {
     width: auto;
     height: 100%;
   }
-  .settings-container {
-    // left: -100px;
+}
+@media screen and (max-width:1150px) {
+  .app__container{
+    padding:20px;
   }
 }
 
+@media screen and (max-width:1024px) {
+  .control-panel {
+    margin-left: 20px;
+  }
+}
 
+@media screen and (max-width:930px) {
+  .app {
+    height: 100vh;
+    min-height: 100vh;
+    padding: 0;
+    background-color: #212121;
+  }
 
+  .app__container {
+    flex-direction: column-reverse;
+    height: 100%;
+    padding: 20px 20px 40px;
+    border-radius: 0;
+    box-shadow: none;
+  }
 
+  .control-panel {
+    flex-direction: row;
+    align-items: flex-end;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 80px 0 20px;
+    position: static;
+  }
 
+  .counting-down-container {
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0;
+    justify-content: flex-start;
+    height: auto;
+    margin-bottom: 100px;
+    width: 700px;
+  }
 
+  .circular-container {
+    padding: 20px;
+  }
 
+  .circular {
+    width: 230px;
+    height: 230px;
+  }
 
+  .progress {
+    width: 230px;
+    height: 230px;
+  }
 
+  .status-container {
+    padding: 15px;
+  }
 
+  .player-status {
+    min-height: 60px;
+  }
 
+  .mobile-icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 0;
+    padding: 20px 15px;
+    max-width: 300px;
+    box-shadow: none;
+  }
 
+  .start,
+  .restart {
+    position: absolute;
+    margin: 40px 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    // display: none
+  }
 
+  .logo {
+    // margin-top: 20px;
+    margin-bottom: 10px;
+    display: none;
+  }
 
+  .clock {
+    width: auto;
+    padding: 26px;
+    border: 1px solid $border;
+    border-radius: 10px;
+    margin: 0;
+    text-align: center;
+    h2 {
+      font-size: 30px;
+      user-select: none;
+    }
+  }
 
+  .status-timer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 
+  .status-timer-container {
+    padding: 2px;
+    margin-top: 0;
+  }
+  .title-status-timer {
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+  .status-timer-container {
+    margin-left: 20px;
+  }
 
+  .item-status-timer {
+    min-height: 40px;
+    margin-top: 0;
+    padding: 6px 0;
+  }
+}
 
+@media screen and (max-width:750px) {
+  .counting-down-container {
+    width: 600px;
+  }
+  .status-timer-container {
+    margin-left: 15px;
+  }
+  .item-status-timer{
+    font-size: 12px;
+  }
+  .title-status-timer {
+    padding:5px;
+  }
+  .clock {
+    padding: 18px;
+  }
+}
 
+@media screen and (max-width:648px) {
+  .app__container {
+   width: 100%;
+  }
+  .counting-down-container {
+    width: 100%;
+  }
+  .control-panel{
+    flex-direction: column;
+    margin-top: 140px;
+  }
+  .clock{
+    align-self: flex-start;
+    margin-bottom: 15px;
+  }
+  .status-timer-container:first-child {
+    margin-left: 0;
+  }
+}
 
-// @media screen and (max-width:1330px){
-//   .app{
-//     height: auto;
-//   }
-//   .app__container{
-//     flex-direction: column-reverse;
-//     align-items: flex-start;
-//     position: relative;
-//     width: auto;
-//   }
-//   .control-panel{
-//     position: absolute;
-//     right: 30px;
-//     top: 30px;
-//     height: auto;
-//   }
-//   .players-container {
-//     @include container;
-//     max-width: 100%;
-//     min-width: 300px;
-//     width: 100%;
-//     height: auto;
-//     display: flex;
-//     flex-direction: column;
-//     padding: 30px 20px;
-//     margin-top: 30px;
-//   }
-//   .list-container {
-//     overflow-y: scroll;
-//     padding: 20px;
-//     border-radius: 7px;
-//     max-height: 470px;
-//     width: 100%;
-//     -webkit-box-shadow: inset 0px 0px 6px -1px rgba(0, 0, 0, 0.7);
-//     box-shadow: inset 0px 0px 6px -1px rgba(0, 0, 0, 0.7);
-//   }
-//   #to-do-player-list{
-//     flex-direction:row;
-//     align-items: flex-end;
-//     margin: 30px 0 10px;
-//     .add-to-list{
-//       margin-left: 10px;
-//     }
-//    }
-//    .player-item h5{
-//      width: 100%;
-//    }
-// }
-
-.display-container{
+.display-container {
   display: flex;
 }
-.remove-display{
+
+.remove-display {
   display: none;
 }
