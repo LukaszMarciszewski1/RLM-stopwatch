@@ -81,7 +81,6 @@ input::selection {
 .app__container {
   @include container;
   position: relative;
-  // min-width: 1000px;
   background-color: #212121;
   height: 100%;
   padding: 30px;
@@ -563,7 +562,7 @@ input::selection {
   -webkit-box-shadow: inset 0px 0px 15px -4px #000000;
   box-shadow: inset 0px 0px 15px -4px #000000;
   color: grey;
-  min-height: 70px;
+  height: 70px;
   // margin-top: 15px;
   overflow-x: hidden;
   @include flex-center;
@@ -713,14 +712,15 @@ input::selection {
   padding: 0 5px 10px;
 }
 .item-status-timer {
-  -webkit-box-shadow: inset 0px 0px 8px -2px #000000;
-  box-shadow: inset 0px 0px 8px -2px #000000;
+  -webkit-box-shadow: inset 0px 0px 6px -2px #000000;
+  box-shadow: inset 0px 0px 6px -2px #000000;
   @include flex-center;
   width: 100%;
   border: 1px solid $itemDark;
   min-height: 65px;
   margin-right: 15px;
   font-size: 17px;
+  background-color: $bgContent;
 }
 .item-status-timer--big{
   font-size: 26px;
@@ -739,6 +739,7 @@ input::selection {
   @include btnRacing;
   display: block;
   margin: 50px auto;
+  font-size: 20px;
 }
 
 .start-disable {
@@ -777,21 +778,6 @@ input::selection {
   background-color: $itemBg;
   color: white;
   opacity: .8;
-}
-
-.stats {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  @include container;
-  opacity: .8;
-  border-radius: 12px;
-  border: 1px solid rgb(65, 65, 65);
-  color: $fontColor;
-  background-color: transparent;
-  padding: 15px;
-  cursor: pointer;
-  font-size: 26px;
 }
 
 //mobile
@@ -839,7 +825,6 @@ input::selection {
     width: auto;
     justify-content: space-evenly;
     align-items: center;
-    overflow: hidden;
     padding:30px;
   }
 
@@ -919,7 +904,6 @@ input::selection {
     @include settings-btn;
     padding: 12px 20px;
     margin: 0 5px;
-
     ion-icon {
       font-size: 28px;
     }
@@ -949,7 +933,7 @@ input::selection {
 
 @media screen and (max-width:930px) {
   .app {
-    height: 100vh;
+    height: auto;
     min-height: 100vh;
     padding: 0;
     background-color: #212121;
@@ -1002,7 +986,7 @@ input::selection {
   }
 
   .player-status {
-    min-height: 60px;
+    height: 60px;
   }
 
   .mobile-icons {
@@ -1089,23 +1073,135 @@ input::selection {
 @media screen and (max-width:648px) {
   .app__container {
    width: 100%;
+   padding: 20px;
+   height: auto;
   }
   .counting-down-container {
     width: 100%;
   }
+  .status-container {
+    padding: 10px;
+  }
+  .player-status {
+    height: 50px;
+    padding: 5px 10px;
+  }
   .control-panel{
     flex-direction: column;
-    margin-top: 140px;
+    margin-top: 100px;
   }
   .clock{
-    align-self: flex-start;
+    align-self: flex-end;
     margin-bottom: 15px;
+    padding: 12px;
   }
   .status-timer-container:first-child {
     margin-left: 0;
   }
+  .item-status-timer--big{
+    font-size: 20px;
+  }
+  .countdown-time{
+    font-size: 20px;
+  }
 }
 
+@media screen and (max-width:420px) {
+  .title-status-timer {
+    font-size: 11px;
+    padding: 0px 3px;
+  }
+  .item-status-timer {
+    min-height: 30px;
+    height: 30px;
+    padding: 3px;
+    font-size: 11px;
+    border-radius: 5px;
+  }
+  .counting-down-container {
+    margin-bottom: 70px;
+  }
+  .circular-container {
+    padding: 12px;
+  }
+  .circular {
+    width: 140px;
+    height: 140px;
+    border: 8px solid gray;
+    .span-start {
+      font-size: 44px;
+    }
+  
+    .span-start--active {
+      font-size: 32px;
+    }
+  }
+  .progress {
+    width: 140px;
+    height: 140px;
+  }
+  .status-container {
+    margin-top: 10px;
+    padding: 5px;
+  }
+  .player-status {
+    height: 35px;
+    padding: 3px 7px;
+    h4{
+    font-size: 16px;
+    }
+  }
+  .title-name-container {
+    padding: 0 0 4px;
+    ion-icon {
+      color: gray;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+  }
+  .title-name {
+    font-size: 14px;
+  }
+  .mobile-icons {
+    max-width: 220px;
+  }
+  .open-settings,
+  .mobile-player-lis,
+  .reset-settings {
+    @include settings-btn;
+    padding: 10px 15px;
+    margin: 0;
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+  .control-panel{
+    margin: 70px 0 10px;
+  }
+  .clock{
+    padding: 10px;
+    h2{
+      font-size: 22px;
+    }
+  }
+
+.start,
+.restart {
+  width: 120px;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
+// .start-disable {
+//   display: none;
+// }
+
+// .restart-disable {
+//   display: none;
+// }
+}
+
+//display elements js
 .display-container {
   display: flex;
 }

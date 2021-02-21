@@ -133,7 +133,10 @@ export class Start {
         
         this.btnCloseSettings.forEach(close => close.addEventListener('click', ()=> close.parentNode.classList.remove('display-container')))
 
-        this.btnResetSettings.forEach(btn => btn.addEventListener('click', () =>location.reload()))
+        this.btnResetSettings.forEach(btn => btn.addEventListener('click', () =>{
+            alert("Czy chcesz zresetować ustawienia ?");
+            location.reload()
+        }))
         //panelSettings mobile methods
         document.querySelector('.mobile-player-lis').addEventListener('click', () => this.playersPanelMobile.classList.add('display-container'))
     }
