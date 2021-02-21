@@ -1,12 +1,12 @@
 import {
-    Test
-} from './test.js';
+    PlayerDataLoadFile
+} from './PlayerDataLoadFile.js';
 export class Players {
     constructor(playersList, containerList, inputLoad) {
         this.playersList = playersList
         this.containerList = containerList
         this.inputLoad = inputLoad
-        this.test = null
+        this.PlayerDataLoadFile = null
     }
 
     displayPlayer() {
@@ -33,12 +33,12 @@ export class Players {
                    `;
                     const name = row[0]
                     const number = row[1].toString()  
-                    this.test = new Test(name, number)
+                    this.PlayerDataLoadFile = new PlayerDataLoadFile(name, number)
     
                     playersList.push(rows)
                     this.renderList()
                     containerList.appendChild(rows)
-                    this.storeAddPlayer(this.test)
+                    this.storeAddPlayer(this.PlayerDataLoadFile)
                 }
                  else{
                      return alert('dołącz plik')

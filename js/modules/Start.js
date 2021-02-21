@@ -8,15 +8,8 @@ import {
     Stopwatch
 } from './Stopwatch.js';
 import {
-    Active
-} from './Active.js';
-import {
     Settings
 } from './Settings.js';
-// import {
-//     PanelSettings
-// } from './PanelSettings.js';
-
 import {
     Players
 } from './Players.js';
@@ -26,9 +19,6 @@ import {
 import {
     Restart
 } from './Restart.js';
-import {
-    LoadList
-} from './loadList.js';
 
 export class Start {
     constructor() {
@@ -56,67 +46,63 @@ export class Start {
         this.playersPanelMobile = document.querySelector('.players-container')
         this.end = 'GO!'
 
-
-        this.active = new Active()
         this.settings = new Settings("interval-time", this.countdownTime)
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle)
-        // this.panelSettings = new PanelSettings(this.settingsContainer, this.infoPopup)
         this.players = new Players(this.playersList, this.containerList, this.btnFileLoad)
         this.restart = new Restart(this.btnStart, this.btnRestart)
-        // this.loadList = new LoadList(this.btnFileLoad, this.playersList, this.containerList)
 
-        console.log(this.playersList)
+        //render setup
+        this.render()
 
         //display btn start
         this.restart.displayBtn(this.access)
 
         //upgrade players
         this.players.displayPlayer()
-        // this.players.loadPlayerList.display()
 
         // load players list
-        this.btnFileLoad.addEventListener('change', (e) => {
-            this.players.loadPlayerList()
-        })
+        this.btnFileLoad.addEventListener('change', () => this.players.loadPlayerList())
 
         // Add player to list
-        document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name-player').value
-            const number = document.getElementById('nr-player').value
+        // document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     const name = document.getElementById('name-player').value
+        //     const number = document.getElementById('nr-player').value
 
-            if (name === "" || number === "") return alert('uzupełnij pole');
-            if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
-            if (this.access) {
-                const player = new PlayerData(name, number)
-                this.players.addPlayerToList(player)
-                this.players.storeAddPlayer(player)
-            }
-            if (!this.access) {
-                console.log(this.access)
-                return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
-            }
-        })
+        //     if (name === "" || number === "") return alert('uzupełnij pole');
+        //     if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
+        //     if (this.access) {
+        //         const player = new PlayerData(name, number)
+        //         this.players.addPlayerToList(player)
+        //         this.players.storeAddPlayer(player)
+        //     }
+        //     if (!this.access) {
+        //         console.log(this.access)
+        //         return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
+        //     }
+        // })
+
+        // Add player to list
+        document.querySelector('#to-do-player-list').addEventListener('submit', this.addPlayers.bind(this))
+
+        //clear list player
+        // document.querySelector('#file-upload-form').addEventListener('reset', () => {
+        //     if (this.access && this.playersList.length > 0) {
+        //         if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
+        //             localStorage.clear()
+        //             this.playersList.splice(0);
+        //             this.containerList.textContent = ''
+        //         }
+        //     } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
+        // })
+
+        //clear list player
+        document.querySelector('#file-upload-form').addEventListener('reset', this.clearListPlayers.bind(this))
 
         // remove player from list
         this.removePlayer()
-
-        //clear list player
-        document.querySelector('#file-upload-form').addEventListener('reset', () => {
-            if (this.access && this.playersList.length > 0) {
-                if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
-                    localStorage.clear()
-                    this.playersList.splice(0);
-                    this.containerList.textContent = ''
-                }
-            } 
-            else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
-        })
-
-        //render setup
-        this.render()
 
         //Start race
         this.btnStart.addEventListener('click', this.startRace.bind(this))
@@ -127,13 +113,12 @@ export class Start {
             location.reload()
         })
 
-        //panelSettings methods
         // this.btnOpenSettings.addEventListener('click', () => this.settingsContainer.classList.add('display-container'))
-        this.btnOpenSettings.forEach(open => open.addEventListener('click', ()=> this.settingsContainer.classList.add('display-container')))
-        
-        this.btnCloseSettings.forEach(close => close.addEventListener('click', ()=> close.parentNode.classList.remove('display-container')))
+        this.btnOpenSettings.forEach(open => open.addEventListener('click', () => this.settingsContainer.classList.add('display-container')))
 
-        this.btnResetSettings.forEach(btn => btn.addEventListener('click', () =>{
+        this.btnCloseSettings.forEach(close => close.addEventListener('click', () => close.parentNode.classList.remove('display-container')))
+
+        this.btnResetSettings.forEach(btn => btn.addEventListener('click', () => {
             alert("Czy chcesz zresetować ustawienia ?");
             location.reload()
         }))
@@ -157,15 +142,42 @@ export class Start {
 
         //setup start time
         this.containerStartTime.textContent = 'Ustaw godzinę startu';
-        // this.containerStartTime.style.fontSize = '16px'
         document.getElementById('start-time').addEventListener('change', () => {
             this.containerStartTime.textContent = this.settingTime.value.slice(11) + ":00"
             this.containerStartTime.classList.add('item-status-timer--big')
         })
     }
+
+    addPlayers(e) {
+        e.preventDefault();
+        const name = document.getElementById('name-player').value
+        const number = document.getElementById('nr-player').value
+
+        if (name === "" || number === "") return alert('uzupełnij pole');
+        if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
+        if (this.access) {
+            const player = new PlayerData(name, number)
+            this.players.addPlayerToList(player)
+            this.players.storeAddPlayer(player)
+        }
+        if (!this.access) {
+            console.log(this.access)
+            return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
+        }
+    }
+
+    clearListPlayers() {
+        if (this.access && this.playersList.length > 0) {
+            if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
+                localStorage.clear()
+                this.playersList.splice(0);
+                this.containerList.textContent = ''
+            }
+        } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
+    }
+
     removePlayer() {
         this.containerList.addEventListener('click', (e) => {
-            console.log('okk')
             if (this.access) {
                 this.players.deletePlayer(e.target)
                 this.players.storeRremovePlayer(e.target)
@@ -226,19 +238,18 @@ export class Start {
                     this.stopwatch.timerSpan.textContent = timeSet
                     this.stopwatch.startTimer(timeSet, timeInterval)
                 }
-                if(this.stopwatch.timerSpan.textContent == 7){
+                if (this.stopwatch.timerSpan.textContent == 7) {
                     var audio = new Audio('assets/beep.mp3');
                     audio.play();
                 }
-                if(this.stopwatch.timerSpan.textContent <= 6){
+                if (this.stopwatch.timerSpan.textContent <= 6) {
                     this.spanCircle.style.color = '#00d9f6'
-                }
-                else{
+                } else {
                     this.spanCircle.style.color = 'rgb(230, 230, 230)'
                 }
-                
+
                 this.stopwatch.showStartTxt(this.settings.canStart())
-                
+
             }, 1000);
 
             const int = setInterval(() => {
@@ -256,8 +267,7 @@ export class Start {
                     clearInterval(clear)
                 }
             }, 1000);
-        } 
-        else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
+        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
     }
 
 }

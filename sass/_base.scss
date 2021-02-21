@@ -79,9 +79,9 @@ input::selection {
 }
 
 .app__container {
-  @include container;
+  @include shadowItem;
   position: relative;
-  background-color: #212121;
+  background-color: $bgContent;
   height: 100%;
   padding: 30px;
   display: flex;
@@ -89,10 +89,11 @@ input::selection {
 }
 
 .players-container {
-  @include container;
+  @include shadowItem;
+  background-color: $bgContent;
   position: relative;
   width: auto;
-  max-width: 450px;
+  max-width: 460px;
   min-width: 300px;
   height: 100%;
   display: flex;
@@ -111,17 +112,15 @@ input::selection {
   padding: 0 20px 20px;
   -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
-
   p {
     color: gray;
     margin-left: 20px
   }
 }
-
 .colose-player-container {
   font-size: 38px;
   position: absolute;
-  right: 20px;
+  left: 20px;
   top: 20px;
   cursor: pointer;
   z-index: 999;
@@ -167,17 +166,16 @@ input::selection {
   position: absolute;
   display: none;
   flex-direction: column;
-  @include container;
   width: 370px;
   height: 250px;
   top: 80px;
   left: 60px;
   z-index: 999;
-  border: 1px solid rgba(109, 109, 109, 0.4);
+  @include container;
   padding: 20px;
 
   ion-icon {
-    align-self: flex-end;
+    align-self: flex-start;
     padding: 5px;
     border-radius: 50%;
     margin-bottom: 15px;
@@ -315,14 +313,13 @@ input::selection {
 //description list player
 .list__item-desc {
   display: flex;
-  padding: 20px 20px;
+  padding: 20px 50px;
   width: 100%;
   color: $itemBg;
 
   .name-player-desc {
     @include players-desc;
-    width: 180px;
-    margin-left: 30px;
+    width: 187.9px;
   }
 
   .name-player-desc,
@@ -466,8 +463,9 @@ input::selection {
 //counting-down-container
 
 .counting-down-container {
-  @include container;
+  // @include container;
   @include flex-center;
+  @include shadowItem;
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
@@ -559,8 +557,6 @@ input::selection {
 
 .player-status {
   @include txt-place;
-  -webkit-box-shadow: inset 0px 0px 15px -4px #000000;
-  box-shadow: inset 0px 0px 15px -4px #000000;
   color: grey;
   height: 70px;
   // margin-top: 15px;
@@ -664,10 +660,13 @@ input::selection {
 
 .logo {
   width: 180px;
+  max-width: 180px;
+  max-height: 80px;
   margin-bottom: 30px;
 
   img {
     width: 100%;
+    object-fit: cover
   }
 }
 
@@ -705,29 +704,35 @@ input::selection {
   margin-top: 20px;
   border-radius: 7px;
 }
+
 .title-status-timer {
   font-size: 14px;
   color: $fontColorDarkest;
   line-height: 1.2rem;
   padding: 0 5px 10px;
 }
+
 .item-status-timer {
   -webkit-box-shadow: inset 0px 0px 6px -2px #000000;
   box-shadow: inset 0px 0px 6px -2px #000000;
   @include flex-center;
   width: 100%;
   border: 1px solid $itemDark;
+  border-radius: 5px;
   min-height: 65px;
   margin-right: 15px;
   font-size: 17px;
   background-color: $bgContent;
 }
-.item-status-timer--big{
+
+.item-status-timer--big {
   font-size: 26px;
 }
-.countdown-time{
+
+.countdown-time {
   font-size: 26px;
 }
+
 .select-time {
   color: orange;
   font-weight: 800;
@@ -782,7 +787,6 @@ input::selection {
 
 //mobile
 .mobile-icons {
-  // @include container;
   margin-bottom: 40px;
   padding: 10px 0 20px;
   width: 100%;
@@ -793,7 +797,7 @@ input::selection {
 }
 
 
-@media screen and (max-width:1550px) {
+@media screen and (max-width:1600px) {
   .players-container {
     max-width: 440px;
   }
@@ -814,7 +818,7 @@ input::selection {
 }
 
 //flex direction column
-@media screen and (max-width:1470px) {
+@media screen and (max-width:1540px) {
   .app {
     height: 100vh;
     padding: 30px 20px;
@@ -825,7 +829,7 @@ input::selection {
     width: auto;
     justify-content: space-evenly;
     align-items: center;
-    padding:30px;
+    padding:40px;
   }
 
   .circular-container {
@@ -845,10 +849,8 @@ input::selection {
   }
 
   .logo {
-    // margin-top: 20px;
     margin-bottom: 10px;
   }
-
   .clock {
     margin-bottom: 10px;
   }
@@ -859,13 +861,12 @@ input::selection {
   }
 
   .counting-down-container {
-    width: 700px;
+    width: 750px;
     padding: 20px;
     margin: 0;
   }
 
   .control-panel {
-    // max-width: 380px;
     height: 100%;
     margin-left: 30px;
     padding: 0;
@@ -874,30 +875,26 @@ input::selection {
   .players-container {
     position: absolute;
     left: 50%;
-    top: 50%;
     max-width: 500px;
     min-width: 500px;
     width: 600px;
     max-height: 660px;
     z-index: 100;
     display: none;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
   }
 
   .players-container--active {
     display: flex;
   }
-
   .settings-container {
     top: 80px;
     left: 40%;
   }
-
   .mobile-icons {
     display: flex;
     margin-bottom: 20px
   }
-
   .open-settings,
   .mobile-player-lis,
   .reset-settings {
@@ -908,30 +905,47 @@ input::selection {
       font-size: 28px;
     }
   }
-
   .open-settings-desktop,
   .reset-settings-desktop {
     display: none;
   }
-
   .reset-settings {
     width: auto;
     height: 100%;
   }
-}
-@media screen and (max-width:1150px) {
-  .app__container{
-    padding:20px;
+  .list__item-desc {
+    .name-player-desc {
+      width: 217.73px;
+    }
+    .number-player-desc{
+      min-width: 60px;
+    }
   }
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1200px) {
+  .app__container {
+    padding: 20px;
+  }
   .control-panel {
     margin-left: 20px;
+    width: 280px;
+  }
+  .counting-down-container {
+    width: 650px;
   }
 }
 
-@media screen and (max-width:930px) {
+@media screen and (max-width:1050px) {
+  .counting-down-container {
+    width: 600px;
+  }
+  .control-panel {
+    width: 260px;
+  }
+}
+
+@media screen and (max-width:950px) {
   .app {
     height: auto;
     min-height: 100vh;
@@ -1006,13 +1020,14 @@ input::selection {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    // display: none
   }
 
   .logo {
-    // margin-top: 20px;
-    margin-bottom: 10px;
-    display: none;
+    max-width: 100px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    // display: none;
   }
 
   .clock {
@@ -1022,6 +1037,7 @@ input::selection {
     border-radius: 10px;
     margin: 0;
     text-align: center;
+
     h2 {
       font-size: 30px;
       user-select: none;
@@ -1037,10 +1053,12 @@ input::selection {
     padding: 2px;
     margin-top: 0;
   }
+
   .title-status-timer {
     font-size: 12px;
     padding: 10px 5px;
   }
+
   .status-timer-container {
     margin-left: 20px;
   }
@@ -1056,15 +1074,19 @@ input::selection {
   .counting-down-container {
     width: 600px;
   }
+
   .status-timer-container {
     margin-left: 15px;
   }
-  .item-status-timer{
+
+  .item-status-timer {
     font-size: 12px;
   }
+
   .title-status-timer {
-    padding:5px;
+    padding: 5px;
   }
+
   .clock {
     padding: 18px;
   }
@@ -1072,37 +1094,129 @@ input::selection {
 
 @media screen and (max-width:648px) {
   .app__container {
-   width: 100%;
-   padding: 20px;
-   height: auto;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    height: auto;
   }
+
   .counting-down-container {
     width: 100%;
   }
+
   .status-container {
     padding: 10px;
   }
+
   .player-status {
     height: 50px;
     padding: 5px 10px;
   }
-  .control-panel{
+
+  .control-panel {
     flex-direction: column;
     margin-top: 100px;
   }
-  .clock{
+
+  .clock {
     align-self: flex-end;
     margin-bottom: 15px;
     padding: 12px;
   }
+
   .status-timer-container:first-child {
     margin-left: 0;
   }
-  .item-status-timer--big{
+
+  .item-status-timer--big {
     font-size: 20px;
   }
-  .countdown-time{
+
+  .countdown-time {
     font-size: 20px;
+  }
+}
+@media screen and (max-width:548px) {
+  .players-container {
+    max-width: 400px;
+    min-width: 300px;
+    width: 400px;
+    top: 100px;
+    max-height: 600px;
+    z-index: 100;
+    display: none;
+    transform: translateX(-50%);
+  }
+  .settings-panel{
+    margin-bottom: 20px;
+    padding: 15px 20px;
+  }
+  .colose-player-container {
+    left: 10px;
+    top: 5px;
+  }
+  #to-do-player-list {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px 0 0;
+    label {
+      font-size: 12px;
+    }
+    .add-to-list {
+     margin-left: 0;
+     margin-top: 10px;
+    }
+  }
+  #file-upload-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .file-upload {
+    width: 100%;
+  }
+  .file-upload label {
+    font-size: 12px;
+  }
+  .reset-list {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  .list__item-desc {
+    margin-top: 10px;
+    padding: 10px 25px;
+    font-size: 14px;
+    .name-player-desc {
+      width: 133.09px;
+    }
+    .number-player-desc{
+      min-width: 50px;
+    }
+  }
+  .player-item {
+    height: 60px;
+    padding: 10px 5px;
+    h5 {
+      font-size: .8rem;
+    }
+    p {
+      @include players-desc;
+      min-width: 50px;
+      font-size: .8rem;
+    }
+    ion-icon {
+      padding: 5px 5px 5px 15px;
+      font-size: 30px;
+    }
+  }
+  .lamp {
+    &::before {
+      width: 12px;
+      height: 12px;
+    }
+    &::after {
+      width: 22px;
+      height: 22px;
+    }
   }
 }
 
@@ -1111,57 +1225,70 @@ input::selection {
     font-size: 11px;
     padding: 0px 3px;
   }
+
   .item-status-timer {
     min-height: 30px;
     height: 30px;
-    padding: 3px;
+    padding: 4px;
     font-size: 11px;
     border-radius: 5px;
   }
+
   .counting-down-container {
     margin-bottom: 70px;
   }
+
   .circular-container {
     padding: 12px;
   }
+
   .circular {
     width: 140px;
     height: 140px;
     border: 8px solid gray;
+
     .span-start {
       font-size: 44px;
     }
-  
+
     .span-start--active {
       font-size: 32px;
     }
   }
+
   .progress {
     width: 140px;
     height: 140px;
   }
+
   .status-container {
     margin-top: 10px;
     padding: 5px;
   }
+
   .player-status {
     height: 35px;
     padding: 3px 7px;
-    h4{
-    font-size: 16px;
+
+    h4 {
+      font-size: 16px;
     }
   }
+
   .title-name-container {
-    padding: 0 0 4px;
+    padding: 0 4px 4px;
+
     ion-icon {
       color: gray;
       font-size: 14px;
       margin-right: 10px;
     }
   }
+
   .title-name {
-    font-size: 14px;
+    font-size: 12px;
   }
+
   .mobile-icons {
     max-width: 220px;
   }
@@ -1171,35 +1298,59 @@ input::selection {
     @include settings-btn;
     padding: 10px 15px;
     margin: 0;
+
     ion-icon {
       font-size: 24px;
     }
   }
-  .control-panel{
-    margin: 70px 0 10px;
+  .control-panel {
+    margin: 65px 0 10px;
   }
-  .clock{
+  .clock {
     padding: 10px;
-    h2{
+
+    h2 {
       font-size: 22px;
     }
   }
+  .start,
+  .restart {
+    width: 120px;
+    margin: 30px auto;
+    padding: 10px 20px;
+  }
 
-.start,
-.restart {
-  width: 120px;
-  margin: 20px auto;
-  padding: 10px 20px;
+  .settings-container {
+    width: 320px;
+    height: 220px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    label {
+      font-size: 14px;
+    }
+  }
+  .players-container {
+    max-width: 330px;
+    min-width: 320px;
+    width: 350px;
+    max-height: 600px;
+    top: 10px;
+    padding: 15px 0 15px;
+  }
+  .list-container {
+    margin: 0 12px;
+    padding: 5px 8px;
+  }
+
+}
+@media screen and (max-width:320px) {
+.logo {
+  max-width: 80px;
+}
 }
 
-// .start-disable {
-//   display: none;
-// }
-
-// .restart-disable {
-//   display: none;
-// }
-}
 
 //display elements js
 .display-container {

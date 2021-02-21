@@ -9,10 +9,8 @@ export class ActivePlayer {
     //index of array in this.playerList
     const name = 0; 
     const status = 2;
-    const deleteEl = 3
 
     if (active < this.playersList.length) {
-      const deletePlayer = this.playersList[active].children[deleteEl]
       const namePlayer = this.playersList[active].children[name]
       const statusPlayer = this.playersList[active].children[status]
 
