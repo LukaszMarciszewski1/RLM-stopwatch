@@ -46,23 +46,19 @@ export class Stopwatch {
         }
     }
     showStartTxt(access) {
-        const infoAboutStartTxt = document.querySelector('.info-about-start')
         const loader = document.querySelector('.lds-ellipsis')
         const activePlayerTxt = document.querySelector('.active-player-name')
 
         //setInterval delay this.timerSpan.textContent === '1'
         if (this.timerSpan.textContent === '1' || access === 0) {
-            infoAboutStartTxt.classList.add('info-about-start--active')
             loader.classList.remove('lds-ellipsis--active')
             activePlayerTxt.classList.add('active-player-name--start')
         } else {
-            infoAboutStartTxt.classList.remove('info-about-start--active')
             activePlayerTxt.classList.remove('active-player-name--start')
             loader.classList.add('lds-ellipsis--active')
         }
         if (this.timerSpan.textContent === 'GO!' || this.access === false) {
             loader.classList.remove('lds-ellipsis--active')
-            infoAboutStartTxt.classList.remove('info-about-start--active')
             activePlayerTxt.classList.remove('active-player-name--start')
         }
     }

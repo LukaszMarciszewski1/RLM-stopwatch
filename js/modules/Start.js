@@ -124,6 +124,9 @@ export class Start {
         }))
         //panelSettings mobile methods
         document.querySelector('.mobile-player-lis').addEventListener('click', () => this.playersPanelMobile.classList.add('display-container'))
+
+        //accept popup info
+        this.acceptPopup.addEventListener('click', () => this.acceptPopup.parentNode.classList.remove('info-popup--active'))
     }
 
     //metods----------------->
@@ -215,7 +218,6 @@ export class Start {
 
         if (this.playersList.length >= 2) {
             this.access = false
-            console.log(this.playersList.length)
             this.activePlayer.getPlayerPrepare(active)
             this.restart.displayBtn(this.access)
             this.btnOpenSettings.forEach(btn => btn.classList.add('inactive'))

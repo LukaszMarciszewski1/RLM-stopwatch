@@ -6,7 +6,7 @@ export class Players {
         this.playersList = playersList
         this.containerList = containerList
         this.inputLoad = inputLoad
-        this.PlayerDataLoadFile = null
+        this.playerDataLoadFile = null
     }
 
     displayPlayer() {
@@ -33,7 +33,7 @@ export class Players {
                    `;
                     const name = row[0]
                     const number = row[1].toString()  
-                    this.PlayerDataLoadFile = new PlayerDataLoadFile(name, number)
+                    this.playerDataLoadFile = new PlayerDataLoadFile(name, number)
     
                     playersList.push(rows)
                     this.renderList()

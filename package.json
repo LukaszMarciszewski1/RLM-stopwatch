@@ -17,9 +17,7 @@
     "sass"
   ],
   "license": "ISC",
-  "dependencies": {
-    "jszip": "^3.6.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
