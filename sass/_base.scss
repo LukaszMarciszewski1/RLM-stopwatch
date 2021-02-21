@@ -922,11 +922,30 @@ input::selection {
     }
   }
 }
-
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1400px) {
   .app__container {
     padding: 20px;
   }
+  .logo {
+    width: 140px;
+    max-width: 140px;
+    margin-bottom: 20px;
+  }
+  .circular-container {
+    padding: 30px;
+  }
+  .player-status {
+    height: 55px;
+  }
+  .counting-down-container{
+    justify-content: flex-start;
+  }
+  .mobile-icons{
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width:1200px) {
   .control-panel {
     margin-left: 20px;
     width: 280px;
