@@ -636,21 +636,21 @@ input::selection {
   color: green;
 }
 
-.info-about-start {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: $fontColor;
-  opacity: 0;
-}
+// .info-about-start {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   font-size: 24px;
+//   letter-spacing: 2px;
+//   text-transform: uppercase;
+//   color: $fontColor;
+//   opacity: 0;
+// }
 
-.info-about-start--active {
-  animation: activeName 0s linear both;
-}
+// .info-about-start--active {
+//   animation: activeName 0s linear both;
+// }
 
 .lds-ellipsis {
   display: inline-block;

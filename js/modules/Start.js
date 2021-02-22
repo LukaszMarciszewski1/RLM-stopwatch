@@ -207,7 +207,6 @@ export class Start {
         let active = 0
         let timeSet = this.settings.count()
         let timeInterval = this.settings.count() * 1000
-
         if (this.settingTime.value === '') {
             return alert('Wybierz godzinę startu')
         }
@@ -249,7 +248,7 @@ export class Start {
                 } else {
                     this.spanCircle.style.color = 'rgb(230, 230, 230)'
                 }
-                this.stopwatch.showStartTxt(this.settings.canStart())
+                this.stopwatch.showStartTxt()
             }, 1000);
 
             const int = setInterval(() => {
