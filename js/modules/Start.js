@@ -49,7 +49,7 @@ export class Start {
         this.settings = new Settings("interval-time", this.countdownTime)
         this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
-        this.stopwatch = new Stopwatch(this.spanCircle)
+        this.stopwatch = new Stopwatch(this.spanCircle, this.end)
         this.players = new Players(this.playersList, this.containerList, this.btnFileLoad)
         this.restart = new Restart(this.btnStart, this.btnRestart)
 

@@ -1,9 +1,10 @@
 export class Stopwatch {
-    constructor(timerSpan) {
+    constructor(timerSpan, end) {
         this.timerSpan = timerSpan
         this.circleAnimation
         this.stopwatchCounter
         this.access = true
+        this.end = end
     }
     startTimer(timeSet, timeInterval) {
         let time = timeSet
@@ -40,7 +41,7 @@ export class Stopwatch {
             clearInterval(this.circleAnimation)
             setTimeout(()=>{
                 clearInterval(this.stopwatchCounter)
-                this.timerSpan.textContent = 'GO!'
+                this.timerSpan.textContent = this.end
             }, 1000)
         
         }
@@ -48,7 +49,7 @@ export class Stopwatch {
     showStartTxt(access) {
         const loader = document.querySelector('.lds-ellipsis')
         const activePlayerTxt = document.querySelector('.active-player-name')
-
+        console.log(activePlayerTxt.textContent)
         //setInterval delay this.timerSpan.textContent === '1'
         if (this.timerSpan.textContent === '1') {
             loader.classList.remove('lds-ellipsis--active')
@@ -57,9 +58,13 @@ export class Stopwatch {
             activePlayerTxt.classList.remove('active-player-name--start')
             loader.classList.add('lds-ellipsis--active')
         }
-        if (this.timerSpan.textContent === 'GO!' || access == false) {
-            loader.classList.remove('lds-ellipsis--active')
+        if (this.timerSpan.textContent === this.end) {
             activePlayerTxt.classList.remove('active-player-name--start')
+        }
+        if(access === 0){
+            if(activePlayerTxt.textContent === ''){
+                loader.classList.remove('lds-ellipsis--active')
+            }
         }
     }
 }
