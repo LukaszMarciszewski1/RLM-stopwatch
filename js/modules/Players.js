@@ -38,7 +38,7 @@ export class Players {
                     playersList.push(rows)
                     this.renderList()
                     containerList.appendChild(rows)
-                    this.storeAddPlayer(this.PlayerDataLoadFile)
+                    this.storeAddPlayer(this.playerDataLoadFile)
                 }
                  else{
                      return alert('dołącz plik')
