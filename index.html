@@ -6,6 +6,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -44,13 +45,25 @@
                 <div class="forms-container">
                 <form id="file-upload-form">
                     <div class="file-upload">
-                        <label class="file-upload-info" for="add-player-list">Dodaj plik w formacie
-                            Xlsx</label>
+                       <div class="info-file"> 
+                           <label class="file-upload-info" for="add-player-list">Dodaj plik w formacie Xlsx</label> 
+                            <ion-icon name="information-circle-outline" class="info-file-icon"></ion-icon>
+                            <div class="info-file-content">
+                                <p>Program odzcztuje dwie pierwsze kolumny z pliku Xlsx</p>
+                                 <ul>Pierwsza kolumna:
+                                   <li>Imię i nazwisko zawodnika</li>
+                                 </ul>
+                                 <ul>Druga kolumna:
+                                    <li>Numer zawodnika</li>
+                                  </ul>
+                            </div>
+                        </div>
                         <input class="file-button" type="file"
                             accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
                     </div>
                     <button type="reset" class="reset-list" value="Wyczyść listę">Wyczyść&nbsplistę</button>
                 </form>
+
                 <form id="to-do-player-list">
                     <div class="form-inputs">
                         <div class="form-group">

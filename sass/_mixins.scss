@@ -1,16 +1,16 @@
 @import "_variables";
 
 @mixin container {
-    -webkit-box-shadow: 1px 2px 7px -1px rgba(0, 0, 0, 0.5);
-    box-shadow: 1px 2px 7px -1px rgba(0, 0, 0, 0.5);
-    background-color: $containerBg;
+    -webkit-box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.85);
+    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.85);
+    background-color: $contentPlace;
     border-radius: 20px;
 }
 
 @mixin shadowItem {
     border-radius: 12px;
-    -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.8);
 }
 
 @mixin shadowLoad {
@@ -64,7 +64,7 @@
 }
 
 @mixin txt-place {
-    background-color: $bgContent;
+    background-color: $txtPlace;
     -webkit-box-shadow: inset 0px 0px 6px -2px #000000;
     box-shadow: inset 0px 0px 6px -2px #000000;
     border: 1px solid $border;
@@ -90,7 +90,7 @@
 }
 
 @mixin settings-btn {
-    @include container;
+    @include shadowItem;
     opacity: .8;
     border-radius: 12px;
     border: 1px solid rgb(65, 65, 65);
