@@ -50,14 +50,14 @@ export class Stopwatch {
         const activePlayerTxt = document.querySelector('.active-player-name')
 
         //setInterval delay this.timerSpan.textContent === '1'
-        if (this.timerSpan.textContent === '1' || access === 0) {
+        if (this.timerSpan.textContent === '1') {
             loader.classList.remove('lds-ellipsis--active')
             activePlayerTxt.classList.add('active-player-name--start')
         } else {
             activePlayerTxt.classList.remove('active-player-name--start')
             loader.classList.add('lds-ellipsis--active')
         }
-        if (this.timerSpan.textContent === 'GO!' || this.access === false) {
+        if (this.timerSpan.textContent === 'GO!' || access == false) {
             loader.classList.remove('lds-ellipsis--active')
             activePlayerTxt.classList.remove('active-player-name--start')
         }
