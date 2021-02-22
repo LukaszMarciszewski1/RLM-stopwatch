@@ -233,13 +233,13 @@ export class Start {
 
             const intCountdown = setInterval(() => {
                 this.settings.countdownTime(this.settingTime)
+            }, 1000);
+
+            const intBefore = setInterval(() => {
                 if (this.stopwatch.timerSpan.textContent == 7) {
                     var audio = new Audio('assets/beep.mp3');
                     audio.play();
                 }
-            }, 1000);
-
-            const intBefore = setInterval(() => {
                 if (this.settings.secondsToStart() === timeSet) {
                     this.stopwatch.timerSpan.textContent = timeSet
                     this.stopwatch.startTimer(timeSet, timeInterval)
@@ -250,7 +250,6 @@ export class Start {
                     this.spanCircle.style.color = 'rgb(230, 230, 230)'
                 }
                 this.stopwatch.showStartTxt(this.settings.canStart())
-
             }, 1000);
 
             const int = setInterval(() => {
@@ -258,13 +257,13 @@ export class Start {
                     clearInterval(int)
                     this.activePlayer.getPlayerActive()
                     this.race(timeInterval)
+                    clearInterval(intCountdown)
                 }
             }, 1000);
 
             const clear = setInterval(() => {
                 if (this.spanCircle.textContent === this.end) {
                     clearInterval(intBefore)
-                    clearInterval(intCountdown)
                     clearInterval(clear)
                 }
             }, 1000);
