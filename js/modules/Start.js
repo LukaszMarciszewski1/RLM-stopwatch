@@ -66,37 +66,7 @@ export class Start {
         this.btnFileLoad.addEventListener('change', () => this.players.loadPlayerList())
 
         // Add player to list
-        // document.querySelector('#to-do-player-list').addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     const name = document.getElementById('name-player').value
-        //     const number = document.getElementById('nr-player').value
-
-        //     if (name === "" || number === "") return alert('uzupełnij pole');
-        //     if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
-        //     if (this.access) {
-        //         const player = new PlayerData(name, number)
-        //         this.players.addPlayerToList(player)
-        //         this.players.storeAddPlayer(player)
-        //     }
-        //     if (!this.access) {
-        //         console.log(this.access)
-        //         return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
-        //     }
-        // })
-
-        // Add player to list
         document.querySelector('#to-do-player-list').addEventListener('submit', this.addPlayers.bind(this))
-
-        //clear list player
-        // document.querySelector('#file-upload-form').addEventListener('reset', () => {
-        //     if (this.access && this.playersList.length > 0) {
-        //         if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
-        //             localStorage.clear()
-        //             this.playersList.splice(0);
-        //             this.containerList.textContent = ''
-        //         }
-        //     } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
-        // })
 
         //clear list player
         document.querySelector('#file-upload-form').addEventListener('reset', this.clearListPlayers.bind(this))
@@ -155,16 +125,15 @@ export class Start {
         e.preventDefault();
         const name = document.getElementById('name-player').value
         const number = document.getElementById('nr-player').value
-
+        const player = new PlayerData(name, number)
+        
         if (name === "" || number === "") return alert('uzupełnij pole');
         if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
         if (this.access) {
-            const player = new PlayerData(name, number)
-            this.players.addPlayerToList(player)
-            this.players.storeAddPlayer(player)
+            this.players.addPlayerToList(player, number)
+            this.players.storeAddPlayer(player, number)
         }
         if (!this.access) {
-            console.log(this.access)
             return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
         }
     }

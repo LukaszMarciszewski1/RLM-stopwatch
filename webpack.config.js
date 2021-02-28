@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const SRC = path.resolve(__dirname, 'node_modules');
 
 module.exports = {
     entry: './js/app.js',

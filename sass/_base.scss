@@ -712,8 +712,8 @@ input::selection {
   width: auto;
   max-width: 300px;
   @include flex-center;
-  margin-bottom: 20px;
-  max-height: 150px;
+  margin-bottom: 10px;
+  max-height: 180px;
   img {
     width: auto;
     height: 100%;
@@ -729,12 +729,12 @@ input::selection {
   padding: 20px;
   border: 1px solid $border;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   background-color: $contentPlace;
 
   h2 {
-    font-size: 38px;
+    font-size: 43px;
     user-select: none;
   }
 }
@@ -901,7 +901,6 @@ input::selection {
 
   .logo {
     margin-bottom: 0px;
-    max-height: 120px;
   }
   .clock {
     margin-bottom: 0;
@@ -946,7 +945,7 @@ input::selection {
   }
   .mobile-icons {
     display: flex;
-    margin-bottom: 20px
+    margin-bottom: 0
   }
   .open-settings,
   .mobile-player-lis,
@@ -997,6 +996,19 @@ input::selection {
     min-height: 40px;
     height: 50px;
   }
+  .logo{
+    max-height: 150px;
+  }
+  .clock{
+    padding: 15px;
+    h2{
+      font-size: 40px;
+  }
+}
+  .start,
+  .restart {
+    margin: 20px;
+  }
 }
 
 @media screen and (max-width:1200px) {
@@ -1006,6 +1018,9 @@ input::selection {
   }
   .counting-down-container {
     width: 650px;
+  }
+  .logo{
+    max-height: 140px;
   }
 }
 
