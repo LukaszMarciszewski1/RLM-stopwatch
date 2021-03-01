@@ -1,6 +1,7 @@
 import {
     PlayerDataLoadFile
 } from './PlayerDataLoadFile.js';
+
 export class Players {
     constructor(playersList, containerList, inputLoad) {
         this.playersList = playersList
@@ -11,7 +12,6 @@ export class Players {
 
     displayPlayer() {
         this.players.forEach((player) => this.addPlayerToList(player))
-        console.log(localStorage)
     }
 
     //load player list xlsx file
@@ -41,7 +41,7 @@ export class Players {
                                 return;
                             }
                         }
-
+                        
                         playersList.push(rows)
                         this.renderList()
                         containerList.appendChild(rows)
@@ -100,12 +100,13 @@ export class Players {
         }
     }
 
-    clearList(containerList) {
+    clearList() {
         if (this.playersList.length > 0) {
-            localStorage.clear()
-            this.playersList = []
-            containerList.textContent = ''
-        } else return
+            localStorage.clear();
+            this.playersList.splice(0);
+            this.containerList.textContent = ''
+            this.players = []
+        } else return;
     }
 
     //localStorage

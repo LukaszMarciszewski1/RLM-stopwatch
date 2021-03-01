@@ -1,7 +1,7 @@
 @import "_mixins";
 @import "_variables";
 @import "_animations";
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +16,8 @@ body {
 
 button {
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
 }
 
 button:hover {
@@ -1450,7 +1452,6 @@ input::selection {
   max-width: 70px;
 }
 }
-
 
 //display elements js
 .display-container {

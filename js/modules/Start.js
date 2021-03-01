@@ -47,10 +47,10 @@ export class Start {
         this.end = 'GO!'
 
         this.settings = new Settings("interval-time", this.countdownTime)
-        this.activePlayer = new ActivePlayer(this.playersList);
         this.time = new Time(this.clock)
         this.stopwatch = new Stopwatch(this.spanCircle, this.end)
         this.players = new Players(this.playersList, this.containerList, this.btnFileLoad)
+        this.activePlayer = new ActivePlayer(this.playersList);
         this.restart = new Restart(this.btnStart, this.btnRestart)
 
         //render setup
@@ -77,22 +77,23 @@ export class Start {
         //Start race
         this.btnStart.addEventListener('click', this.startRace.bind(this))
 
+        //open settings container
+        this.btnOpenSettings.forEach(open => open.addEventListener('click', () => this.settingsContainer.classList.add('display-container')))
+        //close settings container
+        this.btnCloseSettings.forEach(close => close.addEventListener('click', () => close.parentNode.classList.remove('display-container')))
+
         //Restart race
         this.btnRestart.addEventListener('click', () => {
             setTimeout(this.restart.changeBtn, 1000);
             location.reload()
         })
-
-        // this.btnOpenSettings.addEventListener('click', () => this.settingsContainer.classList.add('display-container'))
-        this.btnOpenSettings.forEach(open => open.addEventListener('click', () => this.settingsContainer.classList.add('display-container')))
-
-        this.btnCloseSettings.forEach(close => close.addEventListener('click', () => close.parentNode.classList.remove('display-container')))
-
+        //reset btn
         this.btnResetSettings.forEach(btn => btn.addEventListener('click', () => {
             alert("Czy chcesz zresetować ustawienia ?");
             location.reload()
         }))
-        //panelSettings mobile methods
+
+        //panelSettings mobile
         document.querySelector('.mobile-player-lis').addEventListener('click', () => this.playersPanelMobile.classList.add('display-container'))
 
         //accept popup info
@@ -126,7 +127,7 @@ export class Start {
         const name = document.getElementById('name-player').value
         const number = document.getElementById('nr-player').value
         const player = new PlayerData(name, number)
-        
+
         if (name === "" || number === "") return alert('uzupełnij pole');
         if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
         if (this.access) {
@@ -141,9 +142,7 @@ export class Start {
     clearListPlayers() {
         if (this.access && this.playersList.length > 0) {
             if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
-                localStorage.clear()
-                this.playersList.splice(0);
-                this.containerList.textContent = ''
+                this.players.clearList()
             }
         } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
     }
@@ -235,7 +234,7 @@ export class Start {
                     clearInterval(clear)
                 }
             }, 1000);
-        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba')
+        } else return alert('W wyścigu musi brać udział więcej niż jedna osoba');
     }
 
 }
