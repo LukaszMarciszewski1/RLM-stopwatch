@@ -130,6 +130,7 @@ export class Start {
 
         if (name === "" || number === "") return alert('uzupełnij pole');
         if (number.length > 3) return alert('maxymalny numer zawodnika nie może być większy od 999')
+        if (name.length > 30) return alert('Imię i nazwisko nie może być dłuższe niż 30 znaków')
         if (this.access) {
             this.players.addPlayerToList(player, number)
             this.players.storeAddPlayer(player, number)
