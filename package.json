@@ -1,11 +1,11 @@
 {
-  "name": "racing-stopwatch",
+  "name": "RLM-stopwatch",
   "version": "1.0.0",
   "author": "Łukasz Marciszewski",
   "description": "Minimal webpack boilerplate with HMR and sass",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LukaszMarciszewski1/racing-stopwatch.git"
+    "url": "https://github.com/LukaszMarciszewski1/RLM-stopwatch.git"
   },
   "main": "index.js",
   "scripts": {
