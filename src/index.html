@@ -29,7 +29,8 @@
             </div>
             <!-- //player list-->
             <div class="players-container">
-                <ion-icon name="close-outline" class="close-settings colose-player-container mobile-colose-player-container"></ion-icon>
+                <ion-icon name="close-outline"
+                    class="close-settings colose-player-container mobile-colose-player-container"></ion-icon>
                 <div class="settings-panel">
                     <div class="settings">
                         <button class="open-settings open-settings-st open-settings-desktop">
@@ -39,41 +40,41 @@
                     <button type="reset" class="reset-settings reset-settings-desktop">Resetuj</button>
                 </div>
                 <div class="forms-container">
-                <form id="file-upload-form">
-                    <div class="file-upload">
-                       <div class="info-file"> 
-                           <label class="file-upload-info" for="add-player-list">Dodaj plik w formacie Xlsx</label> 
-                            <ion-icon name="information-circle-outline" class="info-file-icon"></ion-icon>
-                            <div class="info-file-content">
-                                <p>Program odzcztuje dwie pierwsze kolumny z pliku Xlsx</p>
-                                 <ul>Pierwsza kolumna:
-                                   <li>Imię i nazwisko zawodnika</li>
-                                 </ul>
-                                 <ul>Druga kolumna:
-                                    <li>Numer zawodnika</li>
-                                  </ul>
+                    <form id="file-upload-form">
+                        <div class="file-upload">
+                            <div class="info-file">
+                                <label class="file-upload-info" for="add-player-list">Dodaj plik w formacie Xlsx</label>
+                                <ion-icon name="information-circle-outline" class="info-file-icon"></ion-icon>
+                                <div class="info-file-content">
+                                    <p>Program odzcztuje dwie pierwsze kolumny z pliku Xlsx</p>
+                                    <ul>Pierwsza kolumna:
+                                        <li>Imię i nazwisko zawodnika</li>
+                                    </ul>
+                                    <ul>Druga kolumna:
+                                        <li>Numer zawodnika</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <input class="file-button" type="file"
+                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
+                        </div>
+                        <button type="reset" class="reset-list" value="Wyczyść listę">Wyczyść&nbsplistę</button>
+                    </form>
+
+                    <form id="to-do-player-list">
+                        <div class="form-inputs">
+                            <div class="form-group">
+                                <label for="name-player">Imię</label><br>
+                                <input type="text" id="name-player">
+                            </div>
+                            <div class="form-group">
+                                <label for="nr-player">Numer</label><br>
+                                <input type="text" id="nr-player" pattern="[0-9]*">
                             </div>
                         </div>
-                        <input class="file-button" type="file"
-                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
-                    </div>
-                    <button type="reset" class="reset-list" value="Wyczyść listę">Wyczyść&nbsplistę</button>
-                </form>
-
-                <form id="to-do-player-list">
-                    <div class="form-inputs">
-                        <div class="form-group">
-                            <label for="name-player">Imię</label><br>
-                            <input type="text" id="name-player">
-                        </div>
-                        <div class="form-group">
-                            <label for="nr-player">Numer</label><br>
-                            <input type="text" id="nr-player" pattern="[0-9]*">
-                        </div>
-                    </div>
                         <button type="submit" class="add-to-list" value="Dodaj">Dodaj</button>
-                </form>
-            </div>
+                    </form>
+                </div>
                 <!-- <div class="player-list"> -->
                 <div class="list__item-desc">
                     <h4 class="name-player-desc">Imię</h4>
@@ -83,7 +84,7 @@
                 <div class="list-container">
                     <!-- //players list ---- -->
                 </div>
-            <!-- </div> -->
+                <!-- </div> -->
                 <div class="info-popup">
                     <p> Nie można uswać zawodników <br> w trakcie wyścigu</p>
                     <button class="accept">OK</button>
@@ -129,22 +130,20 @@
             <!-- //control panel -->
             <div class="control-panel">
                 <div class="logo"><img src="assets/logo.png" alt="logo"></div>
-            <!-- //mobile -->
-            <div class="mobile-icons">
-                <!-- //settings -->
-                <button class="open-settings open-settings-st">
-                    <!-- <ion-icon name="options-outline"></ion-icon> -->
-                    <ion-icon name="time-outline"></ion-icon>
-                </button>
-                <button class="mobile-player-lis">
-                    <ion-icon name="list-outline"></ion-icon>
-                </button>
-                <button type="reset" class="reset-settings mobile-reset-settings">
-                    <ion-icon name="refresh-outline"></ion-icon>
-                </button>
-            </div>
-            <!-- //mobile //////// -->
-
+                <!-- //mobile -->
+                <div class="mobile-icons">
+                    <!-- //settings -->
+                    <button class="open-settings open-settings-st">
+                        <ion-icon name="time-outline"></ion-icon>
+                    </button>
+                    <button class="mobile-player-lis">
+                        <ion-icon name="list-outline"></ion-icon>
+                    </button>
+                    <button type="reset" class="reset-settings mobile-reset-settings">
+                        <ion-icon name="refresh-outline"></ion-icon>
+                    </button>
+                </div>
+                <!-- //mobile //////// -->
                 <div class="clock">
                     <h2></h2>
                 </div>
@@ -166,10 +165,9 @@
                 </div>
                 <button class="start">Start</button>
                 <button class="restart">Restart</button>
-                <!-- <ion-icon name="stats-chart-outline" class="stats"></ion-icon> -->
             </div>
         </div>
-        <audio src="assets/beep.mp3"></audio>
     </div>
 </body>
+
 </html>

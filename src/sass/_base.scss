@@ -2,6 +2,7 @@
 @import "_variables";
 @import "_animations";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -114,11 +115,13 @@ input::selection {
   padding: 0 20px 20px;
   -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+
   p {
     color: gray;
     margin-left: 20px
   }
 }
+
 .colose-player-container {
   font-size: 38px;
   position: absolute;
@@ -219,17 +222,20 @@ input::selection {
   justify-content: space-between;
   align-items: flex-end;
 }
-.info-file{
+
+.info-file {
   display: flex;
   align-items: center;
-  ion-icon{
+
+  ion-icon {
     font-size: 24px;
     cursor: pointer;
     position: relative;
     color: $fontColorDarkest;
   }
 }
-.info-file-content{
+
+.info-file-content {
   @include shadowItem;
   align-items: flex-start;
   justify-content: center;
@@ -247,15 +253,18 @@ input::selection {
   color: $fontColorDarkest;
   overflow: hidden;
   display: none;
-  p{
+
+  p {
     margin-bottom: 5px;
     font-weight: bold;
     line-height: 16px;
   }
-  ul{
+
+  ul {
     color: $fontColorDark;
     margin-top: 7px;
-    li{
+
+    li {
       margin-left: 15px;
       margin-top: 3px;
       font-weight: lighter;
@@ -263,12 +272,15 @@ input::selection {
     }
   }
 }
-.info-file-icon:hover{
+
+.info-file-icon:hover {
   opacity: .8;
 }
-.info-file-icon:hover + .info-file-content{
+
+.info-file-icon:hover+.info-file-content {
   display: flex;
 }
+
 .file-upload {
   width: 65%;
 }
@@ -638,22 +650,6 @@ input::selection {
   color: green;
 }
 
-// .info-about-start {
-//   position: absolute;
-//   left: 50%;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-//   font-size: 24px;
-//   letter-spacing: 2px;
-//   text-transform: uppercase;
-//   color: $fontColor;
-//   opacity: 0;
-// }
-
-// .info-about-start--active {
-//   animation: activeName 0s linear both;
-// }
-
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -716,6 +712,7 @@ input::selection {
   @include flex-center;
   margin-bottom: 10px;
   max-height: 180px;
+
   img {
     width: auto;
     height: 100%;
@@ -740,8 +737,6 @@ input::selection {
     user-select: none;
   }
 }
-
-
 
 .status-timer {
   width: 100%;
@@ -850,7 +845,6 @@ input::selection {
   display: none;
 }
 
-
 @media screen and (max-width:1600px) {
   .players-container {
     max-width: 440px;
@@ -882,7 +876,7 @@ input::selection {
     width: auto;
     justify-content: space-evenly;
     align-items: center;
-    padding:40px;
+    padding: 40px;
   }
 
   .circular-container {
@@ -904,6 +898,7 @@ input::selection {
   .logo {
     margin-bottom: 0px;
   }
+
   .clock {
     margin-bottom: 0;
   }
@@ -941,72 +936,89 @@ input::selection {
   .players-container--active {
     display: flex;
   }
+
   .settings-container {
     top: 80px;
     left: 40%;
   }
+
   .mobile-icons {
     display: flex;
     margin-bottom: 0
   }
+
   .open-settings,
   .mobile-player-lis,
   .reset-settings {
     @include settings-btn;
     padding: 12px 20px;
     margin: 0 5px;
+
     ion-icon {
       font-size: 28px;
     }
   }
+
   .open-settings-desktop,
   .reset-settings-desktop {
     display: none;
   }
+
   .reset-settings {
     width: auto;
     height: 100%;
   }
+
   .list__item-desc {
     .name-player-desc {
       width: 217.73px;
     }
-    .number-player-desc{
+
+    .number-player-desc {
       min-width: 60px;
     }
   }
-  
-.info-file-content{
-  left: calc(100% - 260px);
-  top: 10px;
+
+  .info-file-content {
+    left: calc(100% - 260px);
+    top: 10px;
+  }
 }
-}
+
 @media screen and (max-width:1400px) {
   .app__container {
     padding: 20px;
   }
+
   .circular-container {
     padding: 30px;
   }
+
   .player-status {
     height: 55px;
   }
-  .mobile-icons{
+
+  .mobile-icons {
     margin-bottom: 0;
   }
+
   .item-status-timer {
     min-height: 40px;
     height: 50px;
   }
-  .logo{
+
+  .logo {
     max-height: 150px;
   }
-  .clock{
+
+  .clock {
     padding: 15px;
-    h2{
+
+    h2 {
       font-size: 40px;
+    }
   }
-}
+
   .start,
   .restart {
     margin: 20px;
@@ -1018,10 +1030,12 @@ input::selection {
     margin-left: 20px;
     width: 280px;
   }
+
   .counting-down-container {
     width: 650px;
   }
-  .logo{
+
+  .logo {
     max-height: 140px;
   }
 }
@@ -1030,6 +1044,7 @@ input::selection {
   .counting-down-container {
     width: 600px;
   }
+
   .control-panel {
     width: 260px;
   }
@@ -1119,7 +1134,8 @@ input::selection {
     position: absolute;
     left: 20px;
     top: 20px;
-    img{
+
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1232,6 +1248,7 @@ input::selection {
     font-size: 20px;
   }
 }
+
 @media screen and (max-width:548px) {
   .settings-container {
     width: 320px;
@@ -1240,10 +1257,12 @@ input::selection {
     left: 50%;
     transform: translateX(-50%);
     padding: 15px;
+
     label {
       font-size: 14px;
     }
   }
+
   .players-container {
     max-width: 400px;
     min-width: 300px;
@@ -1254,78 +1273,97 @@ input::selection {
     display: none;
     transform: translateX(-50%);
   }
-  .settings-panel{
+
+  .settings-panel {
     margin-bottom: 20px;
     padding: 15px 20px;
   }
+
   .colose-player-container {
     left: 10px;
     top: 5px;
   }
+
   #to-do-player-list {
     flex-direction: column;
     align-items: flex-start;
     margin: 15px 0 0;
+
     label {
       font-size: 12px;
     }
+
     .add-to-list {
-     margin-left: 0;
-     margin-top: 10px;
+      margin-left: 0;
+      margin-top: 10px;
     }
   }
+
   #file-upload-form {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .file-upload {
     width: 100%;
   }
+
   .file-upload label {
     font-size: 12px;
   }
+
   .reset-list {
     margin-left: 0;
     margin-top: 15px;
   }
+
   .list__item-desc {
     margin-top: 10px;
     padding: 10px 25px;
     font-size: 14px;
+
     .name-player-desc {
       width: 133.09px;
     }
-    .number-player-desc{
+
+    .number-player-desc {
       min-width: 50px;
     }
   }
+
   .player-item {
     height: 60px;
     padding: 10px 5px;
+
     h5 {
       font-size: .8rem;
     }
+
     p {
       @include players-desc;
       min-width: 50px;
       font-size: .8rem;
     }
+
     ion-icon {
       padding: 5px 5px 5px 15px;
       font-size: 30px;
     }
   }
+
   .lamp {
     &::before {
       width: 12px;
       height: 12px;
     }
+
     &::after {
       width: 22px;
       height: 22px;
     }
   }
-  .info-file-content{
+
+  .info-file-content {
     top: 100px;
   }
 }
@@ -1402,6 +1440,7 @@ input::selection {
   .mobile-icons {
     max-width: 220px;
   }
+
   .open-settings,
   .mobile-player-lis,
   .reset-settings {
@@ -1413,9 +1452,11 @@ input::selection {
       font-size: 24px;
     }
   }
+
   .control-panel {
     margin: 65px 0 10px;
   }
+
   .clock {
     padding: 10px;
 
@@ -1423,6 +1464,7 @@ input::selection {
       font-size: 22px;
     }
   }
+
   .start,
   .restart {
     width: 120px;
@@ -1438,26 +1480,25 @@ input::selection {
     top: 10px;
     padding: 15px 0 15px;
   }
+
   .list-container {
     margin: 0 12px;
     padding: 5px 8px;
   }
-    .info-file-content{
+
+  .info-file-content {
     top: 95px;
   }
 
 }
+
 @media screen and (max-width:320px) {
-.logo {
-  max-width: 70px;
-}
+  .logo {
+    max-width: 70px;
+  }
 }
 
 //display elements js
 .display-container {
   display: flex;
-}
-
-.remove-display {
-  display: none;
 }

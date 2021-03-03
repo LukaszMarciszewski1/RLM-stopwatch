@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './js/app.js',
+    entry: './src/js/app.js',
     mode: 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -18,8 +18,7 @@ module.exports = {
     },
 
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
@@ -37,16 +36,18 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                     options: {
-                      name: '[name].[ext]',
-                      outputPath: 'assets',
+                        name: '[name].[ext]',
+                        outputPath: 'assets',
                     }
-                  }
+                }
             },
         ]
     },
 
     plugins: [
-        new HtmlWebpackPlugin({template: './index.html'}),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
         new webpack.HotModuleReplacementPlugin(),
     ]
 };
