@@ -76,6 +76,7 @@ export class Race {
             setTimeout(this.restart.changeBtn, 1000);
             location.reload()
         });
+
         //reset btn
         this.btnResetSettings.forEach(btn => btn.addEventListener('click', () => {
             alert("Czy chcesz zresetować ustawienia ?");
