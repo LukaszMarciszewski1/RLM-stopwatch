@@ -52,7 +52,7 @@ export class Stopwatch {
     }
 
    //information about the active player and the next player and animation of loading in the container
-    showStartTxt() {
+    changePrepareName() {
         const loader = document.querySelector('.lds-ellipsis');
         const activePlayerTxt = document.querySelector('.active-player-name');
         //setInterval delay this.timerSpan.textContent === '1'

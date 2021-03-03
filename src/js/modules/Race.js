@@ -158,6 +158,7 @@ export class Race {
     activeRace(interval) {
         let active = 0
         active++
+        //add preparation on the first player
         this.activePlayer.getPlayerPrepare(active);
         setInterval(() => {
             active++
@@ -224,7 +225,7 @@ export class Race {
                     this.spanCircle.style.color = this.fontColor
                 };
 
-                this.stopwatch.showStartTxt()
+                this.stopwatch.changePrepareName()
             }, 1000);
 
             const int = setInterval(() => {

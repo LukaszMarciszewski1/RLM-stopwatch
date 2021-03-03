@@ -33,7 +33,6 @@
     width: 170px;
     background-color: transparent;
     border: 2px solid green;
-    color: $fontColor;
     font-size: 24px;
     padding: 12px 20px;
     border-radius: 50px;
@@ -63,19 +62,15 @@
     width: 125px;
     background: none;
     border: 1px solid $itemBg;
-    color: $fontColor;
     margin-left: 10px;
     @include shadowItem;
     border-radius: 7px;
-    cursor: pointer;
 }
 
 @mixin settings-btn {
     @include shadowItem;
     border-radius: 12px;
-    border: 1px solid rgb(65, 65, 65);
-    color: $fontColor;
+    border: 1px solid $borderSettingsBtn;
     background-color: $loadBg;
     padding: 12px 20px;
-    cursor: pointer;
 }

@@ -20,6 +20,7 @@ button {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
   opacity: .8;
+  color: $fontColor;
 }
 
 button:hover {
@@ -137,13 +138,11 @@ button:active {
 
 .open-settings {
   @include container;
-  opacity: .8;
   border-radius: 12px;
-  border: 1px solid rgb(65, 65, 65);
+  border: 1px solid $borderSettingsBtn;
   color: $fontColor;
   background-color: $loadBg;
   padding: 12px 20px;
-  cursor: pointer;
 }
 
 .reset-settings {
@@ -329,7 +328,6 @@ button:active {
   }
 
   input {
-    @include shadowLoad;
     border-radius: 5px;
     padding: 10px;
     background-color: $contentPlace;
@@ -389,7 +387,6 @@ button:active {
   }
 }
 
-//player list content
 .list-container {
   overflow-y: scroll;
   margin: 0 20px;
@@ -789,12 +786,11 @@ button:active {
   top: 30%;
   left: 20%;
   text-align: center;
-  color: white;
+  color: $fontColor;
   padding: 35px 50px;
   border-radius: 10px;
   border: 1px solid $fontColorDark;
   background-color: $contentPlace;
-  @include shadowLoad;
   @include shadowItem;
   line-height: 1.6rem;
   display: none;
@@ -810,11 +806,10 @@ button:active {
   border: 1px solid $fontColorDarkest;
   margin-top: 20px;
   background-color: $itemBg;
-  color: white;
-  opacity: .8;
+  color: $fontColor;
 }
 
-//mobile
+//display mobile icons
 .mobile-icons {
   margin-bottom: 40px;
   padding: 10px 0 20px;
