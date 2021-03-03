@@ -50,7 +50,7 @@ export class Race {
         //upgrade players
         this.players.displayPlayer();
 
-        // load players list
+        // loading the file with the list of players
         this.btnFileLoad.addEventListener('change', () => this.players.loadPlayerList());
 
         // Add player to list
@@ -67,6 +67,7 @@ export class Race {
 
         //open settings container
         this.btnOpenSettings.forEach(open => open.addEventListener('click', () => this.settingsContainer.classList.add('display-container')));
+
         //close settings container
         this.btnCloseSettings.forEach(close => close.addEventListener('click', () => close.parentNode.classList.remove('display-container')));
 
@@ -88,6 +89,7 @@ export class Race {
         this.acceptPopup.addEventListener('click', () => this.acceptPopup.parentNode.classList.remove('info-popup--active'))
     }
 
+    //display of time, time interval and set start time
     render() {
         //clock and countdown to start
         this.intervalTime = setInterval(() => {
@@ -109,6 +111,7 @@ export class Race {
         })
     }
 
+    //adding players to the list and localstorage using this to do list
     addPlayers(e) {
         e.preventDefault();
         const name = document.getElementById('name-player').value;
@@ -128,7 +131,8 @@ export class Race {
             return alert('W trakcie wyścigu nie można dodawać zawodników do listy')
         }
     }
-
+    
+    //pressing the clear button removes all players from the list
     clearListPlayers() {
         if (this.access && this.playersList.length > 0) {
             if (confirm("Czy chcesz wyczyścić zapisane dane?")) {
@@ -137,6 +141,7 @@ export class Race {
         } else throw new Error("Nie możesz czyścić listy w trakcie wyścigu")
     }
 
+    //pressing the delete button removes the player from the list
     removePlayer() {
         this.containerList.addEventListener('click', (e) => {
             if (this.access) {
@@ -167,6 +172,7 @@ export class Race {
         let active = 0;
         let timeSet = this.settings.count();
         let timeInterval = this.settings.count() * 1000;
+        
         if (this.settingTime.value === '') {
             return alert('Wybierz godzinę startu')
         }
@@ -217,7 +223,7 @@ export class Race {
                 } else {
                     this.spanCircle.style.color = this.fontColor
                 };
-                
+
                 this.stopwatch.showStartTxt()
             }, 1000);
 
@@ -239,7 +245,7 @@ export class Race {
                     clearInterval(clear)
                 }
             }, 1000);
+
         } else return alert('W wyścigu musi brać udział więcej niż jedna osoba');
     }
-
 }

@@ -28,6 +28,7 @@ export class ActivePlayer {
           this.nextContainer.textContent = nextNamePlayer.textContent
         }, 1000);
       }
+
       if (active === this.playersList.length - 1) {
         this.nextContainer.textContent = ''
       } else return

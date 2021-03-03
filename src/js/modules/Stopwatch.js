@@ -63,6 +63,7 @@ export class Stopwatch {
             activePlayerTxt.classList.remove('active-player-name--start');
             loader.classList.add('lds-ellipsis--active')
         };
+        
         if (this.timerSpan.textContent === this.end || this.access === false) {
             activePlayerTxt.classList.remove('active-player-name--start');
             loader.classList.remove('lds-ellipsis--active')

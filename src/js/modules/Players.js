@@ -1,6 +1,4 @@
-import {
-    PlayerDataLoadFile
-} from './PlayerDataLoadFile.js';
+import {PlayerDataLoadFile} from './PlayerDataLoadFile.js';
 
 export class Players {
     constructor(playersList, containerList, inputLoad) {
@@ -36,6 +34,7 @@ export class Players {
                         const number = row[1].toString(); //second row
                         this.playerDataLoadFile = new PlayerDataLoadFile(name, number);
 
+                        //if the given competitor number is on the list
                         for (const i in this.players) {
                             if (number === this.players[i].number) {
                                 alert(`Zawodnik o numerze ${number} już istnieje`);
@@ -57,12 +56,6 @@ export class Players {
     //add item to list
     addPlayerToList(player, inputNr) {
         if (player) {
-            for (const i in this.players) {
-                if (inputNr === this.players[i].number) {
-                    alert(`Zawodnik o numerze ${inputNr} już istnieje`);
-                    return;
-                }
-            }
             const containerList = this.containerList;
             const row = document.createElement('div');
             row.className = 'player-item';
@@ -73,6 +66,13 @@ export class Players {
                            <ion-icon name="close-outline" class="delete"></ion-icon>
                    `;
 
+            //if the given competitor number is on the list
+            for (const i in this.players) {
+                if (inputNr === this.players[i].number) {
+                    alert(`Zawodnik o numerze ${inputNr} już istnieje`);
+                    return;
+                }
+            }
             this.playersList.push(row);
             this.renderList();
             containerList.appendChild(row);

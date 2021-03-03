@@ -15,6 +15,7 @@ export class Settings {
 
    //timer counting down to start
    countdownTime(deadlineTime) {
+      //deadline is the selected start time
       let deadline = deadlineTime.value;
       const endTime = new Date(deadline).getTime();
       const nowTime = new Date().getTime();

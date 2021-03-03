@@ -33,19 +33,6 @@ button:active {
   border: none;
 }
 
-input:active {
-  border: none;
-
-}
-
-input:focus {
-  border: none;
-}
-
-input::selection {
-  border: none;
-}
-
 .inactive {
   opacity: 1;
   position: relative;
