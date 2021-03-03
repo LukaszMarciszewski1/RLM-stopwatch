@@ -7,9 +7,11 @@ export class Stopwatch {
         this.end = end;
         this.blueColor = blueColor
     }
-    startTimer(timeSet, timeInterval) {
-        let time = timeSet
 
+    //circle stopwatch
+    startTimer(timeSet, timeInterval) {
+        let time = timeSet;
+        //progress animation with a time interval
         const progressBar = new ProgressBar.Circle('#progress', {
             color: this.blueColor,
             strokeWidth: 5,
@@ -23,6 +25,7 @@ export class Stopwatch {
             progressBar.animate(1);
         }, timeInterval);
 
+        //countdown time interval in a circle
         this.stopwatchCounter = setInterval(() => {
             timeSet--
             this.timerSpan.textContent = timeSet;
@@ -35,6 +38,8 @@ export class Stopwatch {
             };
         }, 1000)
     }
+
+    //stop the progress and countdown animation in a circle
     stopTimer(active, list) {
         if (active === list.length) {
             this.access = false;
@@ -45,6 +50,8 @@ export class Stopwatch {
             }, 1000);
         }
     }
+
+   //information about the active player and the next player and animation of loading in the container
     showStartTxt() {
         const loader = document.querySelector('.lds-ellipsis');
         const activePlayerTxt = document.querySelector('.active-player-name');

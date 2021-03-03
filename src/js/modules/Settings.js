@@ -7,11 +7,13 @@ export class Settings {
       this.beforeBeginning = null
 
       this.count = () => {
+         //time interval setting
          let count = parseInt(document.getElementById(this.number).value);
          return count
       }
    }
 
+   //timer counting down to start
    countdownTime(deadlineTime) {
       let deadline = deadlineTime.value;
       const endTime = new Date(deadline).getTime();
@@ -32,9 +34,9 @@ export class Settings {
          this.selectTime.style.display = 'inline'
       };
       
-      //access can start
+      //access can start, information whether the seconds are positive or negative in the countdown clock
       this.access = Math.sign(seconds);
-      //sum of seconds 
+      //sum of seconds remaining before start
       this.beforeBeginning = ((hours * 60) * 60) + (minutes * 60) + seconds;
 
       if (this.access > 0) {
@@ -45,9 +47,11 @@ export class Settings {
    }
 
    canStart() {
+      //access information from the countdownTime method
       return this.access
    }
    secondsToStart() {
+      //information about the total seconds to start from countdownTime method
       return parseInt(this.beforeBeginning)
    }
 

@@ -5,6 +5,8 @@ export class ActivePlayer {
     this.activeContainer = document.querySelector('.active-player-name');
     this.nextContainer = document.querySelector('.next-player-name');
   }
+
+  //adding information about the player preparing to start
   getPlayerPrepare(active) {
     //index of array in this.playerList
     const name = 0;
@@ -35,14 +37,14 @@ export class ActivePlayer {
         this.activeContainer.textContent = ''
       }, 1000);
     } else return
-
   }
+
+  //information about the active player in green in the list of players
   getPlayerActive() {
     const active = this.activeList.find(el => el.classList.contains('lamp--prepare'));
     if (active) {
       active.classList.remove('lamp--prepare');
       active.classList.add('lamp--active')
     } else return
-
   }
 }

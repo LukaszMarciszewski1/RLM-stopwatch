@@ -213,7 +213,6 @@ input::selection {
   }
 }
 
-
 //load file
 #file-upload-form {
   padding: 0 20px;
@@ -524,10 +523,7 @@ input::selection {
   }
 }
 
-//counting-down-container
-
 .counting-down-container {
-  // @include container;
   @include flex-center;
   @include shadowItem;
   flex-direction: column;
@@ -623,7 +619,6 @@ input::selection {
   @include txt-place;
   color: grey;
   height: 70px;
-  // background-color: $bgContent;
   overflow-x: hidden;
   @include flex-center;
 }
@@ -694,7 +689,6 @@ input::selection {
   animation: lds-ellipsis3 0.6s infinite;
 }
 
-//control panel
 .control-panel {
   padding: 0 0 30px;
   height: 100%;

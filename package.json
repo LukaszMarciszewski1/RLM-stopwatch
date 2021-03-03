@@ -1,5 +1,5 @@
 {
-  "name": "RlM-stopwatch",
+  "name": "rlm-stopwatch",
   "version": "1.0.0",
   "author": "Łukasz Marciszewski",
   "description": "Minimal webpack boilerplate with HMR and sass",

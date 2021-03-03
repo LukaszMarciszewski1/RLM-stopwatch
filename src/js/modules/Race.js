@@ -149,6 +149,7 @@ export class Race {
         })
     }
 
+    //progress countdown for the active player
     activeRace(interval) {
         let active = 0
         active++
@@ -161,6 +162,7 @@ export class Race {
         }, interval)
     }
 
+    //starts the method when the start button is pressed
     startRace() {
         let active = 0;
         let timeSet = this.settings.count();
@@ -202,16 +204,20 @@ export class Race {
                     var audio = new Audio('assets/beep.mp3');
                     audio.play()
                 };
+
+                //if the set interval is equal to the time to start, the circle function will be executed
                 if (this.settings.secondsToStart() === timeSet) {
                     this.stopwatch.timerSpan.textContent = timeSet
                     this.stopwatch.startTimer(timeSet, timeInterval)
                 };
+
                 //if timerSpan = 5 seconds add color blue
                 if (this.stopwatch.timerSpan.textContent <= 6) {
                     this.spanCircle.style.color = this.blueColor
                 } else {
                     this.spanCircle.style.color = this.fontColor
                 };
+                
                 this.stopwatch.showStartTxt()
             }, 1000);
 

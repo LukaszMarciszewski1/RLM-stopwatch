@@ -1,4 +1,6 @@
-import {PlayerDataLoadFile} from './PlayerDataLoadFile.js';
+import {
+    PlayerDataLoadFile
+} from './PlayerDataLoadFile.js';
 
 export class Players {
     constructor(playersList, containerList, inputLoad) {
@@ -8,11 +10,12 @@ export class Players {
         this.players = this.storeGetPlayer()
     }
 
+    //display items in list
     displayPlayer() {
         this.players.forEach((player) => this.addPlayerToList(player))
     }
 
-    //load player list xlsx file
+    //add file Xlsx to list
     loadPlayerList() {
         let file = this.inputLoad.files[0];
         readXlsxFile(file).then((data) => {
@@ -29,8 +32,8 @@ export class Players {
                    <div class="lamp"></div>
                    <ion-icon name="close-outline" class="delete"></ion-icon>
                    `;
-                        const name = row[0];
-                        const number = row[1].toString();
+                        const name = row[0]; //first row
+                        const number = row[1].toString(); //second row
                         this.playerDataLoadFile = new PlayerDataLoadFile(name, number);
 
                         for (const i in this.players) {
@@ -51,6 +54,7 @@ export class Players {
             .catch(error => console.log(error))
     }
 
+    //add item to list
     addPlayerToList(player, inputNr) {
         if (player) {
             for (const i in this.players) {
@@ -76,11 +80,13 @@ export class Players {
         }
     }
 
+    //clear inputs
     clearFields() {
         document.getElementById('name-player').value = '';
         document.getElementById('nr-player').value = ''
     }
 
+    //set key data for player item
     renderList() {
         this.playersList.forEach((player, key) => {
             player.dataset.key = key;
@@ -88,6 +94,7 @@ export class Players {
         })
     }
 
+    //remove item from list
     deletePlayer(el) {
         const index = el.parentElement.dataset.key;
         if (el.classList.contains('delete')) {
@@ -97,6 +104,7 @@ export class Players {
         }
     }
 
+    //clear list and local storage
     clearList() {
         if (this.playersList.length > 0) {
             localStorage.clear();
@@ -106,7 +114,7 @@ export class Players {
         } else return
     }
 
-    //localStorage
+    //localStorage array
     storeGetPlayer() {
         let players;
         if (localStorage.getItem('players') === null) {
@@ -117,6 +125,7 @@ export class Players {
         return players
     }
 
+    //add item to localStorage
     storeAddPlayer(player, inputNr) {
         if (player) {
             for (const i in this.players) {
@@ -127,6 +136,7 @@ export class Players {
         }
     }
 
+    //remove item from localStorage
     storeRremovePlayer(el) {
         const index = el.parentElement.dataset.key;
         if (el.classList.contains('delete')) {

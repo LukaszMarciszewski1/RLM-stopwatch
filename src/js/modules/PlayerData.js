@@ -1,3 +1,4 @@
+//data for player to do list
 export class PlayerData {
     constructor(name, number) {
         this.name = name;
