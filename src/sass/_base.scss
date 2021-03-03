@@ -223,9 +223,8 @@ button:active {
 
 .info-file-content {
   @include shadowItem;
-  display: flex;
+  @include flex-center;
   align-items: flex-start;
-  justify-content: center;
   flex-direction: column;
   background-color: $itemDark;
   position: absolute;
@@ -461,24 +460,18 @@ button:active {
 
   &::before {
     content: '';
-    position: absolute;
+    @include absoluteCenter;
     width: 15px;
     height: 15px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     background-color: red;
     border-radius: 50%;
   }
 
   &::after {
     content: '';
-    position: absolute;
+    @include absoluteCenter;
     width: 25px;
     height: 25px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     border: 1px solid red;
     border-radius: 50%;
   }
@@ -535,10 +528,7 @@ button:active {
   display: inline-block;
 
   .span-start {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    @include absoluteCenter;
     font-size: 70px;
     color: $fontColor;
     user-select: none;
@@ -551,12 +541,9 @@ button:active {
 }
 
 .progress {
+  @include absoluteCenter;
   width: 250px;
   height: 250px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   @include flexCenter;
 
   svg {
@@ -607,10 +594,7 @@ button:active {
 }
 
 .load {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  @include absoluteCenter;
 }
 
 .active-player-name,
@@ -641,10 +625,8 @@ button:active {
 }
 
 .lds-ellipsis div {
-  position: absolute;
+  @include absoluteCenter;
   top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -694,7 +676,6 @@ button:active {
     width: auto;
     height: 100%;
     object-fit: cover;
-
   }
 }
 
