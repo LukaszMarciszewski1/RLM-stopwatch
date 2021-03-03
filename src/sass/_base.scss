@@ -19,6 +19,7 @@ button {
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
+  opacity: .8;
 }
 
 button:hover {
@@ -101,10 +102,10 @@ button:active {
   margin-bottom: 40px;
   padding: 0 20px 20px;
   -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
 
   p {
-    color: gray;
+    color: grey;
     margin-left: 20px
   }
 }
@@ -223,6 +224,7 @@ button:active {
 
 .info-file-content {
   @include shadowItem;
+  display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
@@ -282,7 +284,6 @@ button:active {
   margin-top: 10px;
   background: $loadBg;
   outline: none;
-  cursor: pointer;
   color: $fontColorDarkest;
   border-radius: 50px;
   border: 1px solid $background;
@@ -294,8 +295,6 @@ button:active {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  -webkit-box-shadow: 2px 0px 2px -1px rgba(0, 0, 0, 0.8);
-  box-shadow: 2px 0px 2px -1px rgba(0, 0, 0, 0.8);
   border-radius: 0 50px 50px 0;
   outline: none;
   opacity: 1;
@@ -590,7 +589,7 @@ button:active {
   padding: 0 0 10px;
 
   ion-icon {
-    color: gray;
+    color: grey;
     font-size: 28px;
     margin-right: 10px;
   }
@@ -1036,7 +1035,6 @@ button:active {
     height: auto;
     min-height: 100vh;
     padding: 0;
-    background-color: #212121;
     background-color: $bgContainer;
   }
 
@@ -1374,7 +1372,7 @@ button:active {
   .circular {
     width: 140px;
     height: 140px;
-    border: 8px solid gray;
+    border: 8px solid grey;
 
     .span-start {
       font-size: 44px;
@@ -1408,7 +1406,7 @@ button:active {
     padding: 0 4px 4px;
 
     ion-icon {
-      color: gray;
+      color: grey;
       font-size: 14px;
       margin-right: 10px;
     }
