@@ -197,7 +197,6 @@ button:active {
   }
 }
 
-//load file
 #file-upload-form {
   padding: 0 20px;
   width: 100%;
@@ -304,7 +303,6 @@ button:active {
   @include btnToDoList;
 }
 
-//to do form
 #to-do-player-list {
   width: 100%;
   display: flex;
@@ -352,7 +350,6 @@ button:active {
   }
 }
 
-//description list player
 .list__item-desc {
   display: flex;
   padding: 20px 50px;
