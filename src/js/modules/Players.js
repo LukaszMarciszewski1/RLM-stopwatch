@@ -1,4 +1,4 @@
-import {PlayerDataLoadFile} from './PlayerDataLoadFile.js';
+import PlayerData from './PlayerData.js';
 
 export class Players {
     constructor(playersList, containerList, inputLoad) {
@@ -32,7 +32,7 @@ export class Players {
                    `;
                         const name = row[0]; //first row
                         const number = row[1].toString(); //second row
-                        this.playerDataLoadFile = new PlayerDataLoadFile(name, number);
+                        const playerDataLoadFile = new PlayerData(name, number);
 
                         //if the given competitor number is on the list
                         for (const i in this.players) {
@@ -44,7 +44,7 @@ export class Players {
                         playersList.push(rows);
                         this.renderList();
                         containerList.appendChild(rows);
-                        this.storeAddPlayer(this.playerDataLoadFile);
+                        this.storeAddPlayer(playerDataLoadFile);
                     } else {
                         return alert('dołącz plik')
                     }

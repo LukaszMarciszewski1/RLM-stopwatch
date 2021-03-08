@@ -3,7 +3,7 @@ import {Time} from './Time.js';
 import {Stopwatch} from './Stopwatch.js';
 import {Settings} from './Settings.js';
 import {Players} from './Players.js';
-import {PlayerData} from './PlayerData.js';
+import PlayerData from './PlayerData.js';
 import {Restart} from './Restart.js';
 
 export class Race {

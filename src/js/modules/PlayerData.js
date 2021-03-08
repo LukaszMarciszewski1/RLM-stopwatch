@@ -1,5 +1,5 @@
 //data for player to do list
-export class PlayerData {
+export default class PlayerData {
     constructor(name, number) {
         this.name = name;
         this.number = number

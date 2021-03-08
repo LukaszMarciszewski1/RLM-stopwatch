@@ -74,7 +74,7 @@ button:active {
   @include shadowItem;
   @include flex-center;
   position: relative;
-  background-color: $bgContainer;
+  background-color: lighten($bgContainer, 1%);
   height: 100%;
   padding: 30px;
 }
