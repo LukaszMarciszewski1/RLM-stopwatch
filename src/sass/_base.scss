@@ -135,7 +135,7 @@ button:active {
 }
 
 .open-settings {
-  @include container;
+  @include settings-btn;
   border-radius: 12px;
   border: 1px solid $borderSettingsBtn;
   color: $fontColor;
