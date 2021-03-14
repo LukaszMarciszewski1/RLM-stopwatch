@@ -11,6 +11,7 @@ export class Players {
     //display items in list
     displayPlayer() {
         this.players.forEach((player) => this.addPlayerToList(player))
+        
     }
 
     //add file Xlsx to list
@@ -76,7 +77,7 @@ export class Players {
             this.playersList.push(row);
             this.renderList();
             containerList.appendChild(row);
-            this.clearFields();
+            this.clearFields(); 
         }
     }
 
@@ -107,7 +108,11 @@ export class Players {
     //clear list and local storage
     clearList() {
         if (this.playersList.length > 0) {
-            localStorage.clear();
+            for (var player in localStorage){
+                if (player == 'players') {
+                    localStorage.removeItem(player);
+                }
+             }
             this.playersList.splice(0);
             this.containerList.textContent = '';
             this.players = []
