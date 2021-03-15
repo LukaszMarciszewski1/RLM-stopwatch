@@ -209,7 +209,7 @@ export class Race {
             const intBefore = setInterval(() => {
                 //the sound lasts 6 seconds + 1 seconds interval 
                 if (this.stopwatch.timerSpan.textContent == 7) {
-                    var audio = new Audio('assets/beep.mp3');
+                    var audio = new Audio('public/beep.mp3');
                     audio.play()
                 };
 
