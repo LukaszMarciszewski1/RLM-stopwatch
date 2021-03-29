@@ -72,7 +72,8 @@ export class Race {
         this.btnCloseSettings.forEach(close => close.addEventListener('click', () => close.parentNode.classList.remove('display-container')));
 
         //Restart race
-        this.btnRestart.addEventListener('click', () => {
+        this.btnRestart.addEventListener('click', (e) => {
+            e.preventDefault()
             setTimeout(this.restart.changeBtn, 1000);
             location.reload()
         });

@@ -502,6 +502,7 @@ button:active {
   min-width: 300px;
   margin-left: 40px;
   padding: 20px 30px;
+  background-color: $bgContent;
 }
 
 .circular-container {
@@ -662,8 +663,8 @@ button:active {
   width: auto;
   max-width: 300px;
   @include flex-center;
-  margin-bottom: 10px;
-  max-height: 180px;
+  margin-bottom: 20px;
+  max-height: 170px;
 
   img {
     width: auto;
