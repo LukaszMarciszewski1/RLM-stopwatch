@@ -17,4 +17,3 @@ To build project:
 
 `npm run build`
 
-*All project files are located in ./src/*
