@@ -139,13 +139,13 @@ button:active {
   border-radius: 12px;
   border: 1px solid $borderSettingsBtn;
   color: $fontColor;
-  background-color: $loadBg;
+  background-color: $btnBg;
   padding: 12px 20px;
 }
 
 .reset-settings {
   @include btnToDoList;
-  background-color: $loadBg;
+  background-color: $btnBg;
 }
 
 .reset-settings:hover {
@@ -276,7 +276,7 @@ button:active {
 
 .file-button {
   margin-top: 10px;
-  background: $loadBg;
+  background: $itemDark;
   outline: none;
   color: $fontColorDarkest;
   border-radius: 50px;

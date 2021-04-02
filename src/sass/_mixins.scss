@@ -63,6 +63,7 @@
     background: none;
     border: 1px solid $itemBg;
     margin-left: 10px;
+    background-color: $btnBg;
     @include shadowItem;
     border-radius: 7px;
 }
@@ -71,7 +72,7 @@
     @include shadowItem;
     border-radius: 12px;
     border: 1px solid $borderSettingsBtn;
-    background-color: $loadBg;
+    background-color: $btnBg;
     padding: 12px 20px;
 }
 
