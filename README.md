@@ -4,17 +4,17 @@ A competitor application for the Mazovian rally league of car models.
 # Demo
 Here is a working live: https://rlm-stoper.netlify.app/
 
-# Installation
+## Installation
 You can just clone repository files and run to install all dependencies:
 
-npm install
+`npm install`
 
-After that just run to start:
+After that just run to start server:
 
-npm start
+`npm start`
 
 To build project:
 
-npm run build
+`npm run build`
 
-All project files are located in ./src/ #projects
+*All project files are located in ./src/*
