@@ -2,6 +2,7 @@
 
 ## Demo
 Here is a working live: https://rlm-stoper.netlify.app/
+The application does not work in the Firefox browser.
 
 ## Description
 The application allows users to set the time interval between the start of competitors. 
