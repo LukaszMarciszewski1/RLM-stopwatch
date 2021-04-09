@@ -32,6 +32,7 @@ export class Race {
         this.playersPanelMobile = document.querySelector('.players-container');
         this.blueColor = '#00d9f6';
         this.fontColor = 'rgb(230, 230, 230)';
+        this.audio = new Audio('public/beep.mp3');
         this.end = 'GO!';
 
         this.settings = new Settings("interval-time", this.countdownTime);
@@ -75,7 +76,8 @@ export class Race {
         this.btnRestart.addEventListener('click', (e) => {
             e.preventDefault()
             setTimeout(this.restart.changeBtn, 1000);
-            location.reload()
+            // location.reload()
+            window.location.reload(false);
         });
 
         //reset btn
@@ -175,7 +177,7 @@ export class Race {
         let active = 0;
         let timeSet = this.settings.count();
         let timeInterval = this.settings.count() * 1000;
-        
+
         if (this.settingTime.value === '') {
             return alert('Wybierz godzinę startu')
         }
@@ -210,8 +212,7 @@ export class Race {
             const intBefore = setInterval(() => {
                 //the sound lasts 6 seconds + 1 seconds interval 
                 if (this.stopwatch.timerSpan.textContent == 7) {
-                    var audio = new Audio('public/beep.mp3');
-                    audio.play()
+                    this.audio.play()
                 };
 
                 //if the set interval is equal to the time to start, the circle function will be executed
