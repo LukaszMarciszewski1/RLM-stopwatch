@@ -1,0 +1,333 @@
+.time-panel {
+    padding: 0 0 30px;
+    height: 100%;
+    width: 300px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+
+.logo {
+    width: auto;
+    max-width: 300px;
+    @include flex-center;
+    margin-bottom: 20px;
+    max-height: 170px;
+
+    img {
+        width: auto;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.clock {
+    @include shadowItem;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid $border;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: $contentPlace;
+
+    h2 {
+        font-size: 43px;
+        user-select: none;
+    }
+}
+
+.status-timer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.status-timer-container {
+    padding: 10px;
+    width: 100%;
+    @include shadowItem;
+    border: 1px solid $itemDark;
+    background-color: $contentPlace;
+    margin-top: 20px;
+    border-radius: 7px;
+}
+
+.title-status-timer {
+    font-size: 14px;
+    color: $fontColorDarkest;
+    line-height: 1.2rem;
+    padding: 0 5px 10px;
+}
+
+.item-status-timer {
+    -webkit-box-shadow: inset 0px 0px 6px -2px #000000;
+    box-shadow: inset 0px 0px 6px -2px #000000;
+    @include flex-center;
+    width: 100%;
+    border: 1px solid $border;
+    border-radius: 5px;
+    min-height: 65px;
+    margin-right: 15px;
+    font-size: 17px;
+    background-color: $txtPlace;
+}
+
+.item-status-timer--big {
+    font-size: 26px;
+}
+
+.countdown-time {
+    font-size: 26px;
+}
+
+.select-time {
+    color: orange;
+    font-weight: 800;
+}
+
+.start,
+.restart {
+    @include btnRacing;
+    display: block;
+    margin: 50px auto;
+    font-size: 20px;
+}
+
+.start-disable {
+    display: none;
+}
+
+.restart-disable {
+    display: none;
+}
+
+
+@media screen and (max-width:1600px) {
+    .time-panel {
+        width: 300px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .logo {
+        max-width: 70px;
+    }
+}
+
+@media screen and (max-width:1540px) {
+    .logo {
+        margin-bottom: 0;
+    }
+
+    .clock {
+        margin-bottom: 0;
+    }
+
+    .start,
+    .restart {
+        margin: 30px;
+    }
+
+    .time-panel {
+        height: 100%;
+        margin-left: 30px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .item-status-timer {
+        min-height: 40px;
+        height: 50px;
+    }
+
+    .logo {
+        max-height: 150px;
+    }
+
+    .clock {
+        padding: 15px;
+
+        h2 {
+            font-size: 40px;
+        }
+    }
+
+    .start,
+    .restart {
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .time-panel {
+        margin-left: 20px;
+        width: 280px;
+    }
+
+    .logo {
+        max-height: 140px;
+    }
+}
+
+@media screen and (max-width:1050px) {
+    .time-panel {
+        width: 260px;
+    }
+}
+
+@media screen and (max-width:950px) {
+    .time-panel {
+        flex-direction: row;
+        align-items: flex-end;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 80px 0 20px;
+        position: static;
+    }
+
+    .start,
+    .restart {
+        position: absolute;
+        margin: 40px 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .logo {
+        max-width: 110px;
+        max-height: 90px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .clock {
+        width: auto;
+        padding: 26px;
+        border: 1px solid $border;
+        border-radius: 10px;
+        margin: 0;
+        text-align: center;
+
+        h2 {
+            font-size: 30px;
+            user-select: none;
+        }
+    }
+
+    .status-timer {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .status-timer-container {
+        padding: 2px;
+        margin-top: 0;
+    }
+
+    .title-status-timer {
+        font-size: 12px;
+        padding: 10px 5px;
+    }
+
+    .status-timer-container {
+        margin-left: 20px;
+    }
+
+    .item-status-timer {
+        min-height: 40px;
+        margin-top: 0;
+        padding: 6px 0;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .status-timer-container {
+        margin-left: 15px;
+    }
+
+    .item-status-timer {
+        font-size: 12px;
+    }
+
+    .title-status-timer {
+        padding: 5px;
+    }
+
+    .clock {
+        padding: 18px;
+    }
+}
+
+@media screen and (max-width:648px) {
+    .time-panel {
+        flex-direction: column;
+        margin-top: 100px;
+    }
+
+    .clock {
+        align-self: flex-end;
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+
+    .status-timer-container:first-child {
+        margin-left: 0;
+    }
+
+    .item-status-timer--big {
+        font-size: 20px;
+    }
+
+    .countdown-time {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .title-status-timer {
+        font-size: 11px;
+        padding: 0px 3px;
+    }
+
+    .item-status-timer {
+        min-height: 30px;
+        height: 30px;
+        padding: 4px;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    .time-panel {
+        margin: 65px 0 10px;
+    }
+
+    .clock {
+        padding: 10px;
+
+        h2 {
+            font-size: 22px;
+        }
+    }
+
+    .start,
+    .restart {
+        width: 120px;
+        margin: 30px auto;
+        padding: 10px 20px;
+    }
+}

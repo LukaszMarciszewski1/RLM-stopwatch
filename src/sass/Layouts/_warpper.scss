@@ -1,0 +1,62 @@
+.app {
+    width: 100%;
+    height: 100vh;
+    background-color: $background;
+    padding: 3rem 2em;
+    @include flex-center;
+}
+
+.app__container {
+    @include shadowItem;
+    @include flex-center;
+    position: relative;
+    background-color: lighten($bgContainer, 1%);
+    height: 100%;
+    padding: 30px;
+}
+
+@media screen and (max-width:1540px) {
+    .app {
+        height: 100vh;
+        padding: 30px 20px;
+    }
+
+    .app__container {
+        @include flex-center;
+        justify-content: space-evenly;
+        width: auto;
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .app__container {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width:950px) {
+    .app {
+        height: auto;
+        min-height: 100vh;
+        padding: 0;
+        background-color: $bgContainer;
+    }
+
+    .app__container {
+        flex-direction: column-reverse;
+        height: 100%;
+        padding: 20px 20px 40px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+@media screen and (max-width:648px) {
+    .app__container {
+        width: 100%;
+        min-height: 100vh;
+        padding: 20px;
+        height: auto;
+    }
+}

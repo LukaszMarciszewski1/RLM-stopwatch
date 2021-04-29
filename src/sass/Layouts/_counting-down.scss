@@ -1,0 +1,312 @@
+.counting-down-container {
+    @include flex-center;
+    @include shadowItem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 650px;
+    min-width: 300px;
+    margin-left: 40px;
+    padding: 20px 30px;
+    background-color: $bgContent;
+}
+
+.circular-container {
+    width: 100%;
+    @include flex-center;
+    @include shadowItem;
+    padding: 40px;
+    background-color: $contentPlace;
+}
+
+.circular {
+    width: 250px;
+    height: 250px;
+    border: 13px solid gray;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+
+    .span-start {
+        @include absoluteCenter;
+        font-size: 70px;
+        color: $fontColor;
+        user-select: none;
+        font-weight: 600;
+    }
+
+    .span-start--active {
+        font-size: 55px;
+    }
+}
+
+.progress {
+    @include absoluteCenter;
+    width: 250px;
+    height: 250px;
+    @include flexCenter;
+
+    svg {
+        height: 100%;
+        display: block;
+    }
+}
+
+.player-status-container {
+    width: 100%;
+}
+
+.status-container {
+    padding: 15px 20px 15px;
+    @include shadowItem;
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid $itemDark;
+    background-color: $contentPlace;
+}
+
+.title-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 0 10px;
+
+    ion-icon {
+        color: grey;
+        font-size: 28px;
+        margin-right: 10px;
+    }
+}
+
+.title-name {
+    font-size: 18px;
+    font-weight: lighter;
+    color: $fontColorDarkest;
+}
+
+.player-status {
+    @include txt-place;
+    color: grey;
+    height: 70px;
+    overflow-x: hidden;
+    @include flex-center;
+}
+
+.load {
+    @include absoluteCenter;
+}
+
+.active-player-name,
+.next-player-name {
+    font-size: 26px;
+}
+
+.active-player-name {
+    color: orange;
+    opacity: 0;
+    animation: preparationLamp 2s infinite both;
+}
+
+.active-player-name--start {
+    color: green;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 30px;
+    display: none;
+}
+
+.lds-ellipsis--active {
+    display: inline-block;
+}
+
+.lds-ellipsis div {
+    @include absoluteCenter;
+    top: 30%;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: $fontColorDark;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@media screen and (max-width:1600px) {
+    .counting-down-container {
+        margin-left: 20px;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width:1540px) {
+    .circular-container {
+        padding: 40px;
+    }
+
+    .status-container {
+        padding: 10px 20px 15px;
+    }
+
+    .counting-down-container {
+        width: 750px;
+        padding: 20px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .circular-container {
+        padding: 30px;
+    }
+
+    .player-status {
+        height: 55px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .counting-down-container {
+        width: 650px;
+    }
+}
+
+@media screen and (max-width:1050px) {
+    .counting-down-container {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width:950px) {
+    .counting-down-container {
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0;
+        justify-content: flex-start;
+        height: auto;
+        margin-bottom: 100px;
+        width: 700px;
+    }
+
+    .circular-container {
+        padding: 20px;
+    }
+
+    .circular {
+        width: 230px;
+        height: 230px;
+    }
+
+    .progress {
+        width: 230px;
+        height: 230px;
+    }
+
+    .status-container {
+        padding: 15px;
+    }
+
+    .player-status {
+        height: 60px;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .counting-down-container {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width:648px) {
+    .counting-down-container {
+        width: 100%;
+    }
+
+    .status-container {
+        padding: 10px;
+    }
+
+    .player-status {
+        height: 50px;
+        padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .counting-down-container {
+        margin-bottom: 70px;
+    }
+
+    .circular-container {
+        padding: 12px;
+    }
+
+    .circular {
+        width: 140px;
+        height: 140px;
+        border: 8px solid grey;
+
+        .span-start {
+            font-size: 44px;
+        }
+
+        .span-start--active {
+            font-size: 32px;
+        }
+    }
+
+    .progress {
+        width: 140px;
+        height: 140px;
+    }
+
+    .status-container {
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    .player-status {
+        height: 35px;
+        padding: 3px 7px;
+
+        h4 {
+            font-size: 16px;
+        }
+    }
+
+    .title-name-container {
+        padding: 0 4px 4px;
+
+        ion-icon {
+            color: grey;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+    }
+
+    .title-name {
+        font-size: 12px;
+    }
+}

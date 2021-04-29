@@ -19,7 +19,7 @@ export class Race {
         this.countdownTime = document.querySelector('.countdown-time');
         this.containerStartTime = document.querySelector('.select-time');
         this.spanCircle = document.querySelector('.span-start');
-        this.settingsContainer = document.querySelector('.settings-container');
+        this.settingsContainer = document.querySelector('.settings-modal');
         this.infoPopup = document.querySelector('.info-popup');
         this.acceptPopup = document.querySelector('.accept');
         this.intervalTime = null;
@@ -29,7 +29,7 @@ export class Race {
         this.btnAddToList = document.querySelector('.add-to-list');
         this.btnResetList = document.querySelector('.reset-list');
         this.btnResetSettings = [...document.querySelectorAll('.reset-settings')];
-        this.playersPanelMobile = document.querySelector('.players-container');
+        this.playersPanelMobile = document.querySelector('.control-container');
         this.blueColor = '#00d9f6';
         this.fontColor = 'rgb(230, 230, 230)';
         this.audio = new Audio('public/beep.mp3');
@@ -76,8 +76,7 @@ export class Race {
         this.btnRestart.addEventListener('click', (e) => {
             e.preventDefault()
             setTimeout(this.restart.changeBtn, 1000);
-            // location.reload()
-            window.location.reload(false);
+            location.reload()
         });
 
         //reset btn
