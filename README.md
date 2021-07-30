@@ -3,7 +3,6 @@
 ## Demo
 
 Here is a working live: https://rlm-stoper.netlify.app/
-The application does not work in the Firefox browser.
 
 ## Description
 
